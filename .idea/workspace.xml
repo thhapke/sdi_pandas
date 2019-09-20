@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f6c88374-51a5-4f71-9c91-34efe0730fa7" name="Default Changelist" comment="" />
+    <list default="true" id="f6c88374-51a5-4f71-9c91-34efe0730fa7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/pipelines/fuzzyjoinAddresses.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pipelines/prepForecast.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/customDataFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/PandasOperators-0.0.9.zip" beforeDir="false" afterPath="$PROJECT_DIR$/solution/PandasOperators-0.0.9.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dropColumnsDataFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dropColumnsDataFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fromCSVDataFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fromCSVDataFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fuzzySelectDataFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/deprecated/fuzzySelectDataFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fuzzyjoinDataFrames.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fuzzyjoinDataFrames.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/groupbyDataFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/groupbyDataFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/joinDataFrames.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/joinDataFrames.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/pipeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sampleDataFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sampleDataFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/selectDataFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/selectDataFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templateDataFrames.py" beforeDir="false" afterPath="$PROJECT_DIR$/deprecated/templateDataFrames.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toCSVDataFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toCSVDataFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tprogress.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transposeColumnDataFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/deprecated/transposeColumnDataFrame.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -10,13 +29,17 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/DI_Pandas$fuzzyjoinDataFrames.coverage" NAME="fuzzyjoinDataFrames Coverage Results" MODIFIED="1568214669007" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/DI_Pandas$selectDataFrame__1_.coverage" NAME="selectDataFrame (1) Coverage Results" MODIFIED="1566540148507" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/DI_Pandas$transpose2ColumnDataFrame.coverage" NAME="transpose2ColumnDataFrame Coverage Results" MODIFIED="1566555270226" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/DI_Pandas$fromCSVDataFrame.coverage" NAME="fromCSVDataFrame Coverage Results" MODIFIED="1566460442456" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/DI_Pandas$selectDataFrame__1_.coverage" NAME="selectDataFrame (1) Coverage Results" MODIFIED="1568881915881" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/DI_Pandas$toCSVDataFrame.coverage" NAME="toCSVDataFrame Coverage Results" MODIFIED="1568884731964" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/DI_Pandas$dropColumnsDataFrame.coverage" NAME="dropColumnsDataFrame Coverage Results" MODIFIED="1566476385958" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/DI_Pandas$fromCSVDataFrame.coverage" NAME="fromCSVDataFrame Coverage Results" MODIFIED="1568884467498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/DI_Pandas$joinDataFrames.coverage" NAME="joinDataFrames Coverage Results" MODIFIED="1566716583668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/DI_Pandas$prepForecast.coverage" NAME="prepForecast Coverage Results" MODIFIED="1568962549480" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pipelines" />
     <SUITE FILE_PATH="coverage/DI_Pandas$fuzzySelectDataFrame.coverage" NAME="fuzzySelectDataFrame Coverage Results" MODIFIED="1568179911140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/DI_Pandas$transposeColumnDataFrame.coverage" NAME="transposeColumnDataFrame Coverage Results" MODIFIED="1568884251074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/DI_Pandas$selectDataFrame.coverage" NAME="selectDataFrame Coverage Results" MODIFIED="1566532359567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/DI_Pandas$fuzzyjoinAddresses.coverage" NAME="fuzzyjoinAddresses Coverage Results" MODIFIED="1568952587305" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pipelines" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="1299802336">
@@ -31,25 +54,25 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="39" />
-          <entry key="py" value="4966" />
+          <entry key="dummy" value="45" />
+          <entry key="py" value="9021" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="39" />
-          <entry key="Python" value="4965" />
+          <entry key="PLAIN_TEXT" value="45" />
+          <entry key="Python" value="9020" />
           <entry key="RegExp" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="20" />
+          <entry key="py" value="39" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="20" />
+          <entry key="Python" value="39" />
         </counts>
       </usages-collector>
     </session>
@@ -57,23 +80,34 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fuzzySelectDataFrame.py">
+        <entry file="file://$PROJECT_DIR$/src/fromCSVDataFrame.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="33" selection-start-line="19" selection-start-column="4" selection-end-line="33" />
+            <state relative-caret-position="184">
+              <caret line="103" selection-start-line="103" selection-end-line="105" selection-end-column="95" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
-                <marker date="1568132784050" expanded="true" signature="539:548" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/fuzzyjoinDataFrames.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pipelines/fuzzyjoinAddresses.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="58" column="21" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
+            <state relative-caret-position="85">
+              <caret line="5" selection-start-line="5" selection-end-line="9" selection-end-column="41" />
+              <folding>
+                <element signature="e#1#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/customDataFrame.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" selection-start-line="8" selection-end-line="14" selection-end-column="31" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -84,8 +118,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/groupbyDataFrame.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" selection-start-line="17" selection-start-column="4" selection-end-line="18" />
+            <state relative-caret-position="570">
+              <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fuzzyjoinDataFrames.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2261">
+              <caret line="133" selection-start-line="133" selection-end-line="133" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -96,20 +142,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/selectDataFrame.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2431">
-              <caret line="143" column="48" selection-start-line="143" selection-start-column="48" selection-end-line="143" selection-end-column="48" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/transpose2ColumnDataFrame.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="103" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="103" />
+            <state relative-caret-position="-2891">
+              <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -120,22 +154,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/joinDataFrames.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1649">
-              <caret line="97" column="83" selection-start-line="97" selection-start-column="83" selection-end-line="97" selection-end-column="83" />
+            <state relative-caret-position="497">
+              <caret line="58" column="50" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pipeline.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
-              <folding>
-                <element signature="e#0#34#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -144,8 +166,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dropColumnsDataFrame.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="48" column="49" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="49" />
+            <state relative-caret-position="293">
+              <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pipelines/prepForecast.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="72" lean-forward="true" selection-start-line="19" selection-start-column="72" selection-end-line="19" selection-end-column="72" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sampleDataFrame.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-539">
+              <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -154,6 +197,13 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -167,16 +217,22 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/groupbyDataFrame.py" />
-        <option value="$PROJECT_DIR$/src/selectDataFrame.py" />
-        <option value="$PROJECT_DIR$/src/transposeColumnDataFrame.py" />
-        <option value="$PROJECT_DIR$/src/dropColumnsDataFrame.py" />
         <option value="$PROJECT_DIR$/src/transpose2ColumnDataFrame.py" />
-        <option value="$PROJECT_DIR$/src/fromCSVDataFrame.py" />
         <option value="$PROJECT_DIR$/src/fromZipCSVDataFrame.py" />
         <option value="$PROJECT_DIR$/src/fuzzySelectDataFrame.py" />
+        <option value="$PROJECT_DIR$/src/transposeColumnDataFrame.py" />
+        <option value="$PROJECT_DIR$/src/toCSVDataFrame.py" />
+        <option value="$PROJECT_DIR$/pipelines/fuzzyjoinAddresses.py" />
+        <option value="$PROJECT_DIR$/src/idleDataFrame.py" />
+        <option value="$PROJECT_DIR$/src/fromCSVDataFrame.py" />
+        <option value="$PROJECT_DIR$/src/customDataFrame.py" />
+        <option value="$PROJECT_DIR$/src/selectDataFrame.py" />
         <option value="$PROJECT_DIR$/src/joinDataFrames.py" />
+        <option value="$PROJECT_DIR$/src/groupbyDataFrame.py" />
         <option value="$PROJECT_DIR$/src/fuzzyjoinDataFrames.py" />
+        <option value="$PROJECT_DIR$/src/dropColumnsDataFrame.py" />
+        <option value="$PROJECT_DIR$/pipelines/prepForecast.py" />
+        <option value="$PROJECT_DIR$/src/sampleDataFrame.py" />
       </list>
     </option>
   </component>
@@ -186,8 +242,8 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="y" value="203" />
     <option name="width" value="1440" />
     <option name="height" value="816" />
   </component>
@@ -206,6 +262,11 @@
             <path>
               <item name="DI_Pandas" type="b2602c69:ProjectViewProjectNode" />
               <item name="DI_Pandas" type="462c0819:PsiDirectoryNode" />
+              <item name="pipelines" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DI_Pandas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DI_Pandas" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -220,9 +281,13 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/deprecated" />
+      <recent name="$PROJECT_DIR$/pipelines" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
     </key>
@@ -239,8 +304,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.fuzzyjoinDataFrames">
-    <configuration name="fuzzySelectDataFrame" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.prepForecast">
+    <configuration name="fromCSVDataFrame" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DI_Pandas" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -253,7 +318,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/fuzzySelectDataFrame.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/fromCSVDataFrame.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -262,7 +327,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="fuzzyjoinDataFrames" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="fuzzyjoinAddresses" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DI_Pandas" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -270,12 +335,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pipelines" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/fuzzyjoinDataFrames.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pipelines/fuzzyjoinAddresses.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -284,7 +349,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="joinDataFrames" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="prepForecast" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DI_Pandas" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -292,12 +357,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pipelines" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/joinDataFrames.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pipelines/prepForecast.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -306,7 +371,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="selectDataFrame (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="toCSVDataFrame" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DI_Pandas" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -319,7 +384,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/selectDataFrame.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/toCSVDataFrame.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -328,7 +393,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="transpose2ColumnDataFrame" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="transposeColumnDataFrame" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DI_Pandas" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -341,7 +406,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/transpose2ColumnDataFrame.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/deprecated/transposeColumnDataFrame.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -351,19 +416,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.selectDataFrame (1)" />
-      <item itemvalue="Python.transpose2ColumnDataFrame" />
-      <item itemvalue="Python.joinDataFrames" />
-      <item itemvalue="Python.fuzzySelectDataFrame" />
-      <item itemvalue="Python.fuzzyjoinDataFrames" />
+      <item itemvalue="Python.fuzzyjoinAddresses" />
+      <item itemvalue="Python.transposeColumnDataFrame" />
+      <item itemvalue="Python.fromCSVDataFrame" />
+      <item itemvalue="Python.toCSVDataFrame" />
+      <item itemvalue="Python.prepForecast" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.fuzzyjoinDataFrames" />
-        <item itemvalue="Python.fuzzySelectDataFrame" />
-        <item itemvalue="Python.joinDataFrames" />
-        <item itemvalue="Python.transpose2ColumnDataFrame" />
-        <item itemvalue="Python.selectDataFrame (1)" />
+        <item itemvalue="Python.prepForecast" />
+        <item itemvalue="Python.fuzzyjoinAddresses" />
+        <item itemvalue="Python.toCSVDataFrame" />
+        <item itemvalue="Python.fromCSVDataFrame" />
+        <item itemvalue="Python.transposeColumnDataFrame" />
       </list>
     </recent_temporary>
   </component>
@@ -390,28 +455,28 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="816" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.1795422" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.13365282" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="1" />
+      <window_info anchor="bottom" id="Terminal" order="1" weight="0.32961586" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" order="4" />
       <window_info anchor="bottom" id="Docker" order="5" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="6" />
       <window_info anchor="bottom" id="Find" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.23965763" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.39772728" />
+      <window_info anchor="bottom" id="Run" order="8" visible="true" weight="0.21377912" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.3952912" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="12" weight="0.32954547" />
+      <window_info anchor="bottom" id="TODO" order="12" weight="0.3283767" />
       <window_info anchor="right" id="Database" order="0" />
       <window_info anchor="right" id="Commander" order="1" weight="0.4" />
-      <window_info anchor="right" id="SciView" order="2" visible="true" weight="0.123032905" />
+      <window_info anchor="right" id="SciView" order="2" weight="0.8204578" />
       <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
     </layout>
@@ -427,38 +492,33 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/fromCSVDataFrame.py</url>
-          <line>255</line>
+          <line>261</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/fromCSVDataFrame.py</url>
-          <line>52</line>
+          <line>56</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/dropColumnsDataFrame.py</url>
-          <line>16</line>
+          <line>21</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/dropColumnsDataFrame.py</url>
-          <line>43</line>
+          <line>44</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/dropColumnsDataFrame.py</url>
-          <line>111</line>
+          <line>108</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/groupbyDataFrame.py</url>
-          <line>17</line>
+          <line>16</line>
           <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/selectDataFrame.py</url>
-          <line>46</line>
-          <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/transpose2ColumnDataFrame.py</url>
@@ -467,13 +527,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/joinDataFrames.py</url>
-          <line>31</line>
+          <line>32</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/fuzzySelectDataFrame.py</url>
+          <url>file://$PROJECT_DIR$/deprecated/fuzzySelectDataFrame.py</url>
           <line>36</line>
           <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/fuzzyjoinDataFrames.py</url>
+          <line>85</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -490,30 +555,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="868" selection-start-line="868" selection-end-line="868" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/transposeColumnDataFrame.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="95" column="56" selection-start-line="95" selection-start-column="56" selection-end-line="95" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fromCSVDataFrame.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="289" lean-forward="true" selection-start-line="288" selection-start-column="1" selection-end-line="289" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pandas/core/indexing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="1471" selection-start-line="1471" selection-end-line="1471" />
         </state>
       </provider>
     </entry>
@@ -534,47 +575,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/groupbyDataFrame.py">
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pandas/core/indexes/api.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" selection-start-line="17" selection-start-column="4" selection-end-line="18" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="168">
+          <caret line="106" selection-start-line="106" selection-end-line="106" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/selectDataFrame.py">
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pandas/core/frame.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2431">
-          <caret line="143" column="48" selection-start-line="143" selection-start-column="48" selection-end-line="143" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="189">
+          <caret line="2664" selection-start-line="2664" selection-end-line="2664" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/transpose2ColumnDataFrame.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="103" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="103" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/joinDataFrames.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1649">
-          <caret line="97" column="83" selection-start-line="97" selection-start-column="83" selection-end-line="97" selection-end-column="83" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pipeline.py">
+    <entry file="file://$PROJECT_DIR$/pipelines/pipeline.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="8" selection-start-line="8" selection-end-line="8" />
@@ -584,10 +599,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fuzzySelectDataFrame.py">
+    <entry file="file://$PROJECT_DIR$/deprecated/fuzzySelectDataFrame.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="33" selection-start-line="19" selection-start-column="4" selection-end-line="33" />
+        <state relative-caret-position="232">
+          <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
             <marker date="1568132784050" expanded="true" signature="539:548" ph="..." />
@@ -595,17 +610,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pandas/core/indexes/api.py">
+    <entry file="file://$PROJECT_DIR$/deprecated/transposeColumnDataFrame.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="106" selection-start-line="106" selection-end-line="106" />
+        <state relative-caret-position="475">
+          <caret line="77" column="95" lean-forward="true" selection-start-line="64" selection-start-column="4" selection-end-line="77" selection-end-column="95" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dropColumnsDataFrame.py">
+    <entry file="file://$PROJECT_DIR$/src/toCSVDataFrame.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="48" column="49" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="49" />
+        <state relative-caret-position="110">
+          <caret line="86" column="22" lean-forward="true" selection-start-line="86" selection-start-column="22" selection-end-line="86" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pandas/core/generic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="4375" selection-start-line="4375" selection-end-line="4375" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pandas/core/indexing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="361" selection-start-line="361" selection-end-line="361" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/transpose2ColumnDataFrame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-876">
+          <caret line="21" column="103" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="103" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/selectDataFrame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2891">
+          <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/groupbyDataFrame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
@@ -614,8 +673,75 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fuzzyjoinDataFrames.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="58" column="21" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
+        <state relative-caret-position="2261">
+          <caret line="133" selection-start-line="133" selection-end-line="133" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fromCSVDataFrame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="103" selection-start-line="103" selection-end-line="105" selection-end-column="95" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/joinDataFrames.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="58" column="50" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dropColumnsDataFrame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pipelines/fuzzyjoinAddresses.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="9" selection-end-column="41" />
+          <folding>
+            <element signature="e#1#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pipelines/prepForecast.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="72" lean-forward="true" selection-start-line="19" selection-start-column="72" selection-end-line="19" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/customDataFrame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="14" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sampleDataFrame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-539">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>

@@ -2,18 +2,23 @@ import pandas as pd
 import re
 import json
 
+EXAMPLE_ROWS = 5
+
 
 def process(msg):
 
-    # test if body refers to a DataFrame type
+    prev_att = msg.attributes
     df = msg.body
     if not isinstance(df,pd.DataFrame) :
         raise TypeError('Message body does not contain a pandas DataFrame')
 
+    att_dict = dict()
+    att_dict['config'] = dict()
+
     #####################
     #  pd operations
     #####################
-    warning = ''
+    att_dict['config']['drop_columns'] = api.config.drop_columns
     if api.config.drop_columns and not api.config.drop_columns.upper() == 'NONE':
         cols_str = api.config.drop_columns.replace(':','').replace('=','')
         # Test for NOT
@@ -35,39 +40,31 @@ def process(msg):
             else :
                 drop_cols = [x.strip().replace("'","").replace('"','') for x in api.config.drop_columns.split(',')]
             df = df.drop(columns=drop_cols)
-        #print('Drop cols: ' + str(drop_cols))
 
-    else :
-        warning: 'No columns to drop'
-
-
+    att_dict['config']['rename_columns'] = api.config.rename_columns
     if api.config.rename_columns and not api.config.rename_columns.upper() == 'NONE':
         colmaps  = [x.strip() for x in api.config.rename_columns.split(',')]
         mapping = { cm.split(':')[0].strip().replace("'","").replace('"','') : \
                         cm.split(':')[1].strip().replace("'","").replace('"','')  for cm in colmaps}
-        #print(mapping)
         df.rename(columns = mapping, inplace=True)
 
 
-    #####################
+    ##############################################
     #  final infos to attributes and info message
-    #####################
-    prev_att = msg.attributes
-    att_dict = dict()
-    att_dict['config'] = dict()
-
-    att_dict['config']['drop_columns'] = api.config.drop_columns
-
-    att_dict['warning'] = warning
+    ##############################################
 
     # df from body
-    att_dict['operator'] = 'template' # name of operator
-    att_dict['mem_usage'] = df.memory_usage(deep=True).sum() / 1024 ** 2
+    att_dict['operator'] = 'dropColumns' # name of operator
+    att_dict['memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
     att_dict['name'] = prev_att['name']
     att_dict['columns'] = list(df.columns)
     att_dict['number_columns'] = len(att_dict['columns'])
-    att_dict['number_rows'] = len(df.index)
-    att_dict['example_row_1'] = str(df.iloc[0, :].tolist())
+    att_dict['number_columns'] = df.shape[1]
+    att_dict['number_rows'] = df.shape[0]
+
+    example_rows = EXAMPLE_ROWS if att_dict['number_rows'] > EXAMPLE_ROWS else att_dict['number_rows']
+    for i in range(0,example_rows) :
+        att_dict['row_'+str(i)] = str([ str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])
 
     return api.Message(attributes=att_dict,body = df)
 
@@ -180,4 +177,4 @@ def interface(msg):
 
 
 # Triggers the request for every message
-#api.set_port_callback("inDataFrameMsg", interface)
+api.set_port_callback("inDataFrameMsg", interface)

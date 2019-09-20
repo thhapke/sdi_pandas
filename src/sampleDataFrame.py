@@ -1,12 +1,18 @@
 import pandas as pd
 import json
 
+EXAMPLE_ROWS = 5
 
 def process(msg):
+    
     # test if body refers to a DataFrame type
+    prev_att = msg.attributes
     df = msg.body
-    if not isinstance(df, pd.DataFrame):
+    if not isinstance(df,pd.DataFrame) :
         raise TypeError('Message body does not contain a pandas DataFrame')
+
+    att_dict = dict()
+    att_dict['config'] = dict()
 
     #####################
     #  pd operations
@@ -41,28 +47,26 @@ def process(msg):
         df = pd.merge(df, sc_df, how='inner', right_index=True, left_on=s_col)
         df.drop(columns=['sum'], inplace=True)
 
-    #####################
+    ##############################################
     #  final infos to attributes and info message
-    #####################
-    prev_att = msg.attributes
-    att_dict = dict()
-    att_dict['config'] = dict()
+    ##############################################
 
-    att_dict['config']['sample_size'] = api.config.sample_size
-    att_dict['config']['random_state'] = api.config.random_state
-    att_dict['config']['invariant_column'] = api.config.invariant_column
-    att_dict['warning'] = warning
+    if df.empty :
+        raise ValueError('DataFrame is empty')
 
-    # df from body
-    att_dict['operator'] = 'sampleDataFrame'  # name of operator
-    att_dict['mem_usage'] = df.memory_usage(deep=True).sum() / 1024 ** 2
+    att_dict['operator'] = 'selectDataFrame'
     att_dict['name'] = prev_att['name']
-    att_dict['columns'] = list(df.columns)
-    att_dict['number_columns'] = len(att_dict['columns'])
-    att_dict['number_rows'] = len(df.index)
-    att_dict['example_row_1'] = str(df.iloc[0, :].tolist())
+    att_dict['memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
+    att_dict['columns'] = str(list(df.columns))
+    att_dict['number_columns'] = df.shape[1]
+    att_dict['number_rows'] = df.shape[0]
 
-    return api.Message(attributes=att_dict, body=df)
+    example_rows = EXAMPLE_ROWS if att_dict['number_rows'] > EXAMPLE_ROWS else att_dict['number_rows']
+    for i in range(0,example_rows) :
+        att_dict['row_'+str(i)] = str([ str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])
+
+    return  api.Message(attributes = att_dict,body=df)
+
 
 
 '''

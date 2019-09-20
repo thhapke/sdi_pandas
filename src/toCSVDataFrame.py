@@ -1,14 +1,14 @@
 import pandas as pd
 import json
 
+EXAMPLE_ROWS = 5
+
 
 def process(df_msg):
     prev_att = df_msg.attributes
     att_dict = dict()
     att_dict['config'] = dict()
-    att_dict['memory'] = dict()
-    att_dict['operator'] = 'toCSVDataFrame'
-    att_dict['name'] = prev_att['name']
+
     att_dict['config']['separator'] = api.config.separator
     att_dict['config']['write_index'] = api.config.write_index
 
@@ -20,18 +20,24 @@ def process(df_msg):
 
     df = df.reset_index()
 
-    mem = df.memory_usage().sum()
     df_str_list = list()
     body = df.to_csv(sep=api.config.separator, index=False)
 
-    att_dict['memory']['mem_usage'] = df.memory_usage(deep=True).sum() / 1024 ** 2
-    att_dict['columns'] = list(df.columns)
-    att_dict['number_columns'] = len(att_dict['columns'])
-    att_dict['number_rows'] = len(df.index)
-    att_dict['example_row_1'] = str(df.iloc[0, :].tolist())
+    #####################
+    #  final infos to attributes and info message
+    #####################
+    att_dict['operator'] = 'toCSVDataFrame'  # name of operator
+    att_dict['name'] = prev_att['name']
 
-    # csv = df.to_csv(sep=api.config.separator,index=api.config.write_index)
-    # df.to_csv('/Users/d051079/Downloads/test.csv', sep=api.config.separator, index=api.config.write_index)
+    att_dict['memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
+    att_dict['columns'] = str(list(df.columns))
+    att_dict['number_columns'] = df.shape[1]
+    att_dict['number_rows'] = df.shape[0]
+
+    example_rows = EXAMPLE_ROWS if att_dict['number_rows'] > EXAMPLE_ROWS else att_dict['number_rows']
+    for i in range(0, example_rows):
+        att_dict['row_' + str(i)] = str([str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])
+
     return api.Message(attributes=att_dict, body=body)
 
 
@@ -113,5 +119,5 @@ def interface(msg):
 
 
 # Triggers the request for every message (the message provides the stock_symbol)
-#api.set_port_callback("inDataFrameMsg", interface)
+api.set_port_callback("inDataFrameMsg", interface)
 

@@ -2,6 +2,7 @@ import pandas as pd
 import re
 import json
 
+EXAMPLE_ROWS = 5
 
 def process(df_msg):
 
@@ -10,9 +11,7 @@ def process(df_msg):
 
     att_dict = dict()
     att_dict['config'] = dict()
-    att_dict['memory'] = dict()
-    att_dict['operator'] = 'groupbyDataFrame'
-    att_dict['name'] = prev_att['name']
+
 
     # groupby list
     cols = [x.strip().replace("'",'').replace('"','') for x in api.config.groupby.split(',')]
@@ -30,11 +29,20 @@ def process(df_msg):
         dropcols = [x.strip().replace("'", '').replace('"', '') for x in api.config.drop_columns.split(',')]
         df.drop(columns=dropcols,inplace=True)
 
-    att_dict['memory']['mem_usage'] = df.memory_usage(deep=True).sum() / 1024 ** 2
+
+    ##############################################
+    #  final infos to attributes and info message
+    ##############################################
+    att_dict['operator'] = 'groupbyDataFrame'
+    att_dict['name'] = prev_att['name']
+    att_dict['memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
     att_dict['columns'] = list(df.columns)
-    att_dict['number_columns'] = len(att_dict['columns'])
-    att_dict['number_rows'] = len(df.index)
-    att_dict['example_row_1'] = str(df.iloc[0,:].tolist())
+    att_dict['number_columns'] = df.shape[1]
+    att_dict['number_rows'] = df.shape[0]
+
+    example_rows = EXAMPLE_ROWS if att_dict['number_rows'] > EXAMPLE_ROWS else att_dict['number_rows']
+    for i in range(0, example_rows):
+        att_dict['row_' + str(i)] = str([str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])
 
     return  api.Message(attributes = att_dict,body=df)
 

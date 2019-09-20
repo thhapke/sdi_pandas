@@ -1,6 +1,8 @@
 import pandas as pd
 import json
 
+EXAMPLE_ROWS = 5
+
 def process(left_msg,right_msg):
 
     l_att = left_msg.attributes
@@ -13,7 +15,6 @@ def process(left_msg,right_msg):
     else :
         att_dict['name'] = l_att['name'] + '-' + r_att['name']
     att_dict['config'] = dict()
-    att_dict['memory'] = dict()
 
     # read stream from memory
     left_df = left_msg.body
@@ -53,20 +54,22 @@ def process(left_msg,right_msg):
         col_list = [x.strip().replace("'",'').replace('"','') for x in api.config.drop_columns.split(',')]
         df.drop(labels = col_list,axis=1,inplace=True)
 
+    ##############################################
+    #  final infos to attributes and info message
+    ##############################################
     if df.empty == True :
         raise ValueError('Merged Dataframe is empty')
 
-    att_dict['memory']['mem_usage'] = df.memory_usage(deep=True).sum() / 1024 ** 2
-    att_dict['columns'] = list(df.columns)
-    att_dict['number_columns'] = len(att_dict['columns'])
-    att_dict['number_rows'] = len(df.index)
-    att_dict['example_row_1'] = str(df.iloc[0, :].tolist())
+    att_dict['memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
+    att_dict['columns'] = str(list(df.columns))
+    att_dict['number_columns'] = df.shape[1]
+    att_dict['number_rows'] = df.shape[0]
 
-    # Serialize df, former pickle versions are restricted by 4GB
-    mem = df.memory_usage().sum()
-    body = df
+    example_rows = EXAMPLE_ROWS if att_dict['number_rows'] > EXAMPLE_ROWS else att_dict['number_rows']
+    for i in range(0,example_rows) :
+        att_dict['row_'+str(i)] = str([ str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])
 
-    return api.Message(attributes=att_dict,body = body)
+    return api.Message(attributes=att_dict,body = df)
 
 
 

@@ -3,6 +3,7 @@ import io
 import json
 import re
 
+EXAMPLE_ROWS = 5
 
 def downcast(df, data_type, to_type):
     cols = list(df.select_dtypes(include=[data_type]).columns)
@@ -29,7 +30,6 @@ def process(msg):
     att_dict['operator'] = 'fromCSVDataFrame'
 
     att_dict['config'] = dict()
-    att_dict['memory'] = dict()
 
     # json string of attributes already converted to dict
     # att_dict['prev_attributes'] = msg.attributes
@@ -37,7 +37,7 @@ def process(msg):
 
     # using file name from attributes of ReadFile
     if not api.config.df_name or api.config.df_name == "DataFrame":
-        att_dict['name'] = re.match(u'.*/(\S+)\.\w+', "cvf/retail/order_headers.csv").group(1)
+        att_dict['name'] = re.match(u'.*/(\S+)\.\w+', csv_file).group(1)
     else:
         att_dict['name'] = api.config.df_name
 
@@ -49,6 +49,10 @@ def process(msg):
         csv_io = msg.body
     else:
         raise TypeError('Message body has unsupported type' + str(type(msg.body)))
+
+    # set api.config to none if '' or 'None'
+    if not api.config.thousands or api.config.thousands.upper() == 'NONE' :
+        api.config.thousands = None
 
     if api.config.limit_rows == 0:
         if api.config.use_columns and not api.config.use_columns == 'None':
@@ -74,17 +78,13 @@ def process(msg):
                              error_bad_lines=False, warn_bad_lines=api.config.error_bad_lines,
                              thousands = api.config.thousands,decimal = api.config.decimal)
 
-    att_dict['memory']['previous_columns'] = list(df.columns)
-    att_dict['memory']['previous_mem_usage'] = df.memory_usage(deep=True).sum() / 1024 ** 2
+    att_dict['previous_memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
 
+    att_dict['previous_memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
     if api.config.downcast_int:
         df, dci = downcast(df, 'int', 'unsigned')
-        if dci:
-            att_dict['memory']['downcast_int'] = dci
     if api.config.downcast_float:
         df, dcf = downcast(df, 'float', 'float')
-        if dcf:
-            att_dict['memory']['downcast_float'] = dcf
 
     # check if index is provided and set
     if api.config.index_cols and not api.config.index_cols == 'None':
@@ -93,11 +93,17 @@ def process(msg):
         att_dict['index_cols'] = str(index_list)
         df.set_index(index_list, inplace=True)
 
-    att_dict['mem_usage'] = df.memory_usage(deep=True).sum() / 1024 ** 2
+    ##############################################
+    #  final infos to attributes and info message
+    ##############################################
+    att_dict['memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
     att_dict['columns'] = list(df.columns)
-    att_dict['number_columns'] = len(att_dict['columns'])
-    att_dict['number_rows'] = len(df.index)
-    att_dict['example_row_1'] = str(df.iloc[0, :].tolist())
+    att_dict['number_columns'] = df.shape[1]
+    att_dict['number_rows'] = df.shape[0]
+
+    example_rows = EXAMPLE_ROWS if att_dict['number_rows'] > EXAMPLE_ROWS else att_dict['number_rows']
+    for i in range(0,example_rows) :
+        att_dict['row_'+str(i)] = str([ str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])
 
     return api.Message(attributes=att_dict, body=df)
 
@@ -286,5 +292,5 @@ def interface(msg):
 
 # Triggers the request for every message
 # to be commented when imported for external 'integration' call
-#api.set_port_callback("inCSVMsg", interface)
+api.set_port_callback("inCSVMsg", interface)
 

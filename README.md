@@ -19,7 +19,7 @@ In order to be able to deploy and run the examples, the following requirements n
 ## Download and Installation
 In the *solution*-folder you find the ready-to-import operators that will be stored under the path: 
 
-- /files/vflow/subengines/com/sap/python36/operators
+- /files/vflow/subengines/com/sap/python36/operators/pandas
 
 
 ## Examples
@@ -34,7 +34,7 @@ Currently there are no known issues with the operators but nonetheless although 
 If you need help or in case you found a bug please open a [Github Issue](https://github.com/SAP/datahub-integration-examples/issues).
 
 ## How to run
-  - Import [solution/PandasDataFrameOperators-0.0.7.zip](solution/PandasDataFrameOperators-0.0.7.zip) via `SAP Data Hub System Management` -> `Files` -> `Import Solution`
+ Import lastest release in */solution/PandasDataFrameOperators-0.0.x.zip* via `SAP Data Hub System Management` -> `Files` -> `Import Solution`
 
 ## License
 
@@ -45,15 +45,20 @@ This project is licensed under the SAP Sample Code License except as noted other
 ## Documentation
 Four basic operators are provided and a template for creating custom panda operators. 
 
-* fromCSVDataFrame.py - creating DataFrame using a csv-string or byte-encoded csv-string
-* toCSVDataFrame.py  - creating a csv-string for saving as a file
-* joinDataFrames.py - joining 2 DataFrames
-* selectDataFrame.py - selecting rows of columns based on values
-* templateDataFrame.py - doing nothing but can be enhanced by own scripts
+* [fromCSVDataFrame.py](./manuals/fromCSVDataFrame.md) - creating DataFrame using a csv-string or byte-encoded csv-string
+* [toCSVDataFrame.py](./manuals/toCSVDataFrame.md)  - creating a csv-string for saving as a file
+* [joinDataFrame.py](./manuals/joinDataFrame.md) - joining 2 DataFrames
+* [sampleDataFrame.py](./manuals/sampleDataFrame.md) - samples from DataFrame while taking the data of a defined column for a certain value
+* [selectDataFrame.py](./manuals/selectDataFrame.md)- selecting rows of columns based on values
+* groupbyDataFrame.py - Grouping of columns with defined aggregation
+* fuzzyjoinDataFrame.py - Test the existance of the datasets of one 'test'-DataFrame in the 'base'-DataFrame with defined matching factor
+* [dropDataFrame.py](./manuals/dropDataFrame.md) - drops or/and renames columns 
+* transpose2DataFrame.py - transposes the values one column to additional columns
+* customDataFrame.py - doing nothing but can be enhanced by own scripts
 * ... 
 
 ### Local Development Support
-To work with the IDE of your choice and to run unit tests, you may start the development locally and do the appropriate tests before deploying the scripts in a SAP Data Hub / SAP Data Intelligence cluster. For doing this for all scripts supporting features are provided. There is also a hint for a simulation of a pipeline. An example is given in the **pipeline.py** script. 
+To work with the IDE of your choice and to run unit tests, you may start the development locally and do the appropriate tests before deploying the scripts in a SAP Data Hub / SAP Data Intelligence cluster. For doing this for all scripts supporting features are provided. There is also a hint for a simulation of a pipeline. Examples are given in the folder of */pipelines*. 
 
 
 ### Basic Architecture
@@ -66,7 +71,7 @@ The communication is based on **message.DataFrame** where the body is linked to 
 * memory usage
 * data types of columns
 
-The ports of communincating between **DI_pands** operators are type **message.DataFrame** to ensure a test of connecting operators on modeler level. In addition in the script the type of the body (pandas.DataFrame) is tested as well. 
+The ports of communincating between **pandas** operators are type **message.DataFrame** to ensure a test of connecting operators on modeler level. In addition in the script the type of the body (pandas.DataFrame) is tested as well. 
 
 ### Some common features 
 #### Memory
@@ -88,102 +93,4 @@ Most of the di_pandas operators have 1 input dataport and 2 outputdata ports. Th
 
 ### Operator Descriptions
 
-#### fromCSVDataFrame
-Creating a DataFrame with csv-data passed through inport. 
-
-##### Input
-**csv** (message) providing the string or byte-code of csv data structure. Operator tests the data type. 
-
-##### Output
-* **DataFrameMsg** -message- 
-* **Info** -string-
-
-##### Config
-* **index_cols** -string-  the index of the DataFrame
-* **separator** -string- separator of the csv data (default = ; )
-* **error_bad_lines** -boolean- When True raises error on bad lines
-* **use_columns** -string- list of column names that should be used. All other columns are dropped
-* **limit_rows** -integer- limits the number of read rows. Useful for the development phase 
-* **downcast_int** -boolean- downcasts the (default) int64 data type of columns to minimum possible based on the values in the column. CAUTION: if later in the pipeline process appended data needs types with bigger memory footprint, an error is raised
-* **downcast_float** -boolean- downcasts the (default) float64 data type of columns to float32 if permitted by the values in the column. CAUTION: if later in the pipeline process appended data needs types with bigger memory footprint, an error is raised
-* **df_name** -string- name of the DataFrame for monitoring or saving purpose. WARNING: the name 'DataFrame' is overwritten when a filename is passed in the attributes.  
-
-#### toCSVDataFrame
-Creates a csv-formatted data passed to outport as message with the csv-string as body. 
-
-##### Input
-* **DataFrame**
-
-##### Output
-* **CSVMsg** string formatted as csv. 
-* **Info**
-
-##### Config
-* **write_index** -boolean- When True the index is saved as well
-* **separator** -string- separator of the csv data (default = ; )
-
-#### selectDataFrame
-Selecting data records based on column data restrictions (= SELECT * FROM ... WHERE COLX = x AND ...) of numeric types and lists of data. 
-
-##### Input
-* **inDataFrame**
-
-##### Output
-* **outDataFrame**
-* **Info**
-
-##### Config
-* **selection_num** -string- Selection criteria for numerical columns. Comparison operators: ['=', '>', '<', '!' or '!=' ]. Example: 'order_id < 100000'  
-
-* **selection_list** -string- Inclusion or exclusion list of values for numerical and string column.  Comparison operators: ['=', '!' or '!=' ]. Example: 'trans_date = 2016-03-03, 2016-02-04 '  
-
-
-#### joinDataFrame
-Joining 2 DataFrames using either the indices of both or on specified columns. Setting the new index ist necessary. 
-
-##### Input
-* **leftDFMsg**
-* **rightDFMsg**
-
-##### Output
-* **outDataFrame**
-* **Info**
-
-##### Config
-* **how** -string-  "inner"
-* **on_index** -boolean-- If true the 2 DataFrames are joined using the indices (not tested yet with multiple indices)
-* **left_on** -string-  Name of column of leftDF that is joined with name of column of rightDF
-* **right_on** -string-
-* **new_indices** -string- New index or multiple indices for the joined DataFrame
-* **drop_columns** -string- List of columns of the joined DataFrame that could be dropped. 
-
-#### dropColumns
-##### Input
-* **inDataFrameMsg**
-
-##### Output
-* **outDataFrame**
-* **Info**
-
-##### Config#
-* **drop_columns** 
-	* *comma separated list of columns*: columns to drop
-	* *NOT: comma separated list of columns*: drop all columns except columns in the list 
-	* *ALL* : drop all columns and reset index - same as *NOT* 
-* **rename_columns**
-	*  *comma separated list of mappings*: columns to be renamed, e.g. Col1:col_1, Col2:col_2
-
-#### sampleDataFrame
-##### Input
-* **inDataFrameMsg**
-
-##### Output
-* **outDataFrame**
-* **Info**
-
-##### Config#
-* **sample_size** -integer- size of sample
-* **random_state** - integer- initializing random number generator
-* **invariant_column** -string- Column that values should be kept and not split in a sample, e.g. all records of a customer should be in a sample, basically sampling over customers. Because not all the values of the invariant_columns have the same number of records the average is taken to approximate the sample_size. 
-	
 

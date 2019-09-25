@@ -4,30 +4,31 @@ import json
 EXAMPLE_ROWS = 5
 
 
-def process(df_msg):
-    prev_att = df_msg.attributes
+def process(msg):
     att_dict = dict()
     att_dict['config'] = dict()
 
     att_dict['config']['separator'] = api.config.separator
     att_dict['config']['write_index'] = api.config.write_index
 
-    # test if df is splitted due to size that message cannot handle
-    if isinstance(df_msg.body, list):
-        df = pd.concat(df_msg.body, axis=0)
-    else:
-        df = df_msg.body
+    msg.body = None
+    try :
+        df = msg.body
+        df = df.reset_index()
+        body = df.to_csv(sep=api.config.separator, index=False)
+    except AttributeError as err :
+        warning = 'Attribute Error msg.body: ' + str(err)
+        att_dict['operator'] = 'toCSVDataFrame'  # name of operator
+        att_dict['name'] = msg.attributes['name']
+        att_dict['warning'] = msg.attributes['warning'] + '; ' + att_dict['operator'] + ':' + warning
 
-    df = df.reset_index()
-
-    df_str_list = list()
-    body = df.to_csv(sep=api.config.separator, index=False)
+        return api.Message(attributes=att_dict, body=None)
 
     #####################
     #  final infos to attributes and info message
     #####################
     att_dict['operator'] = 'toCSVDataFrame'  # name of operator
-    att_dict['name'] = prev_att['name']
+    att_dict['name'] = msg.attributes['name']
 
     att_dict['memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
     att_dict['columns'] = str(list(df.columns))
@@ -68,7 +69,7 @@ except NameError:
                 df.set_index(keys='icol', inplace=True)
 
             # input data
-            att_dict = {'format': 'pandas', 'name': 'isolated_test'}
+            att_dict = {'format': 'pandas', 'name': 'isolated_test','warning':''}
 
             return api.Message(attributes=att_dict, body=df)
 

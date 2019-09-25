@@ -43,6 +43,8 @@ config.add_non_matching = True
 msg,info = fuzzyjoindf.api.call(msgt,msgb,config)
 
 print('===============================')
-print(msg.body.head(100))
+print(msg.body.head(10))
+print(info)
+
 
 msg.body.to_csv("/Users/d051079/data/Addresses/mapped_accounts_cleansed_matched.csv", sep=';',index=False)

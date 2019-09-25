@@ -4,7 +4,7 @@ import json
 EXAMPLE_ROWS = 5
 
 def process(msg):
-    
+
     # test if body refers to a DataFrame type
     prev_att = msg.attributes
     df = msg.body

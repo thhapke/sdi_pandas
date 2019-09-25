@@ -1,9 +1,11 @@
 import pandas as pd
+import os
 import io
 import json
 import re
 
 EXAMPLE_ROWS = 5
+
 
 def downcast(df, data_type, to_type):
     cols = list(df.select_dtypes(include=[data_type]).columns)
@@ -27,9 +29,11 @@ def downcast(df, data_type, to_type):
 
 def process(msg):
     att_dict = dict()
-    att_dict['operator'] = 'fromCSVDataFrame'
-
     att_dict['config'] = dict()
+    att_dict['warning'] = ''
+
+
+    global result_df
 
     # json string of attributes already converted to dict
     # att_dict['prev_attributes'] = msg.attributes
@@ -37,9 +41,7 @@ def process(msg):
 
     # using file name from attributes of ReadFile
     if not api.config.df_name or api.config.df_name == "DataFrame":
-        att_dict['name'] = re.match(u'.*/(\S+)\.\w+', csv_file).group(1)
-    else:
-        att_dict['name'] = api.config.df_name
+        att_dict['name'] = os.path.basename(csv_file).split(".")[0]
 
     if isinstance(msg.body, str):
         csv_io = io.StringIO(msg.body)
@@ -50,36 +52,38 @@ def process(msg):
     else:
         raise TypeError('Message body has unsupported type' + str(type(msg.body)))
 
-    # set api.config to none if '' or 'None'
+    # thousands set api.config to none if '' or 'None'
     if not api.config.thousands or api.config.thousands.upper() == 'NONE' :
         api.config.thousands = None
 
-    if api.config.limit_rows == 0:
-        if api.config.use_columns and not api.config.use_columns == 'None':
-            use_cols = [x.strip().replace("'",'').replace('"','') for x in api.config.use_columns.split(',')]
-            att_dict['config']['use_columns'] = str(use_cols)
-            df = pd.read_csv(csv_io, api.config.separator, usecols=use_cols, error_bad_lines=False,
-                             warn_bad_lines=api.config.error_bad_lines,\
-                             thousands = api.config.thousands,decimal = api.config.decimal)
-        else:
-            df = pd.read_csv(csv_io, api.config.separator, error_bad_lines=False,
-                             warn_bad_lines=api.config.error_bad_lines,
-                             thousands = api.config.thousands,decimal = api.config.decimal)
-    else:
-        att_dict['config']['limit_rows'] = api.config.limit_rows
-        if api.config.use_columns and not api.config.use_columns == 'None':
-            use_cols = [x.strip().replace("'",'') for x in api.config.use_columns.split(',')]
-            att_dict['config']['use_columns'] = str(use_cols)
-            df = pd.read_csv(csv_io, api.config.separator, usecols=use_cols, nrows=api.config.limit_rows, \
-                             error_bad_lines=False, warn_bad_lines=api.config.error_bad_lines,
-                             thousands = api.config.thousands,decimal = api.config.decimal)
-        else:
-            df = pd.read_csv(csv_io, api.config.separator, nrows=api.config.limit_rows, \
-                             error_bad_lines=False, warn_bad_lines=api.config.error_bad_lines,
-                             thousands = api.config.thousands,decimal = api.config.decimal)
+    # nrows
+    nrows = None
+    if not api.config.limit_rows == 0:
+        nrows = api.config.limit_rows
 
-    att_dict['previous_memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
+    # usecols
+    use_cols = None
+    if api.config.use_columns and not api.config.use_columns == 'None':
+        use_cols = [x.strip().replace("'",'').replace('"','') for x in api.config.use_columns.split(',')]
+        att_dict['config']['use_columns'] = str(use_cols)
 
+    # compressed
+    compression = None
+    if api.config.compression and not api.config.compression == 'None':
+        compression = api.config.compression
+
+    ##### Read string from buffer
+    if not compression :
+        df = pd.read_csv(csv_io, api.config.separator, usecols=use_cols, error_bad_lines=False, warn_bad_lines=api.config.error_bad_lines,\
+                         thousands = api.config.thousands,decimal = api.config.decimal,nrows=nrows)
+    else :
+        df = pd.read_csv(csv_io, api.config.separator,usecols=use_cols, error_bad_lines=False, \
+                         warn_bad_lines=api.config.error_bad_lines, \
+                         thousands=api.config.thousands, decimal=api.config.decimal, \
+                         compression=compression, encoding='latin-1',nrows=nrows)
+
+    ###### Downcasting
+    # save memory footprint for calculating the savings of the downcast
     att_dict['previous_memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
     if api.config.downcast_int:
         df, dci = downcast(df, 'int', 'unsigned')
@@ -93,19 +97,29 @@ def process(msg):
         att_dict['index_cols'] = str(index_list)
         df.set_index(index_list, inplace=True)
 
+    # stores the result in global variable result_df
+    if  msg.attributes['storage.fileIndex'] == 0 :
+        result_df = df
+    else :
+        result_df = pd.concat([result_df,df],axis=0)
+
     ##############################################
     #  final infos to attributes and info message
     ##############################################
-    att_dict['memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
-    att_dict['columns'] = list(df.columns)
-    att_dict['number_columns'] = df.shape[1]
-    att_dict['number_rows'] = df.shape[0]
+    att_dict['operator'] = 'fromCSVDataFrame'
+    att_dict['memory'] = result_df.memory_usage(deep=True).sum() / 1024 ** 2
+    att_dict['columns'] = list(result_df.columns)
+    att_dict['number_columns'] = result_df.shape[1]
+    att_dict['number_rows'] = result_df.shape[0]
+    att_dict['id'] =  str(id(result_df))
+    att_dict['storage.fileIndex'] = msg.attributes['storage.fileIndex']
+    att_dict['storage.fileCount'] = msg.attributes['storage.fileCount']
 
     example_rows = EXAMPLE_ROWS if att_dict['number_rows'] > EXAMPLE_ROWS else att_dict['number_rows']
     for i in range(0,example_rows) :
-        att_dict['row_'+str(i)] = str([ str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])
+        att_dict['row_'+str(i)] = str([ str(i)[:10].ljust(10) for i in result_df.iloc[i, :].tolist()])
 
-    return api.Message(attributes=att_dict, body=df)
+    return api.Message(attributes=att_dict, body=result_df)
 
 
 '''
@@ -183,6 +197,7 @@ except NameError:
                 api.config.downcast_int = True
                 api.config.downcast_float = True
                 api.config.df_name = 'order_details'
+                api.config.compression = 'None'
             elif test_scenario == test.ORDER_HEADERS:
                 api.config.index_cols = "order_id"
                 api.config.separator = ';'
@@ -192,6 +207,7 @@ except NameError:
                 api.config.downcast_int = True
                 api.config.downcast_float = True
                 api.config.df_name = 'order_headers'
+                api.config.compression = 'None'
             elif test_scenario == test.ORDER_DETAILS_LIMITED:
                 api.config.index_cols = "order_id, product_id"
                 api.config.separator = ';'
@@ -201,6 +217,7 @@ except NameError:
                 api.config.downcast_int = True
                 api.config.downcast_float = True
                 api.config.df_name = 'order_details'
+                api.config.compression = 'None'
             elif test_scenario == test.ORDER_HEADERS_LIMITED:
                 api.config.index_cols = "order_id"
                 api.config.separator = ';'
@@ -210,6 +227,7 @@ except NameError:
                 api.config.downcast_int = True
                 api.config.downcast_float = True
                 api.config.df_name = 'order_headers'
+                api.config.compression = 'None'
             elif test_scenario == test.PRODUCTS_MD:
                 api.config.index_cols = "product_id"
                 api.config.separator = ';'
@@ -219,6 +237,7 @@ except NameError:
                 api.config.downcast_int = True
                 api.config.downcast_float = False
                 api.config.df_name = 'products_md'
+                api.config.compression = 'None'
             elif test_scenario == test.PORTAL2:
                 api.config.index_cols = "None"
                 api.config.separator = ';'
@@ -227,7 +246,8 @@ except NameError:
                 api.config.limit_rows = 0
                 api.config.downcast_int = True
                 api.config.downcast_float = False
-                api.config.df_name = 'check24'
+                api.config.df_name = 'portal2'
+                api.config.compression = 'None'
             else:  # testconfig.NO_INDEX:
                 api.config.index_cols = "None"
                 api.config.separator = ';'
@@ -237,6 +257,7 @@ except NameError:
                 api.config.downcast_int = False
                 api.config.downcast_float = False
                 api.config.df_name = 'test_df'
+                api.config.compression = 'None'
 
         class config:
             index_cols = "None"
@@ -249,6 +270,7 @@ except NameError:
             downcast_int = False
             thousands = None
             decimal = '.'
+            compression = 'None'
 
         class Message:
             def __init__(self, body=None, attributes=""):
@@ -284,13 +306,23 @@ except NameError:
             return result, json.dumps(result.attributes, indent=4)
 
 def interface(msg):
-    result = process(msg)
-    api.send("outDataFrameMsg", result)
-    info_str = json.dumps(result.attributes, indent=4)
+    # inform downstream operators about last file:
+    # set message.commit.token = 1 for last file
+    commit_token = "0"
+    if msg.attributes["storage.endOfSequence"]:
+        commit_token = "1"
+
+    out_msg = process(msg)
+
+    out_msg.attributes['commit.token'] = commit_token
+
+    if commit_token == "1" :
+        api.send("outDataFrameMsg", out_msg)
+    info_str = json.dumps(out_msg.attributes, indent=4)
     api.send("Info", info_str)
 
 
 # Triggers the request for every message
 # to be commented when imported for external 'integration' call
-api.set_port_callback("inCSVMsg", interface)
+#api.set_port_callback("inCSVMsg", interface)
 

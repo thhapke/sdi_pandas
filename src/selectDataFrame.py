@@ -11,8 +11,6 @@ def process(df_msg):
 
     att_dict = dict()
     att_dict['config'] = dict()
-    att_dict['operator'] = 'selectDataFrame'
-    att_dict['name'] = prev_att['name']
 
     # save and reset indices
     index_names = df.index.names
@@ -89,10 +87,17 @@ def process(df_msg):
     if df.empty :
         raise ValueError('DataFrame is empty')
 
+
+    att_dict['operator'] = 'selectDataFrame'
+    att_dict['name'] = prev_att['name']
     att_dict['memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
     att_dict['columns'] = str(list(df.columns))
     att_dict['number_columns'] = df.shape[1]
     att_dict['number_rows'] = df.shape[0]
+    if 'id' in prev_att.keys() :
+        att_dict['id'] = prev_att['id'] + '; ' + att_dict['operator'] + ': ' + str(id(df))
+    else :
+        att_dict['id'] = att_dict['operator'] + ': ' + str(id(df))
 
     example_rows = EXAMPLE_ROWS if att_dict['number_rows'] > EXAMPLE_ROWS else att_dict['number_rows']
     for i in range(0,example_rows) :

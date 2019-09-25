@@ -43,17 +43,16 @@ This project is licensed under the SAP Sample Code License except as noted other
 
 
 ## Documentation
-Four basic operators are provided and a template for creating custom panda operators. 
 
 * [fromCSVDataFrame.py](./manuals/fromCSVDataFrame.md) - creating DataFrame using a csv-string or byte-encoded csv-string
 * [toCSVDataFrame.py](./manuals/toCSVDataFrame.md)  - creating a csv-string for saving as a file
 * [joinDataFrame.py](./manuals/joinDataFrame.md) - joining 2 DataFrames
 * [sampleDataFrame.py](./manuals/sampleDataFrame.md) - samples from DataFrame while taking the data of a defined column for a certain value
 * [selectDataFrame.py](./manuals/selectDataFrame.md)- selecting rows of columns based on values
-* groupbyDataFrame.py - Grouping of columns with defined aggregation
-* fuzzyjoinDataFrame.py - Test the existance of the datasets of one 'test'-DataFrame in the 'base'-DataFrame with defined matching factor
+* [groupDataFrame.py](./manuals/groupbyDataFrame.py) - Grouping of columns with defined aggregation
+* [fuzzyjoinDataFrame.py](./manuals/fuzzyjoinDataFrame.py) - Test the existance of the datasets of one 'test'-DataFrame in the 'base'-DataFrame with defined matching factor
 * [dropDataFrame.py](./manuals/dropDataFrame.md) - drops or/and renames columns 
-* transpose2DataFrame.py - transposes the values one column to additional columns
+* [transposeColumnDataFrame.py](./manuals/transposeColumnDataFrame.py) - transposes the values one column to additional columns
 * customDataFrame.py - doing nothing but can be enhanced by own scripts
 * ... 
 

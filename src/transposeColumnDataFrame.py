@@ -30,7 +30,7 @@ def process(msg):
     t_df = pd.DataFrame(columns=new_cols.keys(), index=df.index)
     df = pd.concat([df, t_df], axis=1)
 
-    # setting the corresponding column to 1 for all category appearances
+    # setting the corresponding column to the value of the value column
     for col, val in new_cols.items():
         df.loc[df[trans_col] == val, col] = df.loc[df[trans_col] == val, val_col]
     df.drop(columns=[trans_col,val_col], inplace=True)

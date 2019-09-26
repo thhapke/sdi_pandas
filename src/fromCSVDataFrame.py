@@ -37,20 +37,25 @@ def process(msg):
 
     # json string of attributes already converted to dict
     # att_dict['prev_attributes'] = msg.attributes
-    csv_file = msg.attributes["storage.pathInPolledDirectory"]  #: "retail/order_headers.csv"
+    csv_file = msg.attributes["storage.filename"]
 
     # using file name from attributes of ReadFile
     if not api.config.df_name or api.config.df_name == "DataFrame":
-        att_dict['name'] = os.path.basename(csv_file).split(".")[0]
+        att_dict['name'] = csv_file.split(".")[0]
 
     if isinstance(msg.body, str):
         csv_io = io.StringIO(msg.body)
+        att_dict['input_format'] = 'StringIO'
     elif isinstance(msg.body, bytes):
         csv_io = io.BytesIO(msg.body)
+        att_dict['input_format'] = 'BytesIO'
     elif isinstance(msg.body, io.BytesIO):
+        att_dict['input_format'] = 'string'
         csv_io = msg.body
     else:
         raise TypeError('Message body has unsupported type' + str(type(msg.body)))
+
+    b = csv_io.read(200)
 
     # thousands set api.config to none if '' or 'None'
     if not api.config.thousands or api.config.thousands.upper() == 'NONE' :
@@ -138,7 +143,7 @@ class test:
     PRODUCTS_MD_LIMITED = 7
     PORTAL2 = 8
 
-actual_test = test.PORTAL2
+actual_test = test.SIMPLE_BINARY
 
 try:
     api
@@ -183,7 +188,8 @@ except NameError:
                          3;4.7;65
                          4;3.2;140
                          """
-            attributes = {'format': 'csv',"storage.pathInPolledDirectory" : 'filename'}
+            attributes = {'format': 'csv',"storage.filename" : 'filename','storage.endOfSequence': True, \
+                          'storage.fileIndex': 0 ,'storage.fileCount':1 }
 
             return api.Message(attributes=attributes, body=csv)
 
@@ -324,5 +330,5 @@ def interface(msg):
 
 # Triggers the request for every message
 # to be commented when imported for external 'integration' call
-#api.set_port_callback("inCSVMsg", interface)
+api.set_port_callback("inCSVMsg", interface)
 

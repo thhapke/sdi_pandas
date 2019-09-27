@@ -55,8 +55,6 @@ def process(msg):
     else:
         raise TypeError('Message body has unsupported type' + str(type(msg.body)))
 
-    b = csv_io.read(200)
-
     # thousands set api.config to none if '' or 'None'
     if not api.config.thousands or api.config.thousands.upper() == 'NONE' :
         api.config.thousands = None
@@ -72,6 +70,15 @@ def process(msg):
         use_cols = [x.strip().replace("'",'').replace('"','') for x in api.config.use_columns.split(',')]
         att_dict['config']['use_columns'] = str(use_cols)
 
+    # dtypes mapping
+    typemap = None
+    if api.config.dtypes and not api.config.dtypes == 'None':
+        # mapping
+        colmaps = [x.strip() for x in api.config.dtypes.split(',')]
+        typemap = {cm.split(':')[0].strip().replace("'", "").replace('"', ''): \
+                       cm.split(':')[1].strip().replace("'", "").replace('"', '') for cm in colmaps}
+        print(typemap)
+
     # compressed
     compression = None
     if api.config.compression and not api.config.compression == 'None':
@@ -79,11 +86,12 @@ def process(msg):
 
     ##### Read string from buffer
     if not compression :
-        df = pd.read_csv(csv_io, api.config.separator, usecols=use_cols, error_bad_lines=False, warn_bad_lines=api.config.error_bad_lines,\
+        df = pd.read_csv(csv_io, api.config.separator, usecols=use_cols, error_bad_lines=False,dtype=typemap,\
+                         warn_bad_lines=api.config.error_bad_lines,\
                          thousands = api.config.thousands,decimal = api.config.decimal,nrows=nrows)
     else :
         df = pd.read_csv(csv_io, api.config.separator,usecols=use_cols, error_bad_lines=False, \
-                         warn_bad_lines=api.config.error_bad_lines, \
+                         warn_bad_lines=api.config.error_bad_lines, dtype=typemap,\
                          thousands=api.config.thousands, decimal=api.config.decimal, \
                          compression=compression, encoding='latin-1',nrows=nrows)
 
@@ -114,6 +122,7 @@ def process(msg):
     att_dict['operator'] = 'fromCSVDataFrame'
     att_dict['memory'] = result_df.memory_usage(deep=True).sum() / 1024 ** 2
     att_dict['columns'] = list(result_df.columns)
+    att_dict['dtypes'] = {col:str(ty) for col,ty in df.dtypes.to_dict().items()}
     att_dict['number_columns'] = result_df.shape[1]
     att_dict['number_rows'] = result_df.shape[0]
     att_dict['id'] =  str(id(result_df))
@@ -271,6 +280,7 @@ except NameError:
             error_bad_lines = False
             use_columns = ''
             limit_rows = 0
+            dtypes = 'None'
             df_name = 'DataFrame'
             downcast_float = False
             downcast_int = False
@@ -297,29 +307,29 @@ except NameError:
             print("Call \"" + callback.__name__ + "\"  messages port \"" + port + "\"..")
             callback(msg)
 
-        # called by 'integrated/pipeline-test simulation
-        def test_call(test_scenario):
-            print('EXTERNAL CALL of module:' + __name__)
-            msg = api.set_test(test_scenario)
-            api.set_config(test_scenario)
-            result = process(msg)
-            api.send("DataFrame", result)
-            return result
-
         def call(msg,config):
             api.config = config
-            result = process(msg)
-            return result, json.dumps(result.attributes, indent=4)
+            commit_token = "0"
+            if msg.attributes["storage.endOfSequence"]:
+                commit_token = "1"
+            out_msg = process(msg)
+            out_msg.attributes['commit.token'] = commit_token
+            info = out_msg.attributes
+
+            if commit_token == "1":
+                return out_msg, json.dumps(out_msg.attributes, indent=4)
+            else :
+                return None, json.dumps(out_msg.attributes, indent=4)
 
 def interface(msg):
     # inform downstream operators about last file:
     # set message.commit.token = 1 for last file
+
     commit_token = "0"
     if msg.attributes["storage.endOfSequence"]:
         commit_token = "1"
 
     out_msg = process(msg)
-
     out_msg.attributes['commit.token'] = commit_token
 
     if commit_token == "1" :
@@ -330,5 +340,5 @@ def interface(msg):
 
 # Triggers the request for every message
 # to be commented when imported for external 'integration' call
-api.set_port_callback("inCSVMsg", interface)
+#api.set_port_callback("inCSVMsg", interface)
 

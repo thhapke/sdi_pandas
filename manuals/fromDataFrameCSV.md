@@ -18,6 +18,7 @@ Creating a DataFrame with csv-data passed through inport.
 * **downcast_float** -boolean- downcasts the (default) float64 data type of columns to float32 if permitted by the values in the column. CAUTION: if later in the pipeline process appended data needs types with bigger memory footprint, an error is raised
 * **df_name** -string- name of the DataFrame for monitoring or saving purpose. WARNING: the name 'DataFrame' is overwritten when a filename is passed in the attributes.  
 *  **compression** -string- defines if the input is in a compressed format. Please see the doc for details
+* **dtypes** -string- list of mappings that defines the data types of the corresponding columns, e.g. 'price':'float32', 'quantity':'int16'
 
 ## PandasBase
 [pandas doc: read_csv](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html)

@@ -198,5 +198,5 @@ def interface(msg):
 
 
 # Triggers the request for every message (the message provides the stock_symbol)
-api.set_port_callback("inDataFrameMsg", interface)
+#api.set_port_callback("inDataFrameMsg", interface)
 

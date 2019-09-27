@@ -109,15 +109,6 @@ except NameError:
             print("Call \"" + callback.__name__ + "\"  messages port \"" + port + "\"..")
             callback(msg)
 
-            # called by 'integrated/pipeline-test simulation
-
-        def test_call(msg):
-            print('EXTERNAL CALL of module:' + __name__)
-            api.set_config(actual_test)
-            result = process(msg)
-            api.send("outDataFrame", result)
-            return result
-
         def call(msg,config):
             api.config = config
             result = process(msg)

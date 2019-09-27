@@ -154,15 +154,6 @@ except NameError:
             # calls the "process" function
             callback(msg)
 
-        # called by 'integrated/pipeline-test simulation
-        def test_call(msg):
-            print('EXTERNAL CALL of module:' + __name__)
-            api.set_config(test_scenario)
-            result = process(msg)
-            # because when called locally via this function, 'api.set_port_callback' and 'interface' are not called
-            api.send("DataFrame",result)
-            return result
-
         def call(msg,config):
             api.config = config
             result = process(msg)
@@ -177,4 +168,4 @@ def interface(msg):
 
 
 # Triggers the request for every message
-api.set_port_callback("inDataFrameMsg", interface)
+#api.set_port_callback("inDataFrameMsg", interface)

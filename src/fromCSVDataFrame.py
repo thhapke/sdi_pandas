@@ -3,6 +3,7 @@ import os
 import io
 import json
 import re
+import logging
 
 EXAMPLE_ROWS = 5
 
@@ -37,11 +38,11 @@ def process(msg):
 
     # json string of attributes already converted to dict
     # att_dict['prev_attributes'] = msg.attributes
-    csv_file = msg.attributes["storage.filename"]
+    att_dict['filename'] = msg.attributes["storage.filename"]
 
     # using file name from attributes of ReadFile
     if not api.config.df_name or api.config.df_name == "DataFrame":
-        att_dict['name'] = csv_file.split(".")[0]
+        att_dict['name'] = att_dict['filename'].split(".")[0]
 
     if isinstance(msg.body, str):
         csv_io = io.StringIO(msg.body)
@@ -67,17 +68,15 @@ def process(msg):
     # usecols
     use_cols = None
     if api.config.use_columns and not api.config.use_columns == 'None':
-        use_cols = [x.strip().replace("'",'').replace('"','') for x in api.config.use_columns.split(',')]
+        use_cols = [x.strip().replace("'", '').replace('"', '') for x in api.config.use_columns.split(',')]
         att_dict['config']['use_columns'] = str(use_cols)
 
     # dtypes mapping
     typemap = None
     if api.config.dtypes and not api.config.dtypes == 'None':
-        # mapping
         colmaps = [x.strip() for x in api.config.dtypes.split(',')]
-        typemap = {cm.split(':')[0].strip().replace("'", "").replace('"', ''): \
-                       cm.split(':')[1].strip().replace("'", "").replace('"', '') for cm in colmaps}
-        print(typemap)
+        typemap = {cm.split(':')[0].strip().strip("'").strip('"'): cm.split(':')[1].strip().strip("'").strip('"') for cm in colmaps}
+        #print(typemap)
 
     # compressed
     compression = None
@@ -94,6 +93,24 @@ def process(msg):
                          warn_bad_lines=api.config.error_bad_lines, dtype=typemap,\
                          thousands=api.config.thousands, decimal=api.config.decimal, \
                          compression=compression, encoding='latin-1',nrows=nrows)
+
+    # Data from filename
+    if api.config.data_from_filename and not api.config.data_from_filename == 'None':
+        col = api.config.data_from_filename.split(':')[0].strip().strip("'").strip('"')
+        pat = api.config.data_from_filename.split(':')[1].strip().strip("'").strip('"')
+        logging.debug('Filename: {}  pattern: {}'.format(att_dict['filename'],pat))
+        try :
+            dataff = re.match('.*(\d{4}-\d+-\d+).*',att_dict['filename'])
+            df[col] = dataff.group(1)
+        except AttributeError :
+            raise ValueError('Pattern not found - Filename: {}  pattern: {}'.format(att_dict['filename'],pat))
+
+
+    # To Datetime
+    if api.config.todatetime and not api.config.todatetime == 'None':
+        coldate = api.config.todatetime.split(':')[0].strip().strip("'").strip('"')
+        dformat = api.config.todatetime.split(':')[1].strip().strip("'").strip('"')
+        df[coldate] = pd.to_datetime(df[coldate], format=dformat)
 
     ###### Downcasting
     # save memory footprint for calculating the savings of the downcast
@@ -273,6 +290,7 @@ except NameError:
                 api.config.downcast_float = False
                 api.config.df_name = 'test_df'
                 api.config.compression = 'None'
+                api.config.data_from_filename = 'None'
 
         class config:
             index_cols = "None"
@@ -287,6 +305,8 @@ except NameError:
             thousands = None
             decimal = '.'
             compression = 'None'
+            data_from_filename = 'None'
+            todatetime = 'None' # "'Date' : '%Y-%m-%d'"
 
         class Message:
             def __init__(self, body=None, attributes=""):

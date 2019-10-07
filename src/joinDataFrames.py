@@ -202,5 +202,5 @@ def interface(left_msg,right_msg):
 
 # Triggers the request for every message (the message provides the stock_symbol)
 # to be commented when imported for external 'integration' call
-api.set_port_callback(["leftDFMsg","rightDFMsg"], interface)
+#api.set_port_callback(["leftDFMsg","rightDFMsg"], interface)
 

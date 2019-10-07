@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import json
 
 MAX_COLUMNS = 2
@@ -19,14 +20,18 @@ def process(msg):
 
     if api.config.groupby :
         if not api.config.groupby.upper()  == 'NONE' :
-            gbcols = [x.strip().replace("'",'').replace('"','') for x in api.config.groupby.split(',')]
+            gbcols = [x.strip().strip("'").strip('"') for x in api.config.groupby.split(',')]
 
     # create DataFrame with numbered columns add concat it to df
-    trans_col = api.config.transpose_column.strip().replace("'","").replace('"','')
-    val_col = api.config.value_column.strip().replace("'","").replace('"','')
+    # test if values of transpose either int or string
+    trans_col = api.config.transpose_column.strip().strip("'").strip('"')
+    if df[trans_col].dtype == np.float32 or df[trans_col].dtype == np.float64 :
+        raise TypeError('Transpose columns needs to be of type string or int')
+
+    val_col = api.config.value_column.strip().strip("'").strip('"')
 
     tvals = list(df[trans_col].unique())
-    new_cols = {trans_col + '_' + str(v): v for v in tvals}
+    new_cols = {trans_col + '_' + str(int(v)): v for v in tvals}
     t_df = pd.DataFrame(columns=new_cols.keys(), index=df.index)
     df = pd.concat([df, t_df], axis=1)
 
@@ -172,7 +177,7 @@ except NameError:
 
 # gateway that gets the data from the inports and sends the result to the outports
 def interface(msg):
-    result, new_cols = process(msg)
+    result = process(msg)
     api.send("outDataFrameMsg", result)
     info_str = json.dumps(result.attributes, indent=4)
     api.send("Info", info_str)

@@ -89,7 +89,7 @@ except NameError:
             groupby = "'icol'"  # list
             aggregation = "'xcol 3':'sum','xcol4':'count'"  # map key:value
             index = True
-            drop_columns = "'xcol4'"
+            drop_columns = "None"
 
         class Message:
             def __init__(self,body = None,attributes = ""):

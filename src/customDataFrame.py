@@ -4,6 +4,22 @@ import json
 
 EXAMPLE_ROWS = 5
 
+def get_value_list(param_str, val_list):
+    # only a list with a leading modifier is needed
+    param_str_clean = param_str.replace(r'[:=]', '')
+    # Test for ALL
+    result = re.match(r'^([Aa][Ll][Ll])\s*$', param_str_clean)
+    if result:
+        return val_list
+    # Test for NOT
+    result = re.match(r'^([Nn][Oo][Tt])(.+)', param_str_clean)
+    if result and result.group(1).upper() == 'NOT':
+        exclude_values = [x.strip().strip("'").strip('"') for x in result.group(2).split(',')]
+        ret_val = [x for x in val_list if x not in exclude_values]
+    else:
+        ret_val = [x.strip().strip("'").strip('"') for x in param_str_clean.split(',')]
+    return ret_val
+
 def process(df_msg):
 
     prev_att = df_msg.attributes
@@ -63,8 +79,7 @@ except NameError:
             return api.Message(attributes=attributes,body=df)
 
         def set_config(test_scenario) :
-            api.config.selection_num = 'col 2 < 3, col3 >= 200 '  # operators comparisons: <,>,=,!=
-            api.config.selection_list = '4'  # operators comparisons: <,>,=,!=
+            pass
 
         class config:
             selection_empty = 'empty'

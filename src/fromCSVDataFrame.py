@@ -27,6 +27,13 @@ def downcast(df, data_type, to_type):
 
     return df, downcast_dict
 
+def unique_values(df) :
+    num_unique_vals = dict()
+    for col in df.columns :
+        num_unique_vals[col] = len(df[col].unique())
+        if num_unique_vals[col] == 2 :
+            print(df[col].unique())
+    return  num_unique_vals
 
 def process(msg):
     att_dict = dict()
@@ -67,30 +74,30 @@ def process(msg):
 
     # usecols
     use_cols = None
-    if api.config.use_columns and not api.config.use_columns == 'None':
+    if api.config.use_columns and not api.config.use_columns.upper() == 'NONE':
         use_cols = [x.strip().replace("'", '').replace('"', '') for x in api.config.use_columns.split(',')]
         att_dict['config']['use_columns'] = str(use_cols)
 
     # dtypes mapping
     typemap = None
-    if api.config.dtypes and not api.config.dtypes == 'None':
+    if api.config.dtypes and not api.config.dtypes.upper() == 'NONE':
         colmaps = [x.strip() for x in api.config.dtypes.split(',')]
         typemap = {cm.split(':')[0].strip().strip("'").strip('"'): cm.split(':')[1].strip().strip("'").strip('"') for cm in colmaps}
         #print(typemap)
 
     # compressed
     compression = None
-    if api.config.compression and not api.config.compression == 'None':
+    if api.config.compression and not api.config.compression.upper() == 'NONE':
         compression = api.config.compression
 
     ##### Read string from buffer
     if not compression :
         df = pd.read_csv(csv_io, api.config.separator, usecols=use_cols, error_bad_lines=False,dtype=typemap,\
-                         warn_bad_lines=api.config.error_bad_lines,\
+                         warn_bad_lines=api.config.error_bad_lines,low_memory=api.config.low_memory,\
                          thousands = api.config.thousands,decimal = api.config.decimal,nrows=nrows)
     else :
         df = pd.read_csv(csv_io, api.config.separator,usecols=use_cols, error_bad_lines=False, \
-                         warn_bad_lines=api.config.error_bad_lines, dtype=typemap,\
+                         warn_bad_lines=api.config.error_bad_lines, dtype=typemap,low_memory=api.config.low_memory,\
                          thousands=api.config.thousands, decimal=api.config.decimal, \
                          compression=compression, encoding='latin-1',nrows=nrows)
 
@@ -120,6 +127,9 @@ def process(msg):
     if api.config.downcast_float:
         df, dcf = downcast(df, 'float', 'float')
 
+    ###### Unique Test (moved to cleanseHeuristics)
+    # print(unique_values(df))
+
     # check if index is provided and set
     if api.config.index_cols and not api.config.index_cols == 'None':
         index_list = [x.strip() for x in api.config.index_cols.split(',')]
@@ -131,7 +141,7 @@ def process(msg):
     if  msg.attributes['storage.fileIndex'] == 0 :
         result_df = df
     else :
-        result_df = pd.concat([result_df,df],axis=0)
+        result_df = pd.concat([result_df,df],axis=0,sort=False)
 
     ##############################################
     #  final infos to attributes and info message
@@ -307,6 +317,7 @@ except NameError:
             compression = 'None'
             data_from_filename = 'None'
             todatetime = 'None' # "'Date' : '%Y-%m-%d'"
+            low_memory = True
 
         class Message:
             def __init__(self, body=None, attributes=""):

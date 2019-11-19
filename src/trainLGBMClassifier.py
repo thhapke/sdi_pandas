@@ -1,28 +1,12 @@
 import pandas as pd
-import numpy as np
-import re
 import json
+import logging
 
 from lightgbm import LGBMRegressor
 
+import textfield_parser.textfield_parser as tfp
+
 EXAMPLE_ROWS = 5
-
-
-def get_value_list(param_str, val_list):
-    # only a list with a leading modifier is needed
-    param_str_clean = param_str.replace(r'[:=]', '')
-    # Test for ALL
-    result = re.match(r'^([Aa][Ll][Ll])\s*$', param_str_clean)
-    if result:
-        return val_list
-    # Test for NOT
-    result = re.match(r'^([Nn][Oo][Tt])(.+)', param_str_clean)
-    if result and result.group(1).upper() == 'NOT':
-        exclude_values = [x.strip().strip("'").strip('"') for x in result.group(2).split(',')]
-        ret_val = [x for x in val_list if x not in exclude_values]
-    else:
-        ret_val = [x.strip().strip("'").strip('"') for x in param_str_clean.split(',')]
-    return ret_val
 
 
 def process(df_msg):
@@ -48,20 +32,31 @@ def process(df_msg):
         min_split_gain=0.0222415,
         min_child_weight=40)
 
-    if api.config.exclude_cols and not api.config.exclude_cols.upper() == 'NONE':
-        exclude_cols = get_value_list(api.config.exclude_cols, df.columns)
+    att_dict['config']['train columns'] = api.config.train_cols
+    train_cols = tfp.read_list(api.config.train_cols, df.columns)
 
-    train_cols = [col for col in df.columns if not col in exclude_cols]
-
-    att_dict['train columns'] = str(train_cols)
-
-    if not api.config.label or api.config.exclude_cols.upper() == 'NONE':
+    att_dict['config']['label'] = api.config.label
+    label = tfp.read_value(api.config.label)
+    if not label :
         raise ValueError('Label is mandatory')
 
-    label = api.config.label.strip()
-    att_dict['label'] = label
+    # cast to categorical dtype
+    for c in df[train_cols].select_dtypes(include='category').columns :
+        unique_num = len(df[c].unique())
+        nan_num = df[c].isna().count()
+        logging.debug('Cast to category - {}: unique {}, nan: {} of {}'.format(c,unique_num,nan_num,df.shape[0]))
+        df[c] = df[c].cat.codes
+        df[c] = df[c].astype('int32')
 
+    if pd.api.types.is_categorical(df[label]) :
+        df[label] = df[label].astype('category')
+        logging.debug('Cast label to <category>')
+        df[label] = df[label].cat.codes
+        df[label] = df[label].astype('int32')
 
+    print(df.select_dtypes(include='category').head(10))
+    logging.debug('Train with {} features'.format(len(train_cols)))
+    print(train_cols)
     model.fit(df[train_cols], df[label], eval_metric='auc')
 
     ###### end of doing calculation
@@ -99,9 +94,10 @@ try:
 except NameError:
     class api:
 
-        def set_test(test_scenario):
+        def get_default_input():
             df = pd.DataFrame(
-                {'icol': [1, 2, 3, 4, 5], 'col 2': [1, 2, 3, 4, 5], 'col3': [100, 200, 300, 400, 500]})
+                {'icol': [1, 1, 3, 3, 3], 'col2': [1, 2, 3, 4, 5], 'col3': [2, 3, 4, 5, 6],
+                 'col4': [5, 6.5, 7.5, 8, 9], 'col5': [6, 6.7, 8.2, 9, 10.1]})
 
             attributes = {'format': 'csv', 'name': 'DF_name'}
 
@@ -111,8 +107,8 @@ except NameError:
             pass
 
         class config:
-            exclude_cols = 'None'
-            label = 'None'
+            train_cols = 'Not col5'
+            label = 'col5'
 
 
         class Message:
@@ -128,8 +124,7 @@ except NameError:
             pass
 
         def set_port_callback(port, callback):
-            msg = api.set_test(actual_test)
-            api.set_config(actual_test)
+            msg = api.get_default_input()
             print("Call \"" + callback.__name__ + "\"  messages port \"" + port + "\"..")
             callback(msg)
 

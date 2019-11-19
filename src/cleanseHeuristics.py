@@ -1,44 +1,12 @@
 import pandas as pd
 import numpy as np
-import random
 import logging
-import re
+
 import json
 
+import textfield_parser.textfield_parser as tfp
 
 EXAMPLE_ROWS = 5
-
-def unique_values(df) :
-    num_unique_vals = dict()
-    for col in df.columns :
-        num_unique_vals[col] = len(df[col].unique())
-        if num_unique_vals[col] <= 2 and df[col].dtypes == np.object:
-            print(df[col].unique())
-    return  num_unique_vals
-
-def test_null(df) :
-    if df.isnull().sum().sum() > 0 :
-        print('STOP')
-        exit(1)
-    else :
-        print('Passed')
-
-
-def get_value_list(param_str,val_list) :
-    # only a list with a leading modifier is needed
-    param_str_clean = param_str.replace(':', '').replace('=', '')
-    # Test for ALL
-    result = re.match(r'^([Aa][Ll][Ll])\s*$', param_str_clean)
-    if result :
-        return val_list
-    # Test for NOT
-    result = re.match(r'^([Nn][Oo][Tt])(.+)', param_str_clean)
-    if result and result.group(1).upper() == 'NOT':
-        exclude_values = [x.strip().strip("'").strip('"') for x in result.group(2).split(',')]
-        ret_val = [x for x in val_list if x not in exclude_values]
-    else:
-        ret_val = [x.strip().strip("'").strip('"') for x in param_str_clean.split(',')]
-    return ret_val
 
 def process(df_msg):
 
@@ -55,93 +23,104 @@ def process(df_msg):
     att_dict['prev_number_columns'] = df.shape[1]
     att_dict['prev_number_rows'] = df.shape[0]
 
-    if api.config.remove_duplicates_cols and not api.config.remove_duplicates_cols.upper() == 'NONE':
-        test_cols = get_value_list(api.config.remove_duplicates_cols,df.columns)
-        df.drop_duplicates(subset=test_cols,inplace=True)
+    att_dict['config']['remove_duplicates_of_cols'] = api.config.remove_duplicates_of_cols
+    remove_duplicates_cols = tfp.read_list(api.config.remove_duplicates_of_cols)
+    if remove_duplicates_cols :
+        df = df.groupby(remove_duplicates_cols).first().reset_index()
         logging.debug('#Dropped duplicates: {} - {} = {}'.format(att_dict['prev_number_rows'],df.shape[0], \
                                                                  att_dict['prev_number_rows']- df.shape[0]))
-    att_dict['config']['remove_duplicates_cols'] = api.config.remove_duplicates_cols
 
-    if api.config.zero_to_null :
-        for col in df.columns :
-            if df[col].dtype == np.object :
-                df.loc[df[col] == '0',col] = np.nan
-    att_dict['config']['zero_to_null'] = str(api.config.zero_to_null)
+    att_dict['config']['to_nan'] = api.config.to_nan
+    to_nan = tfp.read_value(api.config.to_nan)
+    if to_nan :
+        df.select_dtypes(include='object').replace(to_nan,np.nan,inplace = True)
 
-
-    if api.config.yes_no_to_num :
-        for col in df.columns :
-            if df[col].dtype == np.object :
-                df[col] = df[col].str.upper()
-                vals = [x for x in df.loc[df[col].notnull(),col].unique()]
-                if len(vals) == 1 and vals[0] == 'YES' :
-                    df.loc[df[col].notnull(),col] = 1
-                    df.loc[df[col].isnull(), col] = 0
-                    try :
-                        df[col] = df[col].astype('int8')
-                    except ValueError :
-                        print('Value Error: {}'.format(col))
-                        print(df[col].unique())
-
-                if len(vals) == 1 and vals[0] == 'NO' :
-                    df.loc[df[col].notnull(),col] = 1
-                    df.loc[df[col].isnull(), col] = 0
-                    df[col] = df[col].astype('int8')
-                if len(vals) == 2 and all( i in vals for i in ['YES','NO']) :
-                    df[col].replace(to_replace={'NO':0,'YES':1})
-                    df[col] = df[col].astype('int8')
     att_dict['config']['yes_no_to_boolean'] = str(api.config.yes_no_to_num)
+    if api.config.yes_no_to_num :
+        prev_categoricals = len (df.select_dtypes(include=np.object).columns)
+        for col in df.select_dtypes(include=np.object) :
+            df[col] = df[col].str.upper()
+            vals = [x for x in df.loc[df[col].notnull(),col].unique()]
+            if len(vals) == 1 and vals[0] in ['YES','Y'] :
+                df.loc[df[col].notnull(),col] = 1
+                df.loc[df[col].isnull(), col] = 0
+                try :
+                    df[col] = df[col].astype('int8')
+                except ValueError :
+                    print('Value Error: {}'.format(col))
+                    print(df[col].unique())
+            if len(vals) == 1 and vals[0] in ['NO','N'] :
+                df.loc[df[col].notnull(),col] = 1
+                df.loc[df[col].isnull(), col] = 0
+                df[col] = df[col].astype('int8')
+            if len(vals) == 2 and (all( i in vals for i in ['YES','NO']) or all( i in vals for i in ['Y','N'])) :
+                df[col].replace(to_replace={'NO':0,'N':0,'no':0,'n':0,'YES':1,'Y':1,'yes':1,'y':1})
+                df[col] = df[col].astype('int8')
+        after_categoricals = len(df.select_dtypes(include=np.object).columns)
+        logging.debug('<yes_no_to_boolean> impact: {} -> {}'.format(prev_categoricals,after_categoricals))
 
     # if all values of column == 0 then NaN
+    att_dict['config']['all_constant_to_NaN'] = str(api.config.all_constant_to_NaN)
     if api.config.all_constant_to_NaN :
+        num_constant_cols = 0
         for col in df.columns:
             unique_vals = df[col].unique()
             if len(unique_vals) == 1  :
                 df[col] = np.nan
-    att_dict['config']['all_constant_to_NaN'] = str(api.config.all_constant_to_NaN)
+                num_constant_cols = num_constant_cols + 1
+        logging.debug('<all_constant_to_NaN> number of columns: {}'.format(num_constant_cols))
 
     # remove rare value rows with quantile
-    if api.config.rare_value_cols and not api.config.rare_value_cols.upper() == 'NONE':
+    att_dict['config']['rare_value_cols'] = api.config.rare_value_cols
+    att_dict['config']['rare_value_quantile'] = api.config.rare_value_quantile
+    att_dict['config']['rare_value_std'] = api.config.rare_value_std
+    rare_value_cols = tfp.read_list(api.config.rare_value_cols,list(df.columns))
+    if rare_value_cols :
         logging.debug('quantile')
-        test_cols = get_value_list(api.config.rare_value_cols, df.columns)
-
         # drop rare values by quantile
         if api.config.rare_value_quantile > 0 :
             if not api.config.rare_value_quantile >= 0 and api.config.rare_value_quantile < 1:
                 raise ValueError('Quantile value range: [0,1[, not {}'.format(api.config.rare_value_quantile))
-            for col in test_cols:
+            num_reduce_categoricals_col = 0
+            for col in rare_value_cols:
                 unique_num = len(df[col].unique())
                 val_num = df[col].count()
                 ratio = df[col].count()/len(df[col].unique())
                 threshold = df[col].count()/len(df[col].unique())*api.config.rare_value_quantile
                 value_counts = df[col].value_counts()  # Specific column
-                kept_values = value_counts[value_counts > threshold].count()
+                #kept_values = value_counts[value_counts > threshold].count()
                 if value_counts[value_counts > threshold].count() > 1:
                     to_remove = value_counts[value_counts <= threshold].index
                     if len(to_remove) > 0 :
-                        logging.debug('Drop rare value by quantile: Column {} Removed Values {} '.format(col,len(to_remove)))
+                        logging.debug('Drop rare value by quantile: Column {}: {}/{} '.format(col,len(to_remove),unique_num))
                         df[col].replace(to_remove, np.nan, inplace=True)
+                        num_reduce_categoricals_col += 1
+            logging.debug('<rare_value_quantile> impact on columns: {}/{}'.format(num_reduce_categoricals_col,len(rare_value_cols)))
+
 
         # drop rare values by std
         if api.config.rare_value_std > 0:
+            num_reduce_categoricals_col = 0
             for col in df.columns:
+                unique_num = len(df[col].unique())
                 value_counts = df[col].value_counts()
                 mean = value_counts.mean()
                 threshold = value_counts.mean() - value_counts.std() * api.config.rare_value_std
                 if threshold > 1  :
                     to_remove = value_counts[value_counts <= threshold].index
                     if len(to_remove) > 0  :
-                        logging.debug('Drop rare value by std: Column {} Removed Values {} '.format(col, len(to_remove)))
+                        logging.debug('Drop rare value by std: Column {}: {}/{} '.format(col, len(to_remove),unique_num))
                         df[col].replace(to_remove, np.nan, inplace=True)
-    att_dict['config']['rare_value_cols'] = api.config.rare_value_cols
-    att_dict['config']['rare_value_quantile'] = api.config.rare_value_quantile
-    att_dict['config']['rare_value_std'] = api.config.rare_value_std
+                        num_reduce_categoricals_col += 1
+            logging.debug('<rare_value_std> impact on columns: {}/{}'.format(num_reduce_categoricals_col, len(rare_value_cols)))
 
-    # for unique values less then threshold_unique set to 1 else 0
-    if api.config.threshold_unique_cols and not api.config.threshold_unique_cols.upper() == 'NONE':
-        logging.debug('Threshold unique')
-        test_cols = get_value_list(api.config.threshold_unique_cols,df.columns)
-        for col in test_cols:
+    # for unique values less then threshold_unique set to 1. All NaN set to 0
+    att_dict['config']['threshold_unique_cols'] = api.config.threshold_unique_cols
+    att_dict['config']['threshold_unique'] = api.config.threshold_unique
+    threshold_unique_cols = tfp.read_list(api.config.threshold_unique_cols,list(df.columns))
+    if threshold_unique_cols:
+        prev_obj_cols = len(df.select_dtypes("object"))
+        for col in threshold_unique_cols:
             if df[col].dtype == np.object :
                 unique_vals = list(df[col].unique())
                 if len(unique_vals) <= api.config.threshold_unique:
@@ -149,52 +128,51 @@ def process(df_msg):
                     if np.nan in unique_vals :
                         df.loc[df[col].notnull(),col] = 1
                         df.loc[df[col].isnull(),col] = 0
-                    else :
-                        raise ValueError('For treshold_unique there needs to be NaN values existing ({} : {})'\
-                                         .format(col,unique_vals))
-                    df[col] = df[col].astype('int8')
+                        df[col] = df[col].astype('int8')
+        after_obj_cols = len(df.select_dtypes("object"))
+        logging.debug('Threshold unique effect on number of categorical columns: {} -> {}'.format(prev_obj_cols,after_obj_cols))
 
-    att_dict['config']['threshold_unique_cols'] = api.config.threshold_unique_cols
-    att_dict['config']['threshold_unique'] = api.config.threshold_unique
 
     # for count values less then threshold_count set to NaN
-    if api.config.threshold_freq_cols and not api.config.threshold_freq_cols.upper() == 'NONE':
+    att_dict['config']['threshold_freq_cols'] = api.config.threshold_unique_cols
+    att_dict['config']['threshold_freq'] = api.config.threshold_unique
+    threshold_freq_cols = tfp.read_list(api.config.threshold_freq_cols)
+    if threshold_freq_cols :
         logging.debug('Threshold freq')
-        test_cols = get_value_list(api.config.threshold_freq_cols, df.columns)
         if api.config.reduce_categoricals_only :
-            test_cols = [ot for ot in test_cols if df[ot].dtype==np.object]
+            test_cols = [ot for ot in threshold_freq_cols if df[ot].dtype==np.object]
         if api.config.threshold_freq < 1:
             api.config.threshold_freq = api.config.threshold_freq * df.shape[0]
 
-        for col in test_cols:
+        for col in threshold_freq_cols:
             if df[col].count() < api.config.threshold_freq:
                 logging.debug('Threshold_count: Removed column {} (#values {})'.format(col,df[col].count()))
                 df[col] = np.nan
 
-    att_dict['config']['threshold_freq_cols'] = api.config.threshold_unique_cols
-    att_dict['config']['threshold_freq'] = api.config.threshold_unique
-
     # removes columns with to many category values that could not be transposed
-    if api.config.max_cat_num > 0 and api.config.max_cat_num_cols and not api.config.max_cat_num_cols.upper() == 'NONE':
-        test_cols = get_value_list(api.config.max_cat_num_cols,df.columns)
+    att_dict['config']['max_cat_num'] = api.config.max_cat_num
+    att_dict['config']['max_cat_num_cols'] = api.config.max_cat_num_cols
+    max_cat_num_cols = tfp.read_list(api.config.max_cat_num_cols)
+    if api.config.max_cat_num > 0 and max_cat_num_cols:
         drop_cols = list()
-        for col in test_cols:
+        for col in max_cat_num_cols:
             if df[col].dtype == np.object :
                 if len(df[col].unique()) > api.config.max_cat_num :
                     drop_cols.append(col)
         df.drop(columns = drop_cols,inplace=True)
-    att_dict['config']['max_cat_num'] = api.config.max_cat_num
 
     # remove cols with only NaN
+    att_dict['config']['drop_nan_columns'] = api.config.drop_nan_columns
     if api.config.drop_nan_columns :
         df.dropna(axis='columns',how='all',inplace=True)
-    att_dict['config']['drop_nan_columns'] = str(api.config.drop_nan_columns)
 
     # remove rows with NAN except for dimension cols
-    if api.config.drop_nan_rows_cols and not api.config.drop_nan_rows_cols.upper() == 'NONE':
-        drop_cols = get_value_list(api.config.drop_nan_rows_cols, df.columns)
-        df[drop_cols].dropna(subset=drop_cols, how = 'all',inplace=True)
-    att_dict['config']['drop_nan_rows_cols'] = str(api.config.drop_nan_rows_cols)
+    att_dict['config']['drop_nan_rows_cols'] = api.config.drop_nan_rows_cols
+    drop_nan_rows_cols = tfp.read_list(api.config.drop_nan_rows_cols,df.columns)
+    if drop_nan_rows_cols:
+        prev_row_num = df.shape[0]
+        df[drop_nan_rows_cols].dropna(subset=drop_nan_rows_cols, how = 'all',inplace=True)
+        logging.debug('<drop_nan_rows_cols> deleted rows: {}/{}'.format(prev_row_num-df.shape[0],prev_row_num))
 
     if len(api.config.fill_categoricals_nan) > 0  :
         cat_cols = df.select_dtypes(include='object')
@@ -220,8 +198,6 @@ def process(df_msg):
         cols_num = df.select_dtypes(include=np.number)
         for col in cols_num :
             df[col] = df[col].fillna(0.0)
-
-
 
 
     print('Cols: {} -> {}   Rows: {} -> {}'.format(att_dict['prev_number_columns'],df.shape[1],
@@ -265,7 +241,7 @@ try:
 except NameError:
     class api:
 
-        def set_test(test_scenario):
+        def set_default_input():
             df = pd.DataFrame(
                 {'icol': [1, 2, 3, 4, 5], 'col 2': [1, 2, 3, 4, 5], 'col3': [100,200,300,400,500]})
 
@@ -273,11 +249,8 @@ except NameError:
 
             return api.Message(attributes=attributes,body=df)
 
-        def set_config(test_scenario) :
-            api.config.zero_to_null = False
-
         class config:
-            zero_to_null = False # Boolean Value
+            to_nan = '0'
             yes_no_to_num = False
             drop_nan_columns = False
             all_constant_to_NaN = False
@@ -292,7 +265,7 @@ except NameError:
             max_cat_num = 0
             max_cat_num_cols = "None"
             reduce_categoricals_only = True
-            remove_duplicates_cols = 'None'
+            remove_duplicates_of_cols = 'None'
             fill_categoricals_nan = '-'
             cut_obj_size = 0
             fill_numeric_nan_zero = True
@@ -310,8 +283,7 @@ except NameError:
             pass
 
         def set_port_callback(port, callback):
-            msg = api.set_test(actual_test)
-            api.set_config(actual_test)
+            msg = api.set_default_input()
             print("Call \"" + callback.__name__ + "\"  messages port \"" + port + "\"..")
             callback(msg)
 

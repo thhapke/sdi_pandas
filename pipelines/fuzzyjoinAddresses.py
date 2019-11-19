@@ -1,7 +1,7 @@
 
 import pandas as pd
-import src.selectDataFrame as selectdf
-import src.fuzzyjoinDataFrames as fuzzyjoindf
+import src.selectValues as selectdf
+import src.fuzzyjoin as fuzzyjoindf
 
 # setting display options for df
 pd.set_option('display.max_rows', 500)

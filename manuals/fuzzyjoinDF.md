@@ -1,4 +1,4 @@
-# fuzzyjoinDataFrame
+# fuzzyjoinDF
 A test datasets (testDataFrame) are checked if they (string-) match with a base dataset (baseDataFrame). If more than one column are provided for checking then the average is calculated of all columns. 
 
 

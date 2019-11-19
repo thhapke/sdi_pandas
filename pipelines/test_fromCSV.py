@@ -2,7 +2,7 @@
 import pandas as pd
 import csv
 import os
-import src.fromCSVDataFrame as fromCSV
+import src.fromCSV as fromCSV
 
 
 

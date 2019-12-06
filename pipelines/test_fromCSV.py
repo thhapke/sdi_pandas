@@ -2,7 +2,7 @@
 import pandas as pd
 import csv
 import os
-import src.fromCSV as fromCSV
+import src.pandas_operators.fromCSV as fromCSV
 
 
 

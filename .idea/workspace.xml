@@ -2,89 +2,60 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f6c88374-51a5-4f71-9c91-34efe0730fa7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/cleanseHeuristics.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/oneHotEncoder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/setValue.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/solution/operators/pandasOperators-0.0.16/content/files/vflow/subengines/com/sap/python36/operators/pandas/cleanseHeuristics/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pandas/castColumns/DI_PandasV2.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pandas/cleanseHeuristics/DI_PandasV2.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pandas/dropColumns/DI_PandasV2.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pandas/fromCSV/DI_PandasV2.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pandas/fuzzyjoin/DI_PandasV2.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pandas/groupby/DI_PandasV2.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pandas/join/DI_PandasV2.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pandas/sample/DI_PandasV2.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pandas/toCSV/DI_PandasV2.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/DI_Pandas.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/customOperators-0.0.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/dockerfile-pandas-0.0.2.tgz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasDockerfile-0.0.13.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasDockerfile-0.0.13/content/files/vflow/dockerfiles/pandas/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasDockerfile-0.0.13/content/files/vflow/dockerfiles/pandas/Tags.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasDockerfile-0.0.13/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.12.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/LinRegPredictDF/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/LinRegPredictDF/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/LinRegPredictDF/linRegPredictDF.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/LinRegPredictDF/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/LinRegPredictDF/scikit.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/LinRegPredictDF/script.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/castDF/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/castDF/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/castDF/castDF.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/castDF/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/castDF/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/customDF/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/customDF/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/customDF/customDF.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/customDF/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/dropColumnsDataFrame/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/dropColumnsDataFrame/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/dropColumnsDataFrame/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/dropColumnsDataFrame/dropColumnsDF.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/dropColumnsDataFrame/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/fromCSVDataframe/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/fromCSVDataframe/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/fromCSVDataframe/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/fromCSVDataframe/fromCSVDataFrame.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/fromCSVDataframe/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/fuzzyjoinDFs/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/fuzzyjoinDFs/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/fuzzyjoinDFs/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/fuzzyjoinDFs/fuzzyjoinDFs.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/fuzzyjoinDFs/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/groupbyDataFrame/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/groupbyDataFrame/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/groupbyDataFrame/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/groupbyDataFrame/groupbyDF.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/groupbyDataFrame/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/joinDataFrames/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/joinDataFrames/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/joinDataFrames/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/joinDataFrames/joinDFs.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/joinDataFrames/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/linRegTrainDataFrame/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/linRegTrainDataFrame/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/linRegTrainDataFrame/linRegTrainDF.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/linRegTrainDataFrame/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/linRegTrainDataFrame/scikit.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/sampleDF/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/sampleDF/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/sampleDF/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/sampleDF/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/sampleDF/sampleDF.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/selectDF/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/selectDF/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/selectDF/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/selectDF/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/selectDF/selectDF.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/toCSVDataFrame/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/toCSVDataFrame/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/toCSVDataFrame/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/toCSVDataFrame/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/toCSVDataFrame/toCSVDataFrame.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/transposeColumnDataFrame/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/transposeColumnDataFrame/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/transposeColumnDataFrame/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/transposeColumnDataFrame/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/content/files/vflow/subengines/com/sap/python36/operators/pandas/transposeColumnDataFrame/transposeColumnDF.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators-0.0.13/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/pandasOperators13-0.0.13.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/preparation-0.0.1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customDataFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/customDataFrame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dropColumnsDataFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dropColumns.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fromCSVDataFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fromCSVDataFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pipelines/fuzzyjoinAddresses.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/fuzzyjoinAddresses.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pipelines/test_fromCSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/test_fromCSV.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/Dockerfiles/pandasDockerfile-0.0.13/content/files/vflow/dockerfiles/pandas/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/solution/Dockerfiles/pandasDockerfile-0.0.13/content/files/vflow/dockerfiles/pandas/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/pandasOperators-0.0.16/content/files/vflow/subengines/com/sap/python36/operators/pandas/cleanseHeuristicsDF/DI_PandasV2.svg" beforeDir="false" afterPath="$PROJECT_DIR$/solution/operators/pandasOperators-0.0.16/content/files/vflow/subengines/com/sap/python36/operators/pandas/cleanseHeuristics/DI_PandasV2.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/pandasOperators-0.0.16/content/files/vflow/subengines/com/sap/python36/operators/pandas/cleanseHeuristicsDF/cleanseHeuristics.py" beforeDir="false" afterPath="$PROJECT_DIR$/solution/operators/pandasOperators-0.0.16/content/files/vflow/subengines/com/sap/python36/operators/pandas/cleanseHeuristics/cleanseHeuristics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/pandasOperators-0.0.16/content/files/vflow/subengines/com/sap/python36/operators/pandas/cleanseHeuristicsDF/configSchema.json" beforeDir="false" afterPath="$PROJECT_DIR$/solution/operators/pandasOperators-0.0.16/content/files/vflow/subengines/com/sap/python36/operators/pandas/cleanseHeuristics/configSchema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/pandasOperators-0.0.16/content/files/vflow/subengines/com/sap/python36/operators/pandas/cleanseHeuristicsDF/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/solution/operators/pandasOperators-0.0.16/content/files/vflow/subengines/com/sap/python36/operators/pandas/cleanseHeuristics/operator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/pandasOperators-0.0.16/content/files/vflow/subengines/com/sap/python36/operators/pandas/fuzzyjoin/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/solution/operators/pandasOperators-0.0.16/content/files/vflow/subengines/com/sap/python36/operators/pandas/fuzzyjoin/operator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/pandasOperators-0.0.16/content/files/vflow/subengines/com/sap/python36/operators/pandas/linRegTrainDataFrame/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/solution/operators/pandasOperators-0.0.16/content/files/vflow/subengines/com/sap/python36/operators/pandas/linRegressionTrain/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/pandasOperators-0.0.16/content/files/vflow/subengines/com/sap/python36/operators/pandas/linRegTrainDataFrame/configSchema.json" beforeDir="false" afterPath="$PROJECT_DIR$/solution/operators/pandasOperators-0.0.16/content/files/vflow/subengines/com/sap/python36/operators/pandas/linRegressionTrain/configSchema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/pandasOperators-0.0.16/content/files/vflow/subengines/com/sap/python36/operators/pandas/linRegTrainDataFrame/linRegresssionTrain.py" beforeDir="false" afterPath="$PROJECT_DIR$/solution/operators/pandasOperators-0.0.16/content/files/vflow/subengines/com/sap/python36/operators/pandas/linRegressionTrain/linRegressionTrain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/pandasOperators-0.0.16/content/files/vflow/subengines/com/sap/python36/operators/pandas/linRegTrainDataFrame/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/solution/operators/pandasOperators-0.0.16/content/files/vflow/subengines/com/sap/python36/operators/pandas/linRegressionTrain/operator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/pandasOperators-0.0.16/content/files/vflow/subengines/com/sap/python36/operators/pandas/linRegTrainDataFrame/scikit.svg" beforeDir="false" afterPath="$PROJECT_DIR$/solution/operators/pandasOperators-0.0.16/content/files/vflow/subengines/com/sap/python36/operators/pandas/linRegressionTrain/scikit.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/anonymizeData.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/batchesConsumer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/batchesProducer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/castColumns.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cleanseHeuristics.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/customTemplate.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dropColumns.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fromCSV.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fuzzyjoin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/groupby.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/join.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/linRegressionPredict.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/linRegresssionTrain.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/oneHotEncoding.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/predictLabel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/selectValues.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/setValue.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/splitSample.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toCSV.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/trainLGBMClassifier.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transposeColumn.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -108,118 +79,6 @@
     <SUITE FILE_PATH="coverage/DI_Pandas$prepForecast.coverage" NAME="prepForecast Coverage Results" MODIFIED="1569068012540" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pipelines" />
     <SUITE FILE_PATH="coverage/DI_Pandas$fuzzyjoinAddresses.coverage" NAME="test_freomCSV Coverage Results" MODIFIED="1569341408558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pipelines" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="1299802336">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="9" />
-          <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.1" value="4" />
-          <entry key="project.open.time.18" value="1" />
-          <entry key="project.open.time.2" value="2" />
-          <entry key="project.open.time.6" value="1" />
-          <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="10" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="dummy" value="81" />
-          <entry key="json" value="331" />
-          <entry key="py" value="13834" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JSON" value="331" />
-          <entry key="PLAIN_TEXT" value="81" />
-          <entry key="Python" value="13833" />
-          <entry key="RegExp" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="json" value="53" />
-          <entry key="md" value="2" />
-          <entry key="pstat" value="1" />
-          <entry key="py" value="76" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="JSON" value="53" />
-          <entry key="Markdown" value="2" />
-          <entry key="Profiler Session" value="1" />
-          <entry key="Python" value="76" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/oneHotEncoder.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1615">
-              <caret line="95" column="25" selection-start-line="95" selection-start-column="12" selection-end-line="95" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cleanseHeuristics.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="294" column="12" lean-forward="true" selection-start-line="294" selection-start-column="12" selection-end-line="294" selection-end-column="34" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-                <marker date="1571304577247" expanded="true" signature="551:1206" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/setValue.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="105" column="27" selection-start-line="105" selection-start-column="12" selection-end-line="105" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/dropColumns.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="22" selection-start-line="22" selection-end-line="24" selection-end-column="59" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/joinDataFrames.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="935">
-              <caret line="56" selection-start-line="56" selection-end-line="58" selection-end-column="50" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -227,113 +86,12 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>print</find>
-      <find>selected</find>
-      <find>limit</find>
-      <find>test_ind</find>
-      <find>base_ind</find>
-      <find>testdf_index</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/transpose2ColumnDataFrame.py" />
-        <option value="$PROJECT_DIR$/src/fuzzySelectDataFrame.py" />
-        <option value="$PROJECT_DIR$/src/idleDataFrame.py" />
-        <option value="$PROJECT_DIR$/src/customDataFrame.py" />
-        <option value="$PROJECT_DIR$/src/joinDataFrames.py" />
-        <option value="$PROJECT_DIR$/src/groupbyDataFrame.py" />
-        <option value="$PROJECT_DIR$/src/dropColumnsDataFrame.py" />
-        <option value="$PROJECT_DIR$/pipelines/prepForecast.py" />
-        <option value="$PROJECT_DIR$/src/sampleDataFrame.py" />
-        <option value="$PROJECT_DIR$/src/selectDataFrame.py" />
-        <option value="$PROJECT_DIR$/src/splitDataFrame.py" />
-        <option value="$PROJECT_DIR$/pipelines/splitDataFrame.py" />
-        <option value="$PROJECT_DIR$/pipelines/fuzzyjoinAddresses.py" />
-        <option value="$PROJECT_DIR$/src/toCSVDataFrame.py" />
-        <option value="$PROJECT_DIR$/src/fromZipCSVDataFrame.py" />
-        <option value="$PROJECT_DIR$/pipelines/test_fromCSV.py" />
-        <option value="$PROJECT_DIR$/src/transposeColumnDataFrame.py" />
-        <option value="$PROJECT_DIR$/src/fuzzyjoinDataFrames.py" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/toHanaDataFrame/configSchema.json" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/toHanaDataFrame/operator.json" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/toDataframe/configSchema.json" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/fromCSVDataframe/fromCSVDataFrame.py" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/transposeDataFrame/transposeColumnDataFrame.py" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/transposeDataFrame/operator.json" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/transposeDataFrame/configSchema.json" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/selectDataFrame/selectDataFrame.py" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/selectDataFrame/configSchema.json" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/sampleDataFrame/configSchema.json" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/joinDataFrames/configSchema.json" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/groupbyDataFrame/configSchema.json" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/fuzzyjoinDataFrame/fuzzyjoinDataFrames.py" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/dropColumnsDataFrame/configSchema.json" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/dropColumnsDataFrame/dropColumnsDataFrame.py" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/fromCSVDataframe/configSchema.json" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/transposeColumnDataFrame/operator.json" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/selectDataFrame/operator.json" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/sampleDataFrame/operator.json" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/joinDataFrames/operator.json" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/groupbyDataFrame/operator.json" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/fuzzyjoinDataFrame/operator.json" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/fromCSVDataframe/operator.json" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/dropColumnsDataFrame/operator.json" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/customDataFrame/operator.json" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/toCSVDataFrame/operator.json" />
-        <option value="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/toCSVDataFrame/configSchema.json" />
-        <option value="$PROJECT_DIR$/src/castDataFrame.py" />
-        <option value="$PROJECT_DIR$/src/setValue.py" />
-        <option value="$PROJECT_DIR$/src/cleanseHeuristics.py" />
-        <option value="$PROJECT_DIR$/src/fromCSVDataFrame.py" />
-        <option value="$PROJECT_DIR$/src/oneHotEncoder.py" />
-      </list>
-    </option>
-  </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="111" />
-    <option name="y" value="23" />
-    <option name="width" value="1797" />
-    <option name="height" value="981" />
-  </component>
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectId" id="1TvoxRi93rXg4e2Zx5cHWrWBmOE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="DI_Pandas" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DI_Pandas" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DI_Pandas" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DI_Pandas" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -345,16 +103,17 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pandasoperators" />
       <recent name="$PROJECT_DIR$/deprecated" />
       <recent name="$PROJECT_DIR$/utils" />
       <recent name="$PROJECT_DIR$/pipelines" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/fromCSVDataframe" />
-      <recent name="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/customDataFrame" />
-      <recent name="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/dropColumnsDataFrame" />
-      <recent name="$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/fuzzyjoinDataFrame" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/pandas/sample" />
+      <recent name="$PROJECT_DIR$/src/pandas/toCSV" />
+      <recent name="$PROJECT_DIR$/src/pandas/join" />
+      <recent name="$PROJECT_DIR$/src/pandas/groupby" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -369,21 +128,21 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.fromCSVDataFrame">
-    <configuration name="fromCSVDataFrame" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="DI_Pandas" />
+  <component name="RunManager" selected="Python.linRegressionTrain">
+    <configuration name="linRegressionPredict" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="SDI_Pandas" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/pandas/linRegressionPredict" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/fromCSVDataFrame.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/pandas/linRegressionPredict/linRegressionPredict.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -392,20 +151,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="prepForecast" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="DI_Pandas" />
+    <configuration name="linRegressionTrain" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="SDI_Pandas" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pipelines" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/pandas/linRegressionTrain" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pipelines/prepForecast.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/pandas/linRegressionTrain/linRegressionTrain.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -414,20 +173,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="splitDataFrame" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="DI_Pandas" />
+    <configuration name="selectValues" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="SDI_Pandas" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pipelines" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/pandas/selectValues" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/utils/splitDataFrame.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/pandas/selectValues/selectValues.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -436,20 +195,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test_freomCSV" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="DI_Pandas" />
+    <configuration name="setValue" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="SDI_Pandas" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pipelines" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/pandas/setValue" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pipelines/test_fromCSV.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/pandas/setValue/setValue.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -458,20 +217,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="toCSVDataFrame" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="DI_Pandas" />
+    <configuration name="transposeColumn" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="SDI_Pandas" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/pandas/transposeColumn" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/toCSVDataFrame.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/pandas/transposeColumn/transposeColumn.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -481,19 +240,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.test_freomCSV" />
-      <item itemvalue="Python.fromCSVDataFrame" />
-      <item itemvalue="Python.toCSVDataFrame" />
-      <item itemvalue="Python.prepForecast" />
-      <item itemvalue="Python.splitDataFrame" />
+      <item itemvalue="Python.selectValues" />
+      <item itemvalue="Python.setValue" />
+      <item itemvalue="Python.transposeColumn" />
+      <item itemvalue="Python.linRegressionPredict" />
+      <item itemvalue="Python.linRegressionTrain" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.fromCSVDataFrame" />
-        <item itemvalue="Python.test_freomCSV" />
-        <item itemvalue="Python.toCSVDataFrame" />
-        <item itemvalue="Python.splitDataFrame" />
-        <item itemvalue="Python.prepForecast" />
+        <item itemvalue="Python.linRegressionTrain" />
+        <item itemvalue="Python.linRegressionPredict" />
+        <item itemvalue="Python.transposeColumn" />
+        <item itemvalue="Python.setValue" />
+        <item itemvalue="Python.selectValues" />
       </list>
     </recent_temporary>
   </component>
@@ -507,6 +266,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1566457668855</updated>
+      <workItem from="1574350177044" duration="7755000" />
+      <workItem from="1574574417995" duration="16020000" />
+      <workItem from="1574671598058" duration="38000" />
+      <workItem from="1574672249145" duration="46000" />
+      <workItem from="1574672317536" duration="45887000" />
     </task>
     <servers />
   </component>
@@ -519,38 +283,21 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
-  <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="819" extended-state="6" />
-    <layout>
-      <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.18597998" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="1" weight="0.32961586" />
-      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="3" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Python Console" order="4" />
-      <window_info anchor="bottom" id="Docker" order="5" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Message" order="6" />
-      <window_info anchor="bottom" id="Find" order="7" />
-      <window_info anchor="bottom" id="Run" order="8" weight="0.3345725" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.39488637" />
-      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="12" weight="0.3283767" />
-      <window_info anchor="right" id="Database" order="0" />
-      <window_info anchor="right" id="Commander" order="1" weight="0.4" />
-      <window_info anchor="right" id="SciView" order="2" weight="0.8204578" />
-      <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
-      <window_info anchor="right" id="Coverage" order="5" side_tool="true" />
-    </layout>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -561,17 +308,17 @@
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/dropColumns.py</url>
+          <url>file://$PROJECT_DIR$/src/pandas_operators/dropColumns.py</url>
           <line>21</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/dropColumns.py</url>
+          <url>file://$PROJECT_DIR$/src/pandas_operators/dropColumns.py</url>
           <line>44</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/dropColumns.py</url>
+          <url>file://$PROJECT_DIR$/src/pandas_operators/dropColumns.py</url>
           <line>108</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
@@ -611,199 +358,65 @@
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/cleanseHeuristics.py</url>
+          <url>file://$PROJECT_DIR$/src/pandas_operators/cleanseHeuristics.py</url>
           <line>143</line>
           <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/pandas_operators/fromCSV.py</url>
+          <line>174</line>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/pandas_operators/fromCSV.py</url>
+          <line>254</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/pandas_operators/fromCSV.py</url>
+          <line>38</line>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/pandas/dropColumns/dropColumns.py</url>
+          <line>120</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/pandas/sample/sample.py</url>
+          <line>80</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/pandas/sample/sample.py</url>
+          <line>68</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/pandas/transposeColumn/transposeColumn.py</url>
+          <line>46</line>
+          <option name="timeStamp" value="50" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pipelines/test_fromCSV.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="35" column="7" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pipelines/prepForecast.py" />
-    <entry file="file://$PROJECT_DIR$/utils/splitDataFrame.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="17" selection-start-line="26" selection-end-line="26" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/groupbyDataFrame.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pipelines/fuzzyjoinAddresses.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fuzzyjoinDataFrames.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="47" column="47" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/transposeColumnDataFrame.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/selectDataFrame.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2329">
-          <caret line="137" selection-start-line="137" selection-end-line="138" selection-end-column="103" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/toHanaDataFrame/configSchema.json" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/toHanaDataFrame/operator.json" />
-    <entry file="file://$PROJECT_DIR$/src/sampleDataFrame.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/transposeColumnDataFrame/transposeColumnDataFrame.py" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/toCSVDataFrame/toCSVDataFrame.py" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/selectDataFrame/selectDataFrame.py" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/selectDataFrame/configSchema.json" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/sampleDataFrame/configSchema.json" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/sampleDataFrame/sampleDataFrame.py" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/joinDataFrames/configSchema.json" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/joinDataFrames/joinDataFrames.py" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/groupbyDataFrame/configSchema.json" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/fuzzyjoinDataFrame/configSchema.json" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/fuzzyjoinDataFrame/fuzzyjoinDataFrames.py" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/fromCSVDataframe/fromCSVDataFrame.py" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/dropColumnsDataFrame/configSchema.json" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/dropColumnsDataFrame/dropColumnsDataFrame.py" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/customDataFrame/customDataFrame.py" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/fromCSVDataframe/README.md" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/transposeColumnDataFrame/configSchema.json" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/fromCSVDataframe/configSchema.json" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/customDataFrame/configSchema.json" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/toCSVDataFrame/script.py" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/transposeColumnDataFrame/operator.json" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/selectDataFrame/operator.json" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/sampleDataFrame/operator.json" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/joinDataFrames/operator.json" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/dropColumnsDataFrame/operator.json" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/fromCSVDataframe/operator.json" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/fuzzyjoinDataFrame/operator.json" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/groupbyDataFrame/operator.json" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/customDataFrame/operator.json" />
-    <entry file="file://$PROJECT_DIR$/src/toCSVDataFrame.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1058">
-          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/toCSVDataFrame/configSchema.json" />
-    <entry file="file://$PROJECT_DIR$/solution/pandasOperators-0.0.12/content/files/vflow/subengines/com/sap/python36/operators/pandas/toCSVDataFrame/operator.json" />
-    <entry file="file://$PROJECT_DIR$/src/joinDataFrames.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="56" selection-start-line="56" selection-end-line="58" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/customDataFrame.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-610">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dropColumns.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="22" selection-start-line="22" selection-end-line="24" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fromCSVDataFrame.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="125" column="49" lean-forward="true" selection-start-line="125" selection-start-column="49" selection-end-line="125" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/castDataFrame.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="17" column="56" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cleanseHeuristics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="294" column="12" lean-forward="true" selection-start-line="294" selection-start-column="12" selection-end-line="294" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-            <marker date="1571304577247" expanded="true" signature="551:1206" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/setValue.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="105" column="27" selection-start-line="105" selection-start-column="12" selection-end-line="105" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/oneHotEncoder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1615">
-          <caret line="95" column="25" selection-start-line="95" selection-start-column="12" selection-end-line="95" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SDI_Pandas$linRegressionPredict.coverage" NAME="linRegressionPredict Coverage Results" MODIFIED="1575451079787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/linRegressionPredict" />
+    <SUITE FILE_PATH="coverage/SDI_Pandas$transposeColumn.coverage" NAME="transposeColumn Coverage Results" MODIFIED="1575366756831" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/transposeColumn" />
+    <SUITE FILE_PATH="coverage/SDI_Pandas$join.coverage" NAME="join Coverage Results" MODIFIED="1575361508875" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/join" />
+    <SUITE FILE_PATH="coverage/SDI_Pandas$selectValues.coverage" NAME="selectValues Coverage Results" MODIFIED="1575365655048" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/selectValues" />
+    <SUITE FILE_PATH="coverage/SDI_Pandas$fromCSV__1_.coverage" NAME="fromCSV (1) Coverage Results" MODIFIED="1574850925133" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/fromCSV" />
+    <SUITE FILE_PATH="coverage/SDI_Pandas$fuzzyjoin.coverage" NAME="fuzzyjoin Coverage Results" MODIFIED="1575299760489" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/fuzzyjoin" />
+    <SUITE FILE_PATH="coverage/SDI_Pandas$sample.coverage" NAME="sample Coverage Results" MODIFIED="1575363329368" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/sample" />
+    <SUITE FILE_PATH="coverage/SDI_Pandas$linRegressionTrain.coverage" NAME="linRegressionTrain Coverage Results" MODIFIED="1575451741825" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/linRegressionTrain" />
+    <SUITE FILE_PATH="coverage/SDI_Pandas$dropColumns.coverage" NAME="dropColumns Coverage Results" MODIFIED="1575291315265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/dropColumns" />
+    <SUITE FILE_PATH="coverage/SDI_Pandas$setValue.coverage" NAME="setValue Coverage Results" MODIFIED="1575366380839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/setValue" />
+    <SUITE FILE_PATH="coverage/DI_Pandas$fromCSV.coverage" NAME="fromCSV Coverage Results" MODIFIED="1574666826177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandasoperators" />
+    <SUITE FILE_PATH="coverage/SDI_Pandas$fromCSV.coverage" NAME="fromCSV Coverage Results" MODIFIED="1574674146297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas_operators" />
+    <SUITE FILE_PATH="coverage/DI_Pandas$gensolution.coverage" NAME="gensolution Coverage Results" MODIFIED="1574584528024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/lib/python3.7/site-packages/sdi_utils" />
+    <SUITE FILE_PATH="coverage/SDI_Pandas$castColumns.coverage" NAME="castColumns Coverage Results" MODIFIED="1574847290391" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/castColumns" />
+    <SUITE FILE_PATH="coverage/SDI_Pandas$toCSV.coverage" NAME="toCSV Coverage Results" MODIFIED="1574846316594" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/toCSV" />
+    <SUITE FILE_PATH="coverage/SDI_Pandas$groupby.coverage" NAME="groupby Coverage Results" MODIFIED="1575300248027" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/groupby" />
+    <SUITE FILE_PATH="coverage/SDI_Pandas$cleanseHeuristics.coverage" NAME="cleanseHeuristics Coverage Results" MODIFIED="1574929649853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/cleanseHeuristics" />
   </component>
 </project>

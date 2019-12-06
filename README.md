@@ -38,23 +38,12 @@ If you need help or in case you found a bug please open a [Github Issue](https:/
 
 ## License
 
-Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
-This project is licensed under the SAP Sample Code License except as noted otherwise in the [LICENSE file](LICENSE).
+This project is licensed under the [MIT License](./LICENSE)
 
 
 ## Documentation
+Each operator folder has a README that should describe the behaviour of the operator. 
 
-* [fromCSVDataFrame.py](./manuals/fromCSVDataFrame.md) - creating DataFrame using a csv-string or byte-encoded csv-string
-* [toCSVDataFrame.py](./manuals/toCSVDataFrame.md)  - creating a csv-string for saving as a file
-* [joinDataFrame.py](./manuals/joinDataFrame.md) - joining 2 DataFrames
-* [sampleDataFrame.py](./manuals/sampleDataFrame.md) - samples from DataFrame while taking the data of a defined column for a certain value
-* [selectDataFrame.py](./manuals/selectDataFrame.md)- selecting rows of columns based on values
-* [groupDataFrame.py](./manuals/groupbyDataFrame.py) - Grouping of columns with defined aggregation
-* [fuzzyjoinDataFrame.py](./manuals/fuzzyjoinDataFrame.py) - Test the existance of the datasets of one 'test'-DataFrame in the 'base'-DataFrame with defined matching factor
-* [dropDataFrame.py](./manuals/dropDataFrame.md) - drops or/and renames columns 
-* [transposeColumnDataFrame.py](./manuals/transposeColumnDataFrame.py) - transposes the values one column to additional columns
-* customDataFrame.py - doing nothing but can be enhanced by own scripts
-* ... 
 
 ### Local Development Support
 To work with the IDE of your choice and to run unit tests, you may start the development locally and do the appropriate tests before deploying the scripts in a SAP Data Hub / SAP Data Intelligence cluster. For doing this for all scripts supporting features are provided. There is also a hint for a simulation of a pipeline. Examples are given in the folder of */pipelines*. 
@@ -90,6 +79,5 @@ Within a Python operator you can access the attributes of the message as a dicti
 
 Most of the di_pandas operators have 1 input dataport and 2 outputdata ports. The nomenclature is **DataFrameMsg** for the data message and **Info** for channeling infos to a terminal or a logging file for monitoring the graph behaviour while developing. 
 
-### Operator Descriptions
 
 

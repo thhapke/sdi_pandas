@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/SDI_Pandas.iml" filepath="$PROJECT_DIR$/.idea/SDI_Pandas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/sdi_pandas.iml" filepath="$PROJECT_DIR$/.idea/sdi_pandas.iml" />
     </modules>
   </component>
 </project>

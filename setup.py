@@ -12,17 +12,10 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/thhapke/gensolution",
-    keywords = ['SAP Data Intelligence','genjson','tprogress','textfield_parser'],
+    keywords = ['SAP Data Intelligence','pandas','operator'],
     packages=setuptools.find_packages(),
-    install_requires=[
-        'requests'
-    ],
+    install_requires=[],
     include_package_data=True,
-    entry_points={
-        'console_scripts': [
-            'gensolution = sdi_utils.gensolution:main'
-        ]
-    },
     classifiers=[
     	'Programming Language :: Python :: 3.5',
     	'Programming Language :: Python :: 3.6',

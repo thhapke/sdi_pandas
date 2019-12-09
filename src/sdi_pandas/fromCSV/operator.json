@@ -1,0 +1,43 @@
+{
+    "description": "From CSV creates DataFrame",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "inCSVMsg",
+            "type": "message"
+        }
+    ],
+    "outports": [
+        {
+            "name": "Info",
+            "type": "string"
+        },
+        {
+            "name": "outDataFrameMsg",
+            "type": "message.DataFrame"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_pandas.fromCSV.configSchema.json",
+        "script": "file://fromCSV.py",
+        "index_cols": "None",
+        "separator": ";",
+        "error_bad_lines": false,
+        "use_columns": "None",
+        "limit_rows": 0,
+        "downcast_int": false,
+        "downcast_float": false,
+        "df_name": "DataFrame",
+        "low_memory": false,
+        "thousands": "None",
+        "decimal": ".",
+        "compression": "None",
+        "dtypes": "None",
+        "data_from_filename": "None",
+        "todatetime": "None"
+    },
+    "tags": {
+        "pandas": ""
+    },
+    "iconsrc": "DI_PandasV2.svg"
+}

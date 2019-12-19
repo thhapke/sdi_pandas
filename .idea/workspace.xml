@@ -2,42 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f6c88374-51a5-4f71-9c91-34efe0730fa7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/dropColumns/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/fromCSV/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/fuzzyjoin/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/groupby/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/join/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/linRegressionPredict/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/linRegressionTrain/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/oneHotEncoding/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/sample/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/selectValues/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/setValue/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/toCSV/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/transposeColumn/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/src/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/howto_use_template.md" beforeDir="false" afterPath="$PROJECT_DIR$/deprecated/howto_use_template.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manuals/castDF.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manuals/dropColumnsDF.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manuals/fromCSVDF.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manuals/fuzzyjoinDF.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manuals/groupbyDF.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manuals/joinDF.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manuals/joinDataFrame.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manuals/linRegressionPredictDF.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manuals/linRegressionTrainDF.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manuals/sampleDF.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manuals/selectDF.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manuals/toCSVDF.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manuals/transposeColumnDF.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanseHeuristics/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/cleanseHeuristics/cleanseHeuristics.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanseHeuristics/cleanseHeuristics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/easy-install.pth" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/easy-install.pth" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -258,7 +223,7 @@
       <workItem from="1575643447576" duration="13382000" />
       <workItem from="1576050212852" duration="810000" />
       <workItem from="1576233112261" duration="9043000" />
-      <workItem from="1576408527928" duration="2968000" />
+      <workItem from="1576408527928" duration="9107000" />
     </task>
     <servers />
   </component>

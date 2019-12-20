@@ -82,6 +82,9 @@ except NameError:
             config_params['data_from_filename'] = {'title': 'Data from Filename', 'description': 'Data from Filename', 'type': 'string'}
             todatetime = 'None'
             config_params['todatetime'] = {'title': 'To Datetime', 'description': 'To Datetime', 'type': 'string'}
+            keyword_args = "sep = ';', error_bad_lines=False, warn_bad_lines = True, low_memory = False, nrows = 4"
+            config_params['keyword_args'] = {'title': 'Keyword Arguments', 'description': 'Mapping of key-values passed as arguments \"to read_csv\"', 'type': 'string'}
+
 
 def downcast(df, data_type, to_type):
     cols = list(df.select_dtypes(include=[data_type]).columns)
@@ -163,7 +166,9 @@ def process(msg) :
     kwargs = tfp.read_dict(text= api.config.keyword_args,map_sep='=')
 
     ##### Read string from buffer
-    if not compression:
+    if kwargs :
+        df = pd.read_csv(csv_io,usecols=use_cols,dtype=typemap,**kwargs)
+    elif not compression:
         logger.debug("Read from uncompressed input")
         df = pd.read_csv(csv_io, api.config.separator, usecols=use_cols, error_bad_lines=False, dtype=typemap, \
                          warn_bad_lines=api.config.error_bad_lines, low_memory=api.config.low_memory, \

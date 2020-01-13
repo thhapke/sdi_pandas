@@ -1,0 +1,30 @@
+{
+    "description": "Drop Columns",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "input",
+            "type": "message.DataFrame"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string"
+        },
+        {
+            "name": "output",
+            "type": "message.DataFrame"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_pandas.dropColumns.configSchema.json",
+        "script": "file://dropColumns.py",
+        "drop_columns": "None",
+        "rename_columns": "None"
+    },
+    "tags": {
+        "pandas": ""
+    },
+    "iconsrc": "DI_PandasV2.svg"
+}

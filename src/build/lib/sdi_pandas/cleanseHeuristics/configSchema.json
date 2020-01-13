@@ -1,0 +1,103 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/build.lib.sdi_pandas.cleanseHeuristics.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "script": {
+            "type": "string"
+        },
+        "value_to_nan": {
+            "title": "Set value to Null/Nan",
+            "description": "Sets all data of categorical columns with value to nan",
+            "type": "string"
+        },
+        "yes_no_to_num": {
+            "title": "Yes/No to Numeric",
+            "description": "Yes/No to Numeric 1/0",
+            "type": "boolean"
+        },
+        "drop_nan_columns": {
+            "title": "Drops columns when all values are NaN",
+            "description": "Drop NaN Columns",
+            "type": "boolean"
+        },
+        "all_constant_to_NaN": {
+            "title": "Columns with unique Value to NaN",
+            "description": "Columns with unique Value to NaN",
+            "type": "boolean"
+        },
+        "threshold_unique": {
+            "title": "Threshold of unique values",
+            "description": "Threshold of unique values set to 1 (-> value exist) ",
+            "type": "number"
+        },
+        "threshold_unique_cols": {
+            "title": "Columns for unique threshold criteria",
+            "description": "Columns for unique threshold criteria",
+            "type": "string"
+        },
+        "sparse": {
+            "title": "Sparse ",
+            "description": "Absolute or relative number criteria of sparsenss. All values of column are set to nan",
+            "type": "number"
+        },
+        "sparse_cols": {
+            "title": "Columns for check on sparse",
+            "description": "Columns for check on sparse",
+            "type": "string"
+        },
+        "drop_nan_rows_cols": {
+            "title": "Drop NaN rows columns",
+            "description": "Columns for dropping NaN rows ",
+            "type": "string"
+        },
+        "rare_value_quantile": {
+            "title": "Rare Value Quantile",
+            "description": "Rare Value Quantile",
+            "type": "number"
+        },
+        "rare_value_cols": {
+            "title": "Columns for Rare Value Criteria",
+            "description": "Columns for Rare Value Criteria",
+            "type": "string"
+        },
+        "rare_value_std": {
+            "title": "Rare Value Standard Deviation",
+            "description": "Rare Value Standard Deviation",
+            "type": "number"
+        },
+        "max_cat_num": {
+            "title": "Maximum Number of Categories",
+            "description": "Maximum Number of Categories",
+            "type": "number"
+        },
+        "max_cat_num_cols": {
+            "title": "Columns for Maximum Number Categories Criteria",
+            "description": "Columns for Maximum Number Categories Criteria",
+            "type": "string"
+        },
+        "reduce_categoricals_only": {
+            "title": "Reduce Categorical Type Columns only",
+            "description": "Reduce Categorical Type Columns only",
+            "type": "boolean"
+        },
+        "remove_duplicates_cols": {
+            "title": "Columns for Remove Duplicate Criteria",
+            "description": "Columns for Remove Duplicate Criteria",
+            "type": "string"
+        },
+        "fill_categoricals_nan": {
+            "title": "Value to replace NaN",
+            "description": "Value that replaces NaN for categorical columns",
+            "type": "string"
+        },
+        "fill_numeric_nan_zero": {
+            "title": "Replaces numeric type columns nan with 0",
+            "description": "Replaces numeric type columns nan with 0",
+            "type": "boolean"
+        }
+    }
+}

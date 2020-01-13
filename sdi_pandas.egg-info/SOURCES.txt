@@ -1,0 +1,12 @@
+README.md
+setup.py
+SDI_PANDAS.egg-info/PKG-INFO
+SDI_PANDAS.egg-info/SOURCES.txt
+SDI_PANDAS.egg-info/dependency_links.txt
+SDI_PANDAS.egg-info/top_level.txt
+sdi_pandas.egg-info/PKG-INFO
+sdi_pandas.egg-info/SOURCES.txt
+sdi_pandas.egg-info/dependency_links.txt
+sdi_pandas.egg-info/top_level.txt
+src/__init__.py
+src/sdi_pandas/__init__.py

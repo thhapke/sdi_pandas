@@ -6,31 +6,31 @@ import pandas as pd
 import io
 import re
 
-EXAMPLE_ROWS =5
+EXAMPLE_ROWS = 5
 
 try:
     api
 except NameError:
     class api:
         class Message:
-            def __init__(self,body = None,attributes = ""):
+            def __init__(self, body=None, attributes=""):
                 self.body = body
                 self.attributes = attributes
-                
-        def send(port,msg) :
-            if isinstance(msg,api.Message) :
+
+        def send(port, msg):
+            if isinstance(msg, api.Message):
                 print('Port: ', port)
                 print('Attributes: ', msg.attributes)
                 print('Body: ', str(msg.body))
-            else :
+            else:
                 print(str(msg))
             return msg
-    
-        def call(config,msg):
+
+        def call(config, msg):
             api.config = config
             return process(msg)
-            
-        def set_port_callback(port, callback) :
+
+        def set_port_callback(port, callback):
             csv = b"""col1;col2;col3
                                      1;4.4;99
                                      2;4.5;200
@@ -39,9 +39,9 @@ except NameError:
                                      """
             attributes = {'format': 'csv', "storage.filename": 'filename', 'storage.endOfSequence': True, \
                           'storage.fileIndex': 0, 'storage.fileCount': 1}
-            default_msg = api.Message(attributes=attributes,body = csv)
+            default_msg = api.Message(attributes=attributes, body=csv)
             callback(default_msg)
-    
+
         class config:
             ## Meta data
             config_params = dict()
@@ -50,38 +50,51 @@ except NameError:
             operator_description = "From CSV creates DataFrame"
             operator_description_long = "Creating a DataFrame with csv-data passed through inport."
             add_readme = dict()
-            add_readme["References"] = "[pandas doc: read_csv](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html)"
+            add_readme[
+                "References"] = "[pandas doc: read_csv](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html)"
 
             index_cols = 'None'
-            config_params['index_cols'] = {'title': 'Index Columns', 'description': 'Index columns of dataframe', 'type': 'string'}
+            config_params['index_cols'] = {'title': 'Index Columns', 'description': 'Index columns of dataframe',
+                                           'type': 'string'}
             separator = ';'
-            config_params['separator'] = {'title': 'Separator of CSV', 'description': 'Separator of CSV', 'type': 'string'}
-            error_bad_lines = False
-            config_params['error_bad_lines'] = {'title': 'Error on bad lines', 'description': 'When True raises error on bad lines', 'type': 'boolean'}
+            config_params['separator'] = {'title': 'Separator of CSV', 'description': 'Separator of CSV',
+                                          'type': 'string'}
             use_columns = 'None'
-            config_params['use_columns'] = {'title': 'Use columns from CSV', 'description': 'Use columns from CSV (list)', 'type': 'string'}
+            config_params['use_columns'] = {'title': 'Use columns from CSV',
+                                            'description': 'Use columns from CSV (list)', 'type': 'string'}
             limit_rows = 0
-            config_params['limit_rows'] = {'title': 'Limit number of rows', 'description': 'Limit number of rows for testing purpose', 'type': 'number'}
+            config_params['limit_rows'] = {'title': 'Limit number of rows',
+                                           'description': 'Limit number of rows for testing purpose', 'type': 'number'}
             downcast_int = False
-            config_params['downcast_int'] = {'title': 'Downcast integers', 'description': 'Downcast integers from int64 to int with smallest memory footprint', 'type': 'boolean'}
+            config_params['downcast_int'] = {'title': 'Downcast integers',
+                                             'description': 'Downcast integers from int64 to int with smallest memory footprint',
+                                             'type': 'boolean'}
             downcast_float = False
-            config_params['downcast_float'] = {'title': 'Downcast float datatypes', 'description': 'Downcast float64 to float32 datatypes', 'type': 'boolean'}
+            config_params['downcast_float'] = {'title': 'Downcast float datatypes',
+                                               'description': 'Downcast float64 to float32 datatypes',
+                                               'type': 'boolean'}
             df_name = 'DataFrame'
-            config_params['df_name'] = {'title': 'DataFrame name', 'description': 'DataFrame name for debugging reasons', 'type': 'string'}
-            low_memory = False
-            config_params['low_memory'] = {'title': 'Low Memory ', 'description': 'Low Memory Flag', 'type': 'boolean'}
+            config_params['df_name'] = {'title': 'DataFrame name',
+                                        'description': 'DataFrame name for debugging reasons', 'type': 'string'}
             thousands = 'None'
-            config_params['thousands'] = {'title': 'Thousands separator', 'description': 'Thousands separator', 'type': 'string'}
+            config_params['thousands'] = {'title': 'Thousands separator', 'description': 'Thousands separator',
+                                          'type': 'string'}
             decimal = '.'
-            config_params['decimal'] = {'title': 'Decimals separator', 'description': 'Decimals separator', 'type': 'string'}
-            compression = 'None'
-            config_params['compression'] = {'title': 'Compression Format', 'description': 'Compression Format', 'type': 'string'}
+            config_params['decimal'] = {'title': 'Decimals separator', 'description': 'Decimals separator',
+                                        'type': 'string'}
             dtypes = 'None'
-            config_params['dtypes'] = {'title': 'Data Types of Columns', 'description': 'Data Types of Columns (list of maps)', 'type': 'string'}
+            config_params['dtypes'] = {'title': 'Data Types of Columns',
+                                       'description': 'Data Types of Columns (list of maps)', 'type': 'string'}
             data_from_filename = 'None'
-            config_params['data_from_filename'] = {'title': 'Data from Filename', 'description': 'Data from Filename', 'type': 'string'}
+            config_params['data_from_filename'] = {'title': 'Data from Filename', 'description': 'Data from Filename',
+                                                   'type': 'string'}
             todatetime = 'None'
             config_params['todatetime'] = {'title': 'To Datetime', 'description': 'To Datetime', 'type': 'string'}
+            keyword_args = "'error_bad_lines'= True, 'low_memory' = False, compression = None, thousands = None "
+            config_params['keyword_args'] = {'title': 'Keyword Arguments',
+                                             'description': 'Mapping of key-values passed as arguments \"to read_csv\"',
+                                             'type': 'string'}
+
 
 def downcast(df, data_type, to_type):
     cols = list(df.select_dtypes(include=[data_type]).columns)
@@ -102,10 +115,10 @@ def downcast(df, data_type, to_type):
 
     return df, downcast_dict
 
-def process(msg) :
 
+def process(msg):
     logger, log_stream = slog.set_logging('DEBUG')
-    logger.debug ("Process started")
+    logger.debug("Process started")
 
     # start custom process definition
     att_dict = dict()
@@ -138,10 +151,6 @@ def process(msg) :
     else:
         raise TypeError('Message body has unsupported type' + str(type(msg.body)))
 
-    # thousands set api.config to none if '' or 'None'
-    if not api.config.thousands or api.config.thousands.upper() == 'NONE':
-        api.config.thousands = None
-
     # nrows
     nrows = None
     if not api.config.limit_rows == 0:
@@ -155,25 +164,12 @@ def process(msg) :
     att_dict['config']['dtypes'] = api.config.dtypes
     typemap = tfp.read_dict(api.config.dtypes)
 
-    # compressed
-    compression = None
-    if api.config.compression and not api.config.compression.upper() == 'NONE':
-        compression = api.config.compression
-
-    kwargs = tfp.read_dict(text= api.config.keyword_args,map_sep='=')
+    kwargs = tfp.read_dict(text=api.config.keyword_args, map_sep='=')
 
     ##### Read string from buffer
-    if not compression:
-        logger.debug("Read from uncompressed input")
-        df = pd.read_csv(csv_io, api.config.separator, usecols=use_cols, error_bad_lines=False, dtype=typemap, \
-                         warn_bad_lines=api.config.error_bad_lines, low_memory=api.config.low_memory, \
-                         thousands=api.config.thousands, decimal=api.config.decimal, nrows=nrows)
-    else:
-        logger.debug("Read from compressed input")
-        df = pd.read_csv(csv_io, api.config.separator, usecols=use_cols, error_bad_lines=False, \
-                         warn_bad_lines=api.config.error_bad_lines, dtype=typemap, low_memory=api.config.low_memory, \
-                         thousands=api.config.thousands, decimal=api.config.decimal, \
-                         compression=compression, encoding='latin-1', nrows=nrows)
+    logger.debug("Read from input")
+    df = pd.read_csv(csv_io, api.config.separator, usecols=use_cols, dtype=typemap, decimal=api.config.decimal, \
+                     nrows=nrows, **kwargs)
 
     # Data from filename
     if api.config.data_from_filename and not api.config.data_from_filename == 'None':
@@ -228,7 +224,6 @@ def process(msg) :
     for i in range(0, example_rows):
         att_dict['row_' + str(i)] = str([str(i)[:10].ljust(10) for i in result_df.iloc[i, :].tolist()])
 
-
     # end custom process definition
     msg = api.Message(attributes=att_dict, body=result_df)
     log = log_stream.getvalue()
@@ -238,7 +233,8 @@ def process(msg) :
 inports = [{'name': 'inCSVMsg', 'type': 'message'}]
 outports = [{'name': 'Info', 'type': 'string'}, {'name': 'outDataFrameMsg', 'type': 'message.DataFrame'}]
 
-def call_on_input(msg) :
+
+def call_on_input(msg):
     log, msg = process(msg)
     api.send(outports[0]['name'], log)
     api.send(outports[1]['name'], msg)
@@ -257,10 +253,10 @@ def call_on_input(msg) :
 
         api.send(outports[1]['name'], log)
 
-#api.set_port_callback(inports[0]['name'], call_on_input)
 
-def main() :
+# api.set_port_callback(inports[0]['name'], call_on_input)
 
+def main():
     import os
 
     print('Test: Default')
@@ -288,19 +284,18 @@ def main() :
         config.dtypes = "'Gesamtpreis':'float32','Postleitzahl':'uint32','Verbrauchsstufe':'uint16'"
         config.separator = ';'
         config.index_cols = "None"
-        config.error_bad_lines = False
         config.limit_rows = 0
         config.df_name = 'DataFrame'
-        config.compression = False
         config.thousands = 'None'
         config.decimal = '.'
+        config.keyword_args = "'error_bad_lines'= True, 'low_memory' = False, compression = None, comment = '#'"
         log, msg = api.call(config, msg)
 
         logfile.write(log)
 
     logfile.close()
 
+
 if __name__ == '__main__':
     main()
-    #gs.gensolution(os.path.realpath(__file__), config, inports, outports)
-        
+    # gs.gensolution(os.path.realpath(__file__), config, inports, outports)

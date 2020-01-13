@@ -42,7 +42,7 @@ except NameError:
             operator_description = "castColumns"
             operator_description_long = "Casting the types of columns according to the mapping given."
             cast = 'None'
-            config_params['cast'] = {'title': 'Cast Mapping List', 'description': "List of cast mappings. Example: price:float32, rank:uint8, type: string"}
+            config_params['cast'] = {'title': 'Cast Mapping List', 'description': "List of cast mappings. Example: price:float32, rank:uint8, 'type': string"}
             round = False
             config_params['round'] = {'title': 'Round when cast', 'description': 'when true the values are rounded before the type is casted', 'type': 'boolean'}
 

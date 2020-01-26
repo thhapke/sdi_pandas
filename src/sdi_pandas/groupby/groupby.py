@@ -1,5 +1,5 @@
 import sdi_utils.gensolution as gs
-from  sdi_utils import set_logging
+import sdi_utils.set_logging as slog
 import sdi_utils.textfield_parser as tfp
 import pandas as pd
 
@@ -58,7 +58,7 @@ except NameError:
 
 def process(msg) :
 
-    logger, log_stream = set_logging('DEBUG')
+    logger, log_stream = slog.set_logging('DEBUG')
 
     # start custom process definition
     prev_att = msg.attributes
@@ -106,8 +106,10 @@ def process(msg) :
     return log, msg
 
 
-inports = [{'name': 'input', 'type': 'message.DataFrame'}]
-outports = [{'name': 'log', 'type': 'string'}, {'name': 'output', 'type': 'message.DataFrame'}]
+inports = [{'name': 'data', 'type': 'message.DataFrame',"description":"Input data"}]
+outports = [{'name': 'log', 'type': 'string',"description":"Logging data"}, \
+            {'name': 'data', 'type': 'message.DataFrame',"description":"Output data"}]
+
 
 def call_on_input(msg) :
     log, msg = process(msg)

@@ -1,0 +1,36 @@
+{
+    "description": "LGBM Classifier",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "data",
+            "type": "message",
+            "description": "Input data"
+        }
+    ],
+    "outports": [
+        {
+            "name": "data",
+            "type": "message",
+            "description": "Output data"
+        },
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_pandas.lgbm_classifier.configSchema.json",
+        "script": "file://lgbm_classifier.py",
+        "debug_mode": true,
+        "train_cols": "None",
+        "label": "None"
+    },
+    "tags": {
+        "python36": "",
+        "sdi_utils": "",
+        "lightgbm": ""
+    },
+    "iconsrc": "lbgm.svg"
+}

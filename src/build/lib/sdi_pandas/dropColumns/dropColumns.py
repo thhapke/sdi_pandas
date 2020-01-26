@@ -1,5 +1,5 @@
 import sdi_utils.gensolution as gs
-from  sdi_utils import set_logging
+import sdi_utils.set_logging as slog
 import sdi_utils.textfield_parser as tfp
 
 import pandas as pd
@@ -38,7 +38,7 @@ except NameError:
         class config:
             ## Meta data
             config_params = dict()
-            tags = {'pandas': ''}
+            tags = {'pandas': '','sdi_utils':''}
             version = "0.0.17"
             operator_description = "Drop Columns"
             operator_description_long = "Drops or/and renames DataFrame columns"
@@ -47,6 +47,10 @@ except NameError:
 [pandas doc: drop](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.drop.html)
 [pandas doc: rename](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.rename.html)"""
 
+            debug_mode = True
+            config_params['debug_mode'] = {'title': 'Debug mode',
+                                           'description': 'Sending debug level information to log port',
+                                           'type': 'boolean'}
             drop_columns = 'None'
             config_params['drop_columns'] = {'title': 'Columns to drop', 'type': 'string'}
             config_params['drop_columns']['description'] =r"""* *comma separated list of columns*: columns to drop
@@ -61,16 +65,19 @@ renamed, e.g. Col1:col_1, Col2:col_2"""
 
 def process(msg) :
 
-    logger, log_stream = set_logging(name='dropColumns',loglevel='DEBUG')
+    att_dict = dict()
+    att_dict['config'] = dict()
+
+    att_dict['operator'] = 'dropColumns'
+    logger, log_stream = slog.set_logging(att_dict['operator'])
+    if api.config.debug_mode == True:
+        logger.setLevel('DEBUG')
 
     # start custom process definition
     prev_att = msg.attributes
     df = msg.body
     if not isinstance(df, pd.DataFrame):
         raise TypeError('Message body does not contain a pandas DataFrame')
-
-    att_dict = dict()
-    att_dict['config'] = dict()
 
     ###### start of doing calculation
     att_dict['config']['drop_columns'] = api.config.drop_columns
@@ -91,17 +98,18 @@ def process(msg) :
     ##############################################
 
     # df from body
-    att_dict['operator'] = 'dropColumns'  # name of operator
     att_dict['memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
-    att_dict['name'] = prev_att['name']
-    att_dict['columns'] = list(df.columns)
-    att_dict['number_columns'] = df.shape[1]
-    att_dict['number_rows'] = df.shape[0]
+    att_dict['columns'] = str(list(df.columns))
+    att_dict['shape'] = df.shape
+    att_dict['id'] = str(id(df))
 
-    example_rows = EXAMPLE_ROWS if att_dict['number_rows'] > EXAMPLE_ROWS else att_dict['number_rows']
+    logger.debug('Columns: {}'.format(str(df.columns)))
+    logger.debug('Shape (#rows - #columns): {} - {}'.format(df.shape[0], df.shape[1]))
+    logger.debug('Memory: {} kB'.format(att_dict['memory']))
+    example_rows = EXAMPLE_ROWS if df.shape[0] > EXAMPLE_ROWS else df.shape[0]
     for i in range(0, example_rows):
         att_dict['row_' + str(i)] = str([str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])
-
+        logger.debug('Head data: {}'.format(att_dict['row_' + str(i)]))
     # end custom process definition
 
     log = log_stream.getvalue()
@@ -109,8 +117,9 @@ def process(msg) :
     return log, msg
 
 
-inports = [{'name': 'input', 'type': 'message.DataFrame'}]
-outports = [{'name': 'log', 'type': 'string'}, {'name': 'output', 'type': 'message.DataFrame'}]
+inports = [{"name":"data","type":"message.DataFrame","description":"Input data"}]
+outports = [{"name":"log","type":"string","description":"Logging"},\
+            {"name":"data","type":"message.DataFrame","description":"Output data"}]
 
 def call_on_input(msg) :
     log, msg = process(msg)

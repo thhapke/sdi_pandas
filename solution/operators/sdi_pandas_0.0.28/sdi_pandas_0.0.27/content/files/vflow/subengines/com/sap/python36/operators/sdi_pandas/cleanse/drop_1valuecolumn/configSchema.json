@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/sdi_pandas.cleanse.drop_1valuecolumn.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "script": {
+            "type": "string"
+        },
+        "columns": {
+            "title": "Columns",
+            "description": "Columns to check for 1 unique value",
+            "type": "string"
+        },
+        "info_only": {
+            "title": "Info only",
+            "description": "Only check without data modification.",
+            "type": "boolean"
+        }
+    }
+}

@@ -8,4 +8,6 @@ RUN python3 -m pip --no-cache-dir install sklearn
 
 RUN python3 -m pip --no-cache-dir install xgboost
 
-RUN python3 -m pip --no-cache-dir install textfield_parser
+RUN python3 -m pip --no-cache-dir install lightgbm
+
+RUN python3 -m pip --no-cache-dir install sdi_utils

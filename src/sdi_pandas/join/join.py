@@ -1,5 +1,5 @@
 import sdi_utils.gensolution as gs
-from  sdi_utils import set_logging
+import sdi_utils.set_logging as slog
 import sdi_utils.textfield_parser as tfp
 import pandas as pd
 
@@ -43,11 +43,16 @@ except NameError:
             ## Meta data
             config_params = dict()
             version = '0.0.17'
-            tags = {'pandas': ''}
+            tags = {'pandas': '','sdi_utils':''}
             operator_description = "Join Dataframes"
             operator_description_long = "Joining 2 DataFrames using either the indices of both or on specified columns. Setting the new index ist necessary."
             add_readme = dict()
             add_readme["References"] = r"""[pandas doc: .merge](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.merge.html)"""
+
+            debug_mode = True
+            config_params['debug_mode'] = {'title': 'Debug mode',
+                                           'description': 'Sending debug level information to log port',
+                                           'type': 'boolean'}
             how = 'inner'
             config_params['how'] = {'title': 'How to join', 'description': 'How to join 2 DataFrames', 'type': 'string', 'enum': ['inner', 'outer', 'left', 'right']}
             on_index = False
@@ -64,11 +69,15 @@ except NameError:
 
 def process(left_msg, right_msg) :
 
-    logger, log_stream = set_logging('DEBUG')
-
-    # start custom process definition
     att_dict = dict()
     att_dict['config'] = dict()
+
+    att_dict['operator'] = 'join'
+    logger, log_stream = slog.set_logging(att_dict['operator'])
+    if api.config.debug_mode == True:
+        logger.setLevel('DEBUG')
+
+    # start custom process definition
 
     l_att = left_msg.attributes
     r_att = right_msg.attributes
@@ -124,15 +133,18 @@ def process(left_msg, right_msg) :
     if df.empty == True:
         raise ValueError('Merged Dataframe is empty')
 
-    att_dict['operator'] = 'joinDataFrames'
     att_dict['memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
     att_dict['columns'] = str(list(df.columns))
-    att_dict['number_columns'] = df.shape[1]
-    att_dict['number_rows'] = df.shape[0]
+    att_dict['shape'] = df.shape
+    att_dict['id'] = str(id(df))
 
-    example_rows = EXAMPLE_ROWS if att_dict['number_rows'] > EXAMPLE_ROWS else att_dict['number_rows']
+    logger.debug('Columns: {}'.format(str(df.columns)))
+    logger.debug('Shape (#rows - #columns): {} - {}'.format(df.shape[0],df.shape[1]))
+    logger.debug('Memory: {} kB'.format(att_dict['memory']))
+    example_rows = EXAMPLE_ROWS if df.shape[0] > EXAMPLE_ROWS else df.shape[0]
     for i in range(0, example_rows):
         att_dict['row_' + str(i)] = str([str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])
+        logger.debug('Head data: {}'.format(att_dict['row_' + str(i)]))
 
     # end custom process definition
 
@@ -142,8 +154,10 @@ def process(left_msg, right_msg) :
     return log, msg
 
 
-inports = [{'name': 'left_input', 'type': 'message.DataFrame'}, {'name': 'right_input', 'type': 'message.DataFrame'}]
-outports = [{'name': 'log', 'type': 'string'}, {'name': 'output', 'type': 'message.DataFrame'}]
+inports = [{'name': 'left_input', 'type': 'message.DataFrame',"description":"Left input data"}, \
+           {'name': 'right_input', 'type': 'message.DataFrame',"description":"Right input data"}]
+outports = [{'name': 'log', 'type': 'string',"description":"Logging"},\
+            {'name': 'output', 'type': 'message.DataFrame',"description":"Output data"}]
 
 def call_on_input(left_msg, right_msg) :
     log, msg = process(left_msg, right_msg)

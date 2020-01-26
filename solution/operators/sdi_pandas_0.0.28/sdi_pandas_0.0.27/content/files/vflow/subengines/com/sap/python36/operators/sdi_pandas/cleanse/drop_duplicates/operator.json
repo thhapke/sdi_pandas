@@ -1,0 +1,33 @@
+{
+    "description": "Drop Duplicates",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "input",
+            "type": "message",
+            "description": "Input data"
+        }
+    ],
+    "outports": [
+        {
+            "name": "output",
+            "type": "message",
+            "description": "Output data"
+        },
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_pandas.cleanse.drop_duplicates.configSchema.json",
+        "script": "file://drop_duplicates.py",
+        "columns": "All",
+        "keep": "first"
+    },
+    "tags": {
+        "python36": ""
+    },
+    "iconsrc": "DI_PandasV2.svg"
+}

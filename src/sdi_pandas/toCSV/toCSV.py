@@ -35,11 +35,16 @@ except NameError:
             ## Meta data
             config_params = dict()
             version = '0.0.1'
-            tags = {'pandas': ''}
-            operator_description = "toCSV"
+            tags = {'pandas': '','sdi_utils':''}
+            operator_description = "To CSV from DataFrame"
             operator_description_long = "Creates a csv-formatted data passed to outport as message with the csv-string as body."
             add_readme = dict()
             add_readme["References"] = r"""[pandas doc: to_csv](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_csv.html)"""
+
+            debug_mode = True
+            config_params['debug_mode'] = {'title': 'Debug mode',
+                                           'description': 'Sending debug level information to log port',
+                                           'type': 'boolean'}
             write_index = False
             config_params['write_index'] = {'title': 'Write Index', 'description': 'Write index or ignore it', 'type': 'boolean'}
             separator = ';'
@@ -49,8 +54,13 @@ except NameError:
 
 
 def process(msg) :
+    att_dict = dict()
+    att_dict['config'] = dict()
 
-    logger, log_stream = slog.set_logging('DEBUG')
+    att_dict['operator'] = 'anonymizeData'
+    logger, log_stream = slog.set_logging(att_dict['operator'])
+    if api.config.debug_mode == True:
+        logger.setLevel('DEBUG')
 
     # start custom process definition
     df = msg.body
@@ -65,8 +75,10 @@ def process(msg) :
     return log, data_str
 
 
-inports = [{'name': 'inDataFrameMsg', 'type': 'message.DataFrame'}]
-outports = [{'name': 'Info', 'type': 'string'}, {'name': 'outCSVMsg', 'type': 'string'}]
+inports = [{'name': 'data', 'type': 'message.DataFrame',"description":"Input data"}]
+outports = [{'name': 'log', 'type': 'string',"description":"Logging data"}, \
+            {'name': 'csv', 'type': 'string',"description":"Output data as csv"}]
+
 
 def call_on_input(msg) :
     log, data_str = process(msg)

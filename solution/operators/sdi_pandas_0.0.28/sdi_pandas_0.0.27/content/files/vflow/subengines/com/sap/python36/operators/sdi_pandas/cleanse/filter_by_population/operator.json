@@ -1,0 +1,39 @@
+{
+    "description": "Filter by Population",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "input",
+            "type": "message",
+            "description": "Input data"
+        }
+    ],
+    "outports": [
+        {
+            "name": "output",
+            "type": "message",
+            "description": "Output data"
+        },
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging"
+        },
+        {
+            "name": "transformation",
+            "type": "string",
+            "description": "transformation"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_pandas.cleanse.filter_by_population.configSchema.json",
+        "script": "file://filter_by_population.py",
+        "columns": "All",
+        "info_only": "True",
+        "threshold": 0.0001
+    },
+    "tags": {
+        "python36": ""
+    },
+    "iconsrc": "DI_PandasV2.svg"
+}

@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: sdi-pandas
-Version: 0.0.18
+Version: 0.0.29
 Summary: List of operators using the pandas module for processing the input
 Home-page: https://github.com/thhapke/sdi_pandas/
 Author: Thorsten Hapke

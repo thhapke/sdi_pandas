@@ -1,0 +1,44 @@
+{
+    "description": "Categorical to Existence Transformation",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "data",
+            "type": "message.DataFrame",
+            "description": "Input data"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging"
+        },
+        {
+            "name": "data",
+            "type": "message.DataFrame",
+            "description": "Output data"
+        },
+        {
+            "name": "transformation",
+            "type": "message.DataFrame",
+            "description": "Transformation data"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_pandas.cleanse.categorical2exist.configSchema.json",
+        "script": "file://categorical2exist.py",
+        "debug_mode": true,
+        "columns": "All",
+        "info_only": "True",
+        "threshold": 0.0001,
+        "upper_threshold": 0.99,
+        "num_values": 2,
+        "equal_only": "False"
+    },
+    "tags": {
+        "python36": "",
+        "sdi_utils": ""
+    },
+    "iconsrc": "DI_PandasV2.svg"
+}

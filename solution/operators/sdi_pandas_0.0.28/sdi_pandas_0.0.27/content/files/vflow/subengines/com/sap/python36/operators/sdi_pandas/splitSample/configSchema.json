@@ -1,0 +1,33 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/sdi_pandas.splitSample.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "script": {
+            "type": "string"
+        },
+        "label": {
+            "title": "Label",
+            "description": "Label to split",
+            "type": "string"
+        },
+        "split": {
+            "title": "Split Factor",
+            "description": "Split Factor",
+            "type": "float"
+        },
+        "seed": {
+            "title": "Seed",
+            "description": "Seed for random number generator",
+            "type": "int"
+        },
+        "to_category": {
+            "title": "To Categorgy",
+            "description": "Cast <object> data type to categorical.",
+            "type": "Boolean"
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/sdi_pandas.anonymizeData.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "script": {
+            "type": "string"
+        },
+        "to_nan": {
+            "title": "To NaN",
+            "description": "Character to be replaced by NaN",
+            "type": "string"
+        },
+        "anonymize_cols": {
+            "title": "Anonymize Columns",
+            "description": "Anonymize columns for replacing with random strings orlinear transformed numbers",
+            "type": "string"
+        },
+        "anonymize_to_int_cols": {
+            "title": "Anonymize to Integer Columns",
+            "description": "Anonymize columns for replacing with random integers, e.g. IDs",
+            "type": "string"
+        },
+        "enumerate_cols": {
+            "title": "Prefix of enumerated columns",
+            "description": "Prefix of enumerated columns",
+            "type": "string"
+        }
+    }
+}

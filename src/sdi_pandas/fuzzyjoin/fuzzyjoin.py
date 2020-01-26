@@ -1,5 +1,5 @@
 import sdi_utils.gensolution as gs
-from  sdi_utils import set_logging
+import sdi_utils.set_logging as slog
 import sdi_utils.textfield_parser as tfp
 from fuzzywuzzy import fuzz
 import pandas as pd
@@ -49,8 +49,8 @@ except NameError:
             ## Meta data
             config_params = dict()
             version = '0.0.17'
-            tags = {'fuzzywuzzy': '', 'pandas': ''}
-            operator_description = "fuzzyjoin"
+            tags = {'fuzzywuzzy': '', 'pandas': '','sdi_utils':''}
+            operator_description = "Fuzzy Join"
             operator_description_long ="A test datasets (testDataFrame) are checked if they (string-) match with a\
              base dataset (baseDataFrame). If more than one column are provided for checking then the average is \
              calculated of all columns."
@@ -58,7 +58,11 @@ except NameError:
             add_readme["References"] = r"""
 [pandas doc: groupby](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html)
 [fuzzywuzzy](https://github.com/seatgeek/fuzzywuzzy)"""
-            
+
+            debug_mode = True
+            config_params['debug_mode'] = {'title': 'Debug mode',
+                                           'description': 'Sending debug level information to log port',
+                                           'type': 'boolean'}
             check_columns = 'None'
             config_params['check_columns'] = {'title': 'Columns to check', 'description': 'Columns to check', 'type': 'string'}
             limit = 90
@@ -78,14 +82,17 @@ except NameError:
 
 
 def process(test_msg, base_msg) :
+    att_dict = dict()
+    att_dict['config'] = dict()
 
-    logger, log_stream = set_logging('DEBUG')
+    att_dict['operator'] = 'fuzzyjoin'
+    logger, log_stream = slog.set_logging(att_dict['operator'])
+    if api.config.debug_mode == True:
+        logger.setLevel('DEBUG')
 
     # start custom process definition
     test_att = test_msg.attributes
     base_att = base_msg.attributes
-
-    att_dict = dict()
 
     if test_att['name'] == base_att['name']:
         att_dict['name'] = test_att['name']
@@ -199,19 +206,19 @@ def process(test_msg, base_msg) :
     if df.empty:
         logger.warning('DataFrame is empty')
     else :
-        att_dict['operator'] = 'fuzzyjoinDataFrames'
         att_dict['memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
         att_dict['columns'] = str(list(df.columns))
-        att_dict['number_columns'] = df.shape[1]
-        att_dict['number_rows'] = df.shape[0]
-        if 'id' in base_att.keys():
-            att_dict['id'] = base_att['id'] + '; ' + att_dict['operator'] + ': ' + str(id(df))
-        else:
-            att_dict['id'] = att_dict['operator'] + ': ' + str(id(df))
+        att_dict['shape'] = df.shape
+        att_dict['id'] = str(id(df))
 
-        example_rows = EXAMPLE_ROWS if att_dict['number_rows'] > EXAMPLE_ROWS else att_dict['number_rows']
+        logger.debug('Columns: {}'.format(str(df.columns)))
+        logger.debug('Shape (#rows - #columns): {} - {}'.format(df.shape[0], df.shape[1]))
+        logger.debug('Memory: {} kB'.format(att_dict['memory']))
+        example_rows = EXAMPLE_ROWS if df.shape[0] > EXAMPLE_ROWS else df.shape[0]
         for i in range(0, example_rows):
             att_dict['row_' + str(i)] = str([str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])
+            logger.debug('Head data: {}'.format(att_dict['row_' + str(i)]))
+
     # end custom process definition
 
     log = log_stream.getvalue()
@@ -219,8 +226,11 @@ def process(test_msg, base_msg) :
     return log, msg
 
 
-inports = [{'name': 'testdata', 'type': 'message.DataFrame'}, {'name': 'basedata', 'type': 'message.DataFrame'}]
-outports = [{'name': 'log', 'type': 'string'}, {'name': 'output', 'type': 'message.DataFrame'}]
+inports = [{'name': 'testdata', 'type': 'message.DataFrame',"description":"Input test data"},\
+           {'name': 'basedata', 'type': 'message.DataFrame',"description":"Input base data"}]
+outports = [{'name': 'log', 'type': 'string',"description":"Logging data"}, \
+            {'name': 'data', 'type': 'message.DataFrame',"description":"Output data"}]
+
 
 def call_on_input(test_msg, base_msg) :
     log, msg = process(test_msg, base_msg)

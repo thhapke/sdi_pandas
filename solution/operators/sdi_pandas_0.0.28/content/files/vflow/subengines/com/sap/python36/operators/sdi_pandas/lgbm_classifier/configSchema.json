@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/sdi_pandas.lgbm_classifier.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "script": {
+            "type": "string"
+        },
+        "debug_mode": {
+            "title": "Debug mode",
+            "description": "Sending debug level information to log port",
+            "type": "boolean"
+        },
+        "train_cols": {
+            "title": "Training Columns",
+            "description": "Columns of DataFrame that are used for training",
+            "type": "string"
+        },
+        "label": {
+            "title": "Label",
+            "description": "Label of DataFrame that needs to be predict",
+            "type": "string"
+        }
+    }
+}

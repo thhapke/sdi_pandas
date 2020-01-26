@@ -1,0 +1,32 @@
+{
+    "description": "To CSV from DataFrame",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "inDataFrameMsg",
+            "type": "message.DataFrame"
+        }
+    ],
+    "outports": [
+        {
+            "name": "Info",
+            "type": "string"
+        },
+        {
+            "name": "outCSVMsg",
+            "type": "string"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_pandas.toCSV.configSchema.json",
+        "script": "file://toCSV.py",
+        "write_index": false,
+        "separator": ";",
+        "reset_index": false
+    },
+    "tags": {
+        "pandas": "",
+        "sdi_utils": ""
+    },
+    "iconsrc": "DI_PandasV2.svg"
+}

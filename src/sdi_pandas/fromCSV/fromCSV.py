@@ -46,13 +46,16 @@ except NameError:
             ## Meta data
             config_params = dict()
             version = "0.0.17"
-            tags = {'pandas': ''}
-            operator_description = "From CSV creates DataFrame"
+            tags = {'pandas': '','sdi_utils':''}
+            operator_description = "From CSV to DataFrame"
             operator_description_long = "Creating a DataFrame with csv-data passed through inport."
             add_readme = dict()
             add_readme[
                 "References"] = "[pandas doc: read_csv](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html)"
 
+            debug_mode = True
+            config_params['debug_mode'] = {'title': 'Debug mode', 'description': 'Sending debug level information to log port',
+                                           'type': 'boolean'}
             index_cols = 'None'
             config_params['index_cols'] = {'title': 'Index Columns', 'description': 'Index columns of dataframe',
                                            'type': 'string'}
@@ -76,9 +79,7 @@ except NameError:
             df_name = 'DataFrame'
             config_params['df_name'] = {'title': 'DataFrame name',
                                         'description': 'DataFrame name for debugging reasons', 'type': 'string'}
-            thousands = 'None'
-            config_params['thousands'] = {'title': 'Thousands separator', 'description': 'Thousands separator',
-                                          'type': 'string'}
+
             decimal = '.'
             config_params['decimal'] = {'title': 'Decimals separator', 'description': 'Decimals separator',
                                         'type': 'string'}
@@ -117,23 +118,26 @@ def downcast(df, data_type, to_type):
 
 
 def process(msg):
-    logger, log_stream = slog.set_logging('DEBUG')
-    logger.debug("Process started")
 
-    # start custom process definition
     att_dict = dict()
     att_dict['config'] = dict()
 
+    att_dict['operator'] = 'fromCSV'
+    logger, log_stream = slog.set_logging(att_dict['operator'])
+    if api.config.debug_mode == True :
+        logger.setLevel('DEBUG')
+
+    logger.debug("Process started")
+
     global result_df
 
-    # json string of attributes already converted to dict
-    # att_dict['prev_attributes'] = msg.attributes
     att_dict['filename'] = msg.attributes["storage.filename"]
 
     logger.info('Filename: {} index: {}  count: {}  endofSeq: {}'.format(msg.attributes["storage.filename"], \
                                                                          msg.attributes["storage.fileIndex"], \
                                                                          msg.attributes["storage.fileCount"], \
                                                                          msg.attributes["storage.endOfSequence"]))
+
 
     # using file name from attributes of ReadFile
     if not api.config.df_name or api.config.df_name == "DataFrame":
@@ -205,6 +209,7 @@ def process(msg):
 
     # stores the result in global variable result_df
     if msg.attributes['storage.fileIndex'] == 0:
+        logger.debug('Added to DataFrame: {}'.format(att_dict['filename']))
         result_df = df
     else:
         result_df = pd.concat([result_df, df], axis=0, sort=False)
@@ -212,17 +217,20 @@ def process(msg):
     ##############################################
     #  final infos to attributes and info message
     ##############################################
-    att_dict['operator'] = 'fromCSVDataFrame'
+
     att_dict['memory'] = result_df.memory_usage(deep=True).sum() / 1024 ** 2
     att_dict['columns'] = list(result_df.columns)
     att_dict['dtypes'] = {col: str(ty) for col, ty in df.dtypes.to_dict().items()}
-    att_dict['number_columns'] = result_df.shape[1]
-    att_dict['number_rows'] = result_df.shape[0]
+    att_dict['shape'] = result_df.shape
     att_dict['id'] = str(id(result_df))
 
-    example_rows = EXAMPLE_ROWS if att_dict['number_rows'] > EXAMPLE_ROWS else att_dict['number_rows']
+    logger.debug('Columns: {}'.format(str(result_df.columns)))
+    logger.debug('Shape (#rows - #columns): {} - {}'.format(result_df.shape[0],result_df.shape[1]))
+    logger.debug('Memory: {} kB'.format(att_dict['memory']))
+    example_rows = EXAMPLE_ROWS if result_df.shape[0] > EXAMPLE_ROWS else result_df.shape[0]
     for i in range(0, example_rows):
         att_dict['row_' + str(i)] = str([str(i)[:10].ljust(10) for i in result_df.iloc[i, :].tolist()])
+        logger.debug('Head data: {}'.format(att_dict['row_' + str(i)]))
 
     # end custom process definition
     msg = api.Message(attributes=att_dict, body=result_df)
@@ -230,9 +238,9 @@ def process(msg):
     return log, msg
 
 
-inports = [{'name': 'inCSVMsg', 'type': 'message'}]
-outports = [{'name': 'Info', 'type': 'string'}, {'name': 'outDataFrameMsg', 'type': 'message.DataFrame'}]
-
+inports = [{'name': 'csv', 'type': 'message',"description":"Input byte or string csv"}]
+outports = [{'name': 'log', 'type': 'string',"description":"Logging data"}, \
+            {'name': 'data', 'type': 'message.DataFrame',"description":"Output data"}]
 
 def call_on_input(msg):
     log, msg = process(msg)
@@ -266,9 +274,17 @@ def main():
     in_dir = '/Users/Shared/data/OptRanking/portal1_samples25'
     files_in_dir = [f for f in os.listdir(in_dir) if os.path.isfile(os.path.join(in_dir, f)) and re.match('.*csv', f)]
 
-    logfile = open('/tmp/mylog/fromCSV.log', 'w')
+    try :
+        logfile = open('/tmp/mylog/fromCSV.log', 'w')
+    except FileNotFoundError :
+        print('logfile: {}'.format(os.getcwd()))
+        logfile = open('fromCSV.log', 'w')
 
     for i, fname in enumerate(files_in_dir):
+
+        if i == 5 :
+            break
+
         fbase = fname.split('.')[0]
         eos = True if len(files_in_dir) == i + 1 else False
         attributes = {'format': 'csv', "storage.filename": fbase, 'storage.endOfSequence': eos, \
@@ -278,6 +294,7 @@ def main():
 
         ########## Operation fromCSV
         config = api.config
+        config.debug_mode = True
         config.use_columns = "'Exportdatum','Postleitzahl','Ort','Ortsteil','Verbrauchsstufe','Rang','Gesamtpreis','Anbietername'"
         config.downcast_float = True
         config.downcast_int = True
@@ -286,7 +303,6 @@ def main():
         config.index_cols = "None"
         config.limit_rows = 0
         config.df_name = 'DataFrame'
-        config.thousands = 'None'
         config.decimal = '.'
         config.keyword_args = "'error_bad_lines'= True, 'low_memory' = False, compression = None, comment = '#'"
         log, msg = api.call(config, msg)

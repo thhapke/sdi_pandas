@@ -1,5 +1,5 @@
 import sdi_utils.gensolution as gs
-from  sdi_utils import set_logging
+import sdi_utils.set_logging as slog
 import sdi_utils.textfield_parser as tfp
 import pandas as pd
 
@@ -38,7 +38,7 @@ except NameError:
             ## Meta data
             config_params = dict()
             version = '0.0.17'
-            tags = {'pandas': ''}
+            tags = {'pandas': '','sdi_utils':''}
             operator_description = "Sample from Dataframe"
             operator_description_long = "Sampling over a DataFrame but keeps datasets with the same value of the \
             defined column as set and not splitting them, e.g. sampling with the invariant_column='date' samples \
@@ -47,6 +47,11 @@ except NameError:
             the *invariant_column* compared to the *sample_size* this could deviate a lot. "
             add_readme = dict()
             add_readme["References"] = "[pandas doc: sample](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.sample.html)"
+
+            debug_mode = True
+            config_params['debug_mode'] = {'title': 'Debug mode',
+                                           'description': 'Sending debug level information to log port',
+                                           'type': 'boolean'}
             sample_size = 0.1
             config_params['sample_size'] = {'title': 'Sample size', 'description': 'Sample size', 'type': 'number'}
             random_state = 1
@@ -56,8 +61,13 @@ except NameError:
 
 
 def process(msg) :
+    att_dict = dict()
+    att_dict['config'] = dict()
 
-    logger, log_stream = set_logging('DEBUG')
+    att_dict['operator'] = 'sample'
+    logger, log_stream = slog.set_logging(att_dict['operator'])
+    if api.config.debug_mode == True:
+        logger.setLevel('DEBUG')
 
     # start custom process definition
     # test if body refers to a DataFrame type
@@ -107,16 +117,18 @@ def process(msg) :
     if df.empty:
         raise ValueError('DataFrame is empty')
 
-    att_dict['operator'] = 'selectDataFrame'
-    att_dict['name'] = prev_att['name']
     att_dict['memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
     att_dict['columns'] = str(list(df.columns))
-    att_dict['number_columns'] = df.shape[1]
-    att_dict['number_rows'] = df.shape[0]
+    att_dict['shape'] = df.shape
+    att_dict['id'] = str(id(df))
 
-    example_rows = EXAMPLE_ROWS if att_dict['number_rows'] > EXAMPLE_ROWS else att_dict['number_rows']
+    logger.debug('Columns: {}'.format(str(df.columns)))
+    logger.debug('Shape (#rows - #columns): {} - {}'.format(df.shape[0], df.shape[1]))
+    logger.debug('Memory: {} kB'.format(att_dict['memory']))
+    example_rows = EXAMPLE_ROWS if df.shape[0] > EXAMPLE_ROWS else df.shape[0]
     for i in range(0, example_rows):
         att_dict['row_' + str(i)] = str([str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])
+        logger.debug('Head data: {}'.format(att_dict['row_' + str(i)]))
 
     # end custom process definition
 
@@ -125,8 +137,9 @@ def process(msg) :
     return log, msg
 
 
-inports = [{'name': 'input', 'type': 'message.DataFrame'}]
-outports = [{'name': 'log', 'type': 'string'}, {'name': 'output', 'type': 'message.DataFrame'}]
+inports = [{'name': 'data', 'type': 'message.DataFrame',"description":"Input data"}]
+outports = [{'name': 'log', 'type': 'string',"description":"Logging data"}, \
+            {'name': 'data', 'type': 'message.DataFrame',"description":"Output data"}]
 
 def call_on_input(msg) :
     log, msg = process(msg)

@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/Users/d051079/OneDrive - SAP SE/GitHub/SDI_Pandas/venv/bin/python" "$0" "$@"
+'''exec' "/Users/d051079/OneDrive - SAP SE/GitHub/sdi_pandas/venv/bin/python" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re

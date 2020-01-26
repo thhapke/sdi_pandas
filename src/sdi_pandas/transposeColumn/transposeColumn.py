@@ -1,8 +1,10 @@
 import sdi_utils.gensolution as gs
-from  sdi_utils import set_logging
+import sdi_utils.set_logging as slog
 import sdi_utils.textfield_parser as tfp
 
 import pandas as pd
+
+EXAMPLE_ROWS = 5
 
 try:
     api
@@ -42,13 +44,17 @@ except NameError:
             ## Meta data
             config_params = dict()
             version = '0.0.17'
-            tags = {'pandas': ''}
+            tags = {'pandas': '','sdi_utils':''}
             operator_description = "Transpose Column"
             operator_description_long = "Transposes the values of a column to new columns with the name of the values. \
             The values are taken from the value_column. The labels of the new columns are a concatination ot the\
              *transpose_column* and the value. *transpose_column* and *value_column*  are dropped."
             add_readme = dict()
             add_readme["References"] = "[pandas doc: groupby](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html)"
+            debug_mode = True
+            config_params['debug_mode'] = {'title': 'Debug mode',
+                                           'description': 'Sending debug level information to log port',
+                                           'type': 'boolean'}
             transpose_column = 'None'
             config_params['transpose_column'] = {'title': 'Transpose Column', 'description': 'Transpose Column', 'type': 'string'}
             value_column = 'None'
@@ -67,17 +73,19 @@ except NameError:
             config_params['prefix'] = {'title': 'Prefix of transposed values', 'description': 'Prefix of transposed values', 'type': 'string'}
 
 def process(msg) :
+    att_dict = dict()
+    att_dict['config'] = dict()
 
-    logger, log_stream = set_logging('DEBUG')
+    att_dict['operator'] = 'transposeColumn'
+    logger, log_stream = slog.set_logging(att_dict['operator'])
+    if api.config.debug_mode == True:
+        logger.setLevel('DEBUG')
 
     # start custom process definition
     prev_att = msg.attributes
     df = msg.body
     if not isinstance(df, pd.DataFrame):
         raise TypeError('Message body does not contain a pandas DataFrame')
-
-    att_dict = dict()
-    att_dict['config'] = dict()
 
     ###### start of doing calculation
 
@@ -124,14 +132,18 @@ def process(msg) :
     #  final infos to attributes and info message
     #####################
 
-    # df from body
-    att_dict['operator'] = 'transposeColumnDataFrame'  # name of operator
-    att_dict['mem_usage'] = df.memory_usage(deep=True).sum() / 1024 ** 2
-    att_dict['name'] = prev_att['name']
-    att_dict['columns'] = list(df.columns)
-    att_dict['number_columns'] = len(att_dict['columns'])
-    att_dict['number_rows'] = len(df.index)
-    att_dict['example_row_1'] = str(df.iloc[0, :].tolist())
+    att_dict['memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
+    att_dict['columns'] = str(list(df.columns))
+    att_dict['shape'] = df.shape
+    att_dict['id'] = str(id(df))
+
+    logger.debug('Columns: {}'.format(str(df.columns)))
+    logger.debug('Shape (#rows - #columns): {} - {}'.format(df.shape[0], df.shape[1]))
+    logger.debug('Memory: {} kB'.format(att_dict['memory']))
+    example_rows = EXAMPLE_ROWS if df.shape[0] > EXAMPLE_ROWS else df.shape[0]
+    for i in range(0, example_rows):
+        att_dict['row_' + str(i)] = str([str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])
+        logger.debug('Head data: {}'.format(att_dict['row_' + str(i)]))
 
     # end custom process definition
 
@@ -140,8 +152,9 @@ def process(msg) :
     return log, msg
 
 
-inports = [{'name': 'inDataFrameMsg', 'type': 'message.DataFrame'}]
-outports = [{'name': 'Info', 'type': 'string'}, {'name': 'outDataFrameMsg', 'type': 'message.DataFrame'}]
+inports = [{'name': 'data', 'type': 'message.DataFrame',"description":"Input data"}]
+outports = [{'name': 'log', 'type': 'string',"description":"Logging data"}, \
+            {'name': 'data', 'type': 'message.DataFrame',"description":"Output data"}]
 
 def call_on_input(msg) :
     log, msg = process(msg)

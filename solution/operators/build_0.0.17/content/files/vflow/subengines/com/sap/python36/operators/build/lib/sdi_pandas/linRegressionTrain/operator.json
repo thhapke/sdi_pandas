@@ -1,0 +1,35 @@
+{
+    "description": "Train Linear Regression",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "input",
+            "type": "message.DataFrame"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string"
+        },
+        {
+            "name": "outData",
+            "type": "message.DataFrame"
+        },
+        {
+            "name": "outCoef",
+            "type": "message.DataFrame"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/build.lib.sdi_pandas.linRegressionTrain.configSchema.json",
+        "script": "file://linRegressionTrain.py",
+        "prediction_col": "None",
+        "regression_cols": "None",
+        "segment_cols": "None"
+    },
+    "tags": {
+        "": "",
+        "pandas": ""
+    }
+}

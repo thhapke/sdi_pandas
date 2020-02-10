@@ -1,0 +1,40 @@
+{
+    "description": "fuzzyjoin",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "testdata",
+            "type": "message.DataFrame"
+        },
+        {
+            "name": "basedata",
+            "type": "message.DataFrame"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string"
+        },
+        {
+            "name": "output",
+            "type": "message.DataFrame"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/build.lib.sdi_pandas.fuzzyjoin.configSchema.json",
+        "script": "file://fuzzyjoin.py",
+        "check_columns": "None",
+        "limit": 90,
+        "test_index": "test",
+        "only_matching_rows": false,
+        "only_index": false,
+        "joint_id": false,
+        "base_index": "None",
+        "add_non_matching": false
+    },
+    "tags": {
+        "fuzzywuzzy": "",
+        "pandas": ""
+    }
+}

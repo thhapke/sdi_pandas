@@ -1,0 +1,35 @@
+{
+    "description": "Cast Column Data Types",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "data",
+            "type": "message.DataFrame",
+            "description": "Input data"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging"
+        },
+        {
+            "name": "data",
+            "type": "message.DataFrame",
+            "description": "Output data"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_pandas.castColumns.configSchema.json",
+        "script": "file://castColumns.py",
+        "debug_mode": true,
+        "cast": "None",
+        "round": false
+    },
+    "tags": {
+        "pandas": "",
+        "sdi_utils": ""
+    },
+    "iconsrc": "DI_PandasV2.svg"
+}

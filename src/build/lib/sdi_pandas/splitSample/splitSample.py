@@ -31,14 +31,14 @@ account properly. '
             config_params['debug_mode'] = {'title': 'Debug mode',
                                            'description': 'Sending debug level information to log port',
                                            'type': 'boolean'}
-            label = 'None'
-            config_params['label'] = {'title': 'Label', 'description': 'Label to split', 'type': 'string'}
+            label_col = 'None'
+            config_params['label_col'] = {'title': 'Column of Labels', 'description': 'Label to split', 'type': 'string'}
             split = 0.8
-            config_params['split'] = {'title': 'Split Factor', 'description': 'Split Factor', 'type': 'float'}
+            config_params['split'] = {'title': 'Split Factor', 'description': 'Split Factor', 'type': 'number'}
             seed = 1
-            config_params['seed'] = {'title': 'Seed', 'description': 'Seed for random number generator', 'type': 'int'}
+            config_params['seed'] = {'title': 'Seed', 'description': 'Seed for random number generator', 'type': 'integer'}
             to_category = False
-            config_params['to_category'] = {'title': 'To Categorgy', 'description': 'Cast <object> data type to categorical.', 'type': 'Boolean'}
+            config_params['to_category'] = {'title': 'To Categorgy', 'description': 'Cast <object> data type to categorical.', 'type': 'boolean'}
 
         class Message:
             def __init__(self,body = None,attributes = ""):
@@ -58,7 +58,7 @@ account properly. '
             df = pd.DataFrame(
                 {'icol': [1, 1, 3, 3, 3], 'col2': [1, 2, None, 4, 5], 'col3': [2, 3, 4, 5, 6],
                  'col4': [5, 6.5, 7.5, 8, 9], 'col5': [6, 6.7, 8.2, None, 10.1]})
-            attributes = {'format': 'csv', 'name': 'DF_name'}
+            attributes = {'format': 'csv', 'name': 'DF_name','process_list':[]}
             callback(api.Message(attributes=attributes,body=df))
 
         def call(config,msg):
@@ -67,25 +67,22 @@ account properly. '
 
 
 def process(msg):
-    att_dict = dict()
-    att_dict['config'] = dict()
-
+    att_dict = msg.attributes
     att_dict['operator'] = 'splitSample'
-    logger, log_stream = slog.set_logging(att_dict['operator'])
     if api.config.debug_mode == True:
-        logger.setLevel('DEBUG')
+        logger, log_stream = slog.set_logging(att_dict['operator'],loglevel='DEBUG')
+    else :
+        logger, log_stream = slog.set_logging(att_dict['operator'],loglevel='INFO')
+    logger.info("Process started")
+    time_monitor = tp.progress()
 
     time_monitor = tp.progress()
 
-    logger.debug('Start Process Function')
-    logger.debug('Start time: ' + time_monitor.get_start_time())
-    prev_att = msg.attributes
     df = msg.body
     if not isinstance(df, pd.DataFrame):
         raise TypeError('Message body does not contain a pandas DataFrame')
 
     ###### start of doing calculation
-    att_dict['config']['split'] = api.config.split
     if api.config.split > df.shape[0]:
         warning = 'Split larger than whole sample'
         split = 1
@@ -93,55 +90,49 @@ def process(msg):
         split = api.config.split / df.shape[0]
     else:
         split = api.config.split
+    logger.info('Split DataFrame: {}'.format(split))
 
-    att_dict['config']['to_category'] = api.config.to_category
     if api.config.to_category:
-        for col in df.select_dtypes(include=np.object).columns:
+        cast_cols = df.select_dtypes(include=np.object).columns
+        for col in cast_cols:
             unique_num = len(df[col].unique())
             nan_num = df[col].isna().count()
             logger.debug(
                 'Cast to category - {}: unique {}, nan: {} of {}'.format(col, unique_num, nan_num, df.shape[0]))
             df[col] = df[col].astype('category')
+        logger.info('Cast to category type: {}'.format(cast_cols))
 
-    att_dict['config']['label'] = api.config.label
-    label = tfp.read_value(api.config.label)
+    label = tfp.read_value(api.config.label_col)
     if label:
         label_vals = list(df[label].unique())
         tdf = list()
         for lab in label_vals:
             tdf.append(df.loc[df[label] == lab].sample(frac=split, random_state=api.config.seed))
         train_df = pd.concat(tdf)
+        logger.info('Consider label ratio for splitting: {}'.format(label))
     else:
         train_df = df.sample(frac=split, random_state=api.config.seed)  # random state is a seed value
 
     test_df = df.drop(train_df.index)
-    ###### end of doing calculation
-
-    ##############################################
-    #  final infos to attributes and info message
-    ##############################################
-
-    if df.empty:
+    # end custom process definition
+    if df.empty :
         raise ValueError('DataFrame is empty')
-
-    att_dict['memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
-    att_dict['columns'] = str(list(df.columns))
-    att_dict['shape'] = df.shape
-    att_dict['id'] = str(id(df))
-
     logger.debug('Columns: {}'.format(str(df.columns)))
-    logger.debug('Shape (#rows - #columns): {} - {}'.format(df.shape[0], df.shape[1]))
-    logger.debug('Memory: {} kB'.format(att_dict['memory']))
+    logger.debug('Shape (#rows - #columns): {} - {}'.format(df.shape[0],df.shape[1]))
+    logger.debug('Memory: {} kB'.format(df.memory_usage(deep=True).sum() / 1024 ** 2))
     example_rows = EXAMPLE_ROWS if df.shape[0] > EXAMPLE_ROWS else df.shape[0]
     for i in range(0, example_rows):
-        att_dict['row_' + str(i)] = str([str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])
-        logger.debug('Head data: {}'.format(att_dict['row_' + str(i)]))
+        logger.debug('Row {}: {}'.format(i,str([str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])))
 
-    train_msg =  api.Message(attributes=att_dict, body=train_df)
-    test_msg = api.Message(attributes=att_dict, body=test_df)
-    logger.debug('End time: ' + time_monitor.elapsed_time())
+    progress_str = '>BATCH ENDED<'
+    if 'storage.fileIndex' in att_dict and 'storage.fileCount' in att_dict and 'storage.endOfSequence' in att_dict :
+        if not att_dict['storage.fileIndex'] + 1 == att_dict['storage.fileCount'] :
+            progress_str = '{}/{}'.format(att_dict['storage.fileIndex'],att_dict['storage.fileCount'])
+    att_dict['process_list'].append(att_dict['operator'])
+    logger.debug('Past process steps: {}'.format(att_dict['process_list']))
+    logger.debug('Process ended: {}  - {}  '.format(progress_str,time_monitor.elapsed_time()))
 
-    return log_stream.getvalue(), train_msg, test_msg
+    return log_stream.getvalue(), api.Message(attributes=att_dict,body=train_df), api.Message(attributes=att_dict,body=test_df)
 
 inports = [{"name":"data","type":"message.DataFrame","description":"Input data"}]
 outports = [{"name":"log","type":"string","description":"Logging"},\
@@ -162,13 +153,13 @@ def main() :
 
     print('Test: config')
     config = api.config
-    config.label = 'icol'
+    config.label_col = 'icol'
     config.split = 0.2
     config.to_category = True
     df = pd.DataFrame(
         {'icol': [1, 1, 3, 3, 3], 'col2': [1, 2, None, 4, 5], 'col3': [2, 3, 4, 5, 6],
          'col4': [5, 6.5, 7.5, 8, 9], 'col5': [6, 6.7, 8.2, None, 10.1],'col6':['A','A','B','B','C']})
-    attributes = {'format': 'csv', 'name': 'DF_name'}
+    attributes = {'format': 'csv', 'name': 'DF_name','process_list':[]}
     input_msg = api.Message(attributes=attributes,body = df)
     log, train_msg, test_msg = api.call(config,input_msg)
     print('Input')

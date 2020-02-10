@@ -1,0 +1,37 @@
+{
+    "description": "Anonymize Data",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "data",
+            "type": "message.DataFrame",
+            "description": "Input data"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging"
+        },
+        {
+            "name": "data",
+            "type": "message.DataFrame",
+            "description": "Output data"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_pandas.anonymizeData.configSchema.json",
+        "script": "file://anonymizeData.py",
+        "debug_mode": true,
+        "to_nan": "None",
+        "anonymize_cols": "None",
+        "anonymize_to_int_cols": "None",
+        "enumerate_cols": "None"
+    },
+    "tags": {
+        "python36": "",
+        "sdi_utils": ""
+    },
+    "iconsrc": "DI_PandasV2.svg"
+}

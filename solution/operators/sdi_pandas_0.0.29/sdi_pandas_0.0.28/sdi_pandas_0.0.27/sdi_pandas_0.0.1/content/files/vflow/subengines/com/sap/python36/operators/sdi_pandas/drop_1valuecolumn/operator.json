@@ -1,0 +1,37 @@
+{
+    "description": "Drop 1 Value Columns",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "input",
+            "type": "message",
+            "description": "Input data"
+        }
+    ],
+    "outports": [
+        {
+            "name": "output",
+            "type": "message",
+            "description": "Output data"
+        },
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging"
+        },
+        {
+            "name": "transformation",
+            "type": "string",
+            "description": "transformation"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_pandas.drop_1valuecolumn.configSchema.json",
+        "script": "file://drop_1valuecolumns.py",
+        "columns": "All",
+        "info_only": true
+    },
+    "tags": {
+        "python36": ""
+    }
+}

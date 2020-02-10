@@ -1,0 +1,38 @@
+{
+    "description": "Drop Highly Unique Columns",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "input",
+            "type": "message",
+            "description": "Input data"
+        }
+    ],
+    "outports": [
+        {
+            "name": "output",
+            "type": "message",
+            "description": "Output data"
+        },
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging"
+        },
+        {
+            "name": "transformation",
+            "type": "string",
+            "description": "transformation"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_pandas.cleanse.drop_highly_unique.configSchema.json",
+        "script": "file://drop_highly_unique.py",
+        "columns": "All",
+        "info_only": false,
+        "threshold": 0.9
+    },
+    "tags": {
+        "python36": ""
+    }
+}

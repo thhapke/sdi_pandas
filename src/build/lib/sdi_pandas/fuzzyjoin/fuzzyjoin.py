@@ -1,6 +1,8 @@
 import sdi_utils.gensolution as gs
 import sdi_utils.set_logging as slog
 import sdi_utils.textfield_parser as tfp
+import sdi_utils.tprogress as tp
+
 from fuzzywuzzy import fuzz
 import pandas as pd
 import numpy as np
@@ -35,14 +37,18 @@ except NameError:
                  'City': ['Berlin', 'Berlin', 'Paris', 'London', 'London'],\
                  'Profession': ['Accountant', 'Accountant', 'Designer', 'Developer', 'Developer'], \
                  'Age': [25, 30, 45, 55, 65]})
-            l_msg = api.Message(attributes={'format': 'pandas', 'name': 'leftDF'}, body= l_df)
+            l_msg = api.Message(attributes={'format': 'pandas', 'name': 'leftDF','process_list':[]}, body= l_df)
             r_df = pd.DataFrame(
                 {'icol': [10, 20, 30, 40, 50], 'First Name': ['Hansi', 'Claire', 'Karl', 'Justice', 'Erik'], \
                  'city': ['Berlin', 'Berlin', 'Paris', 'London', 'London'],\
                  'Profession': ['Accountant', 'Accountant', 'Web-Designer', 'Developer', 'Developer'], \
                  'Age': [25, 30, 45, 55, 65]})
-            r_msg = api.Message(attributes={'format': 'pandas', 'name': 'rightDF'},body=r_df)
-
+            r_msg = api.Message(attributes={'format': 'pandas', 'name': 'rightDF','process_list':[]},body=r_df)
+            api.config.limit = 90
+            api.config.base_index = 'icol'
+            api.config.joint_id = 'icol'
+            api.config.test_index = 'icol'
+            api.config.check_columns = "'Name':'First Name', City:city"
             callback(l_msg,r_msg)
     
         class config:
@@ -82,42 +88,26 @@ except NameError:
 
 
 def process(test_msg, base_msg) :
-    att_dict = dict()
-    att_dict['config'] = dict()
-
+    att_dict = base_msg.attributes
     att_dict['operator'] = 'fuzzyjoin'
-    logger, log_stream = slog.set_logging(att_dict['operator'])
     if api.config.debug_mode == True:
-        logger.setLevel('DEBUG')
+        logger, log_stream = slog.set_logging(att_dict['operator'], loglevel='DEBUG')
+    else:
+        logger, log_stream = slog.set_logging(att_dict['operator'], loglevel='INFO')
+    logger.info("Process started")
+    time_monitor = tp.progress()
 
     # start custom process definition
-    test_att = test_msg.attributes
-    base_att = base_msg.attributes
-
-    if test_att['name'] == base_att['name']:
-        att_dict['name'] = test_att['name']
-    else:
-        att_dict['name'] = test_att['name'] + '-' + base_att['name']
-    att_dict['config'] = dict()
-
-    att_dict['config']['test_index'] = api.config.test_index
     testdf_index = tfp.read_value(api.config.test_index)
     if not testdf_index:
         logger.error('Index of test data is mandatory')
         raise ValueError('Index of test data is mandatory')
 
-    att_dict['number_rows'] = str(base_msg.body.shape[0])
-
     # get the columns to check
-
     mapping = tfp.read_dict(api.config.check_columns)
     df = pd.DataFrame()
 
     if mapping:
-
-        att_dict['config']['check_columns'] = str(mapping)
-        att_dict['config']['limit'] = api.config.limit
-
         # read stream from memory
         test_df = test_msg.body
 
@@ -170,21 +160,17 @@ def process(test_msg, base_msg) :
 
         if api.config.only_index:
             df = df[list(base_msg.body.columns) + ['external_id']]
-        att_dict['config']['only_index'] = api.config.only_index
 
         if api.config.only_matching_rows:
             df = df.loc[~df['score'].isna()]
-        att_dict['config']['only_matching_rows'] = api.config.only_matching_rows
 
         basedf_index = tfp.read_value(api.config.base_index)
-        att_dict['config']['base_index'] = basedf_index
 
         if api.config.joint_id:
             if not basedf_index:
                 raise ValueError("For <joint_id> a value for <base_index> is necessary ")
             df.loc[~df['external_id'].isna(), 'joint_id'] = df.loc[~df['external_id'].isna(), 'external_id']
             df.loc[df['external_id'].isna(), 'joint_id'] = df.loc[df['external_id'].isna(), basedf_index]
-        att_dict['config']['joint_id'] = api.config.joint_id
 
         if api.config.add_non_matching:
             # test if same columns
@@ -195,35 +181,28 @@ def process(test_msg, base_msg) :
             addto_df = test_df.loc[~test_df[testdf_index].isin(matched_ids)].copy()
             addto_df['joint_id'] = addto_df[testdf_index]
             df = pd.concat([df, addto_df], axis=0, sort=False)
-        att_dict['config']['add_non_matching'] = api.config.add_non_matching
-
     else:
         logger.warning('No columns to check')
 
-    ##############################################
-    #  final infos to attributes and info message
-    ##############################################
-    if df.empty:
-        logger.warning('DataFrame is empty')
-    else :
-        att_dict['memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
-        att_dict['columns'] = str(list(df.columns))
-        att_dict['shape'] = df.shape
-        att_dict['id'] = str(id(df))
-
-        logger.debug('Columns: {}'.format(str(df.columns)))
-        logger.debug('Shape (#rows - #columns): {} - {}'.format(df.shape[0], df.shape[1]))
-        logger.debug('Memory: {} kB'.format(att_dict['memory']))
-        example_rows = EXAMPLE_ROWS if df.shape[0] > EXAMPLE_ROWS else df.shape[0]
-        for i in range(0, example_rows):
-            att_dict['row_' + str(i)] = str([str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])
-            logger.debug('Head data: {}'.format(att_dict['row_' + str(i)]))
-
     # end custom process definition
+    if df.empty :
+        raise ValueError('DataFrame is empty')
+    logger.debug('Columns: {}'.format(str(df.columns)))
+    logger.debug('Shape (#rows - #columns): {} - {}'.format(df.shape[0],df.shape[1]))
+    logger.debug('Memory: {} kB'.format(df.memory_usage(deep=True).sum() / 1024 ** 2))
+    example_rows = EXAMPLE_ROWS if df.shape[0] > EXAMPLE_ROWS else df.shape[0]
+    for i in range(0, example_rows):
+        logger.debug('Row {}: {}'.format(i,str([str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])))
 
-    log = log_stream.getvalue()
-    msg = api.Message(attributes=att_dict,body = df)
-    return log, msg
+    progress_str = '>BATCH ENDED<'
+    if 'storage.fileIndex' in att_dict and 'storage.fileCount' in att_dict and 'storage.endOfSequence' in att_dict :
+        if not att_dict['storage.fileIndex'] + 1 == att_dict['storage.fileCount'] :
+            progress_str = '{}/{}'.format(att_dict['storage.fileIndex'],att_dict['storage.fileCount'])
+    att_dict['process_list'].append(att_dict['operator'])
+    logger.debug('Past process steps: {}'.format(att_dict['process_list']))
+    logger.debug('Process ended: {}  - {}  '.format(progress_str,time_monitor.elapsed_time()))
+
+    return log_stream.getvalue(), api.Message(attributes=att_dict,body=df)
 
 
 inports = [{'name': 'testdata', 'type': 'message.DataFrame',"description":"Input test data"},\
@@ -254,13 +233,13 @@ def main() :
          'City': ['Berlin', 'Berlin', 'Paris', 'London', 'London'], \
          'Profession': ['Accountant', 'Accountant', 'Designer', 'Developer', 'Developer'], \
          'Age': [25, 30, 45, 55, 65]})
-    test_msg = api.Message(attributes={'format': 'pandas', 'name': 'leftDF'}, body=test_df)
+    test_msg = api.Message(attributes={'format': 'pandas', 'name': 'leftDF','process_list':[]}, body=test_df)
     base_df = pd.DataFrame(
         {'icol': [10, 20, 30, 40, 50], 'First Name': ['Hansi', 'Claire', 'Karl', 'Justice', 'Erik'], \
          'city': ['Berlin', 'Berlin', 'Paris', 'London', 'London'], \
          'Profession': ['Accountant', 'Accountant', 'Web-Designer', 'Developer', 'Developer'], \
          'Age': [25, 30, 45, 55, 65]})
-    base_msg = api.Message(attributes={'format': 'pandas', 'name': 'rightDF'}, body=base_df)
+    base_msg = api.Message(attributes={'format': 'pandas', 'name': 'rightDF','process_list':[]}, body=base_df)
     log, msg = api.call(config,test_msg,base_msg)
 
     api.send(outports[0]['name'],log)

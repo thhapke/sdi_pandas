@@ -9,7 +9,7 @@ import sdi_utils.set_logging as slog
 import sdi_utils.textfield_parser as tfp
 import sdi_utils.tprogress as tp
 
-
+EXAMPLE_ROWS = 5
 
 try:
     api
@@ -33,8 +33,8 @@ except NameError:
                                            'type': 'boolean'}
             train_cols = 'None'
             config_params['train_cols'] = {'title': 'Training Columns', 'description': 'Columns of DataFrame that are used for training', 'type': 'string'}
-            label = 'None'
-            config_params['label'] = {'title': 'Label', 'description': 'Label of DataFrame that needs to be predict', 'type': 'string'}
+            label_col = 'None'
+            config_params['label_col'] = {'title': 'Column of Label', 'description': 'Label of DataFrame that needs to be predict', 'type': 'string'}
 
         class Message:
             def __init__(self,body = None,attributes = ""):
@@ -54,7 +54,7 @@ except NameError:
             df = pd.DataFrame(
                 {'icol': [1, 1, 3, 3, 3], 'col2': [1, 2, 3, 4, 5], 'col3': [2, 3, 4, 5, 6],
                  'col4': [5, 6.5, 7.5, 8, 9], 'col5': [6, 6.7, 8.2, 9, 10.1]})
-            attributes = {'format': 'csv', 'name': 'DF_name'}
+            attributes = {'format': 'csv', 'name': 'DF_name','process_list':[]}
             default_msg = api.Message(attributes=attributes,body = df)
             callback(default_msg)
 
@@ -64,26 +64,18 @@ except NameError:
 
 
 def process(msg):
-    att_dict = dict()
-    att_dict['config'] = dict()
-
-    att_dict['operator'] = 'anonymizeData'
-    logger, log_stream = slog.set_logging(att_dict['operator'])
+    att_dict = msg.attributes
+    att_dict['operator'] = 'lgbm_classifier'
     if api.config.debug_mode == True:
-        logger.setLevel('DEBUG')
-
+        logger, log_stream = slog.set_logging(att_dict['operator'],loglevel='DEBUG')
+    else :
+        logger, log_stream = slog.set_logging(att_dict['operator'],loglevel='INFO')
+    logger.info("Process started")
     time_monitor = tp.progress()
 
-    result = ''
-    logger.debug('Start Process Function')
-    logger.debug('Start time: ' + time_monitor.get_start_time())
-    prev_att = msg.attributes
     df = msg.body
     if not isinstance(df, pd.DataFrame):
         raise TypeError('Message body does not contain a pandas DataFrame')
-
-    att_dict = dict()
-    att_dict['config'] = dict()
 
     ###### start of doing calculation
 
@@ -99,11 +91,11 @@ def process(msg):
         min_split_gain=0.0222415,
         min_child_weight=40)
 
-    att_dict['config']['train columns'] = api.config.train_cols
     train_cols = tfp.read_list(api.config.train_cols, df.columns)
+    logger.info('Train columns: {}'.format(train_cols))
 
-    att_dict['config']['label'] = api.config.label
-    label = tfp.read_value(api.config.label)
+    label = tfp.read_value(api.config.label_col)
+    logger.info('Label column: {}'.format(label))
     if not label:
         raise ValueError('Label is mandatory')
 
@@ -128,34 +120,36 @@ def process(msg):
 
     ###### end of doing calculation
 
-    ##############################################
-    #  final infos to attributes and info message
-    ##############################################
-
-    if df.empty:
+    # end custom process definition
+    if df.empty :
         raise ValueError('DataFrame is empty')
-
-    att_dict['memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
-    att_dict['columns'] = str(list(df.columns))
-    att_dict['shape'] = df.shape
-    att_dict['id'] = str(id(df))
-
     logger.debug('Columns: {}'.format(str(df.columns)))
-    logger.debug('Shape (#rows - #columns): {} - {}'.format(df.shape[0], df.shape[1]))
-    logger.debug('Memory: {} kB'.format(att_dict['memory']))
-    logger.debug('End of Process Function')
-    logger.debug('End time: ' + time_monitor.elapsed_time())
-    return log_stream.getvalue(), api.Message(attributes=att_dict,body=model)
+    logger.debug('Shape (#rows - #columns): {} - {}'.format(df.shape[0],df.shape[1]))
+    logger.debug('Memory: {} kB'.format(df.memory_usage(deep=True).sum() / 1024 ** 2))
+    example_rows = EXAMPLE_ROWS if df.shape[0] > EXAMPLE_ROWS else df.shape[0]
+    for i in range(0, example_rows):
+        logger.debug('Row {}: {}'.format(i,str([str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])))
 
-inports = [{"name":"data","type":"message","description":"Input data"}]
-outports = [{"name":"data","type":"message","description":"Output data"},{"name":"log","type":"string","description":"Logging"}]
+    progress_str = '>BATCH ENDED<'
+    if 'storage.fileIndex' in att_dict and 'storage.fileCount' in att_dict and 'storage.endOfSequence' in att_dict :
+        if not att_dict['storage.fileIndex'] + 1 == att_dict['storage.fileCount'] :
+            progress_str = '{}/{}'.format(att_dict['storage.fileIndex'],att_dict['storage.fileCount'])
+    att_dict['process_list'].append(att_dict['operator'])
+    logger.debug('Past process steps: {}'.format(att_dict['process_list']))
+    logger.debug('Process ended: {}  - {}  '.format(progress_str,time_monitor.elapsed_time()))
+
+    return log_stream.getvalue(), api.Message(attributes=att_dict,body=df)
+
+inports = [{"name":"data","type":"message.DataFrame","description":"Input data"}]
+outports = [{"name":"log","type":"string","description":"Logging"},\
+            {"name":"data","type":"message.DataFrame","description":"Output model"}]
 
 def call_on_input(msg) :
-    new_msg, log = process(msg)
-    api.send(outports[0]['name'],new_msg)
-    api.send(outports[1]['name'],log)
+    log, model_msg = process(msg)
+    api.send(outports[0]['name'],log)
+    api.send(outports[1]['name'],model_msg)
 
-#api.set_port_callback('input', call_on_input)
+#api.set_port_callback(inports[0]['name'], call_on_input)
 
 def main() :
     print('Test: Default')
@@ -163,10 +157,14 @@ def main() :
 
     print('Test: config')
     config = api.config
-    config.var1 = 'own foo'
-    config.var12 = 'own bar'
-    test_msg = api.Message(attributes={'name':'test1'},body =4)
-    new_msg, log = api.call(config,test_msg)
+    config.train_cols = 'icol, col2, col3, col4'
+    config.label_col = 'col5'
+    df = pd.DataFrame(
+        {'icol': [1, 1, 3, 3, 3], 'col2': [1, 2, 3, 4, 5], 'col3': [2, 3, 4, 5, 6],
+         'col4': [5, 6.5, 7.5, 8, 9], 'col5': [6, 6.7, 8.2, 9, 10.1]})
+    attributes = {'format': 'csv', 'name': 'DF_name','process_list':[]}
+    train_msg = api.Message(attributes=attributes, body=df)
+    log, new_msg = api.call(config,train_msg)
     print('Attributes: ', new_msg.attributes)
     print('Body: ', str(new_msg.body))
     print('Logging: ')

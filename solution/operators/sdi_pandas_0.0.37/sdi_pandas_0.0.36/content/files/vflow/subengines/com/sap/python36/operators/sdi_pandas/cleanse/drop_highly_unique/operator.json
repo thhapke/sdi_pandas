@@ -1,0 +1,41 @@
+{
+    "description": "Drop Highly Unique Columns",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "data",
+            "type": "message.DataFrame",
+            "description": "Input data"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging"
+        },
+        {
+            "name": "transformation",
+            "type": "message.DataFrame",
+            "description": "Transformation data"
+        },
+        {
+            "name": "data",
+            "type": "message.DataFrame",
+            "description": "Output data"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_pandas.cleanse.drop_highly_unique.configSchema.json",
+        "script": "file://drop_highly_unique.py",
+        "debug_mode": true,
+        "columns": "All",
+        "info_only": "True",
+        "threshold": 0.99
+    },
+    "tags": {
+        "python36": "",
+        "sdi_utils": ""
+    },
+    "iconsrc": "DI_PandasV2.svg"
+}

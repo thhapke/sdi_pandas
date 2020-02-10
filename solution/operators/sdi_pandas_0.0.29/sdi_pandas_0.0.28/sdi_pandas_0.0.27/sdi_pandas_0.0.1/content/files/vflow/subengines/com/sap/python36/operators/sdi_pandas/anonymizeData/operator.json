@@ -1,0 +1,34 @@
+{
+    "description": "Custom Operator Template",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "input",
+            "type": "message",
+            "description": "Input data"
+        }
+    ],
+    "outports": [
+        {
+            "name": "output",
+            "type": "message",
+            "description": "Output data"
+        },
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_pandas.anonymizeData.configSchema.json",
+        "script": "file://anonymizeData.py",
+        "to_nan": "0",
+        "anonymize_cols": "col3,col4,col5",
+        "anonymize_to_int_cols": "icol, col2",
+        "enumerate_cols": "col3, col4, col5"
+    },
+    "tags": {
+        "python36": ""
+    }
+}

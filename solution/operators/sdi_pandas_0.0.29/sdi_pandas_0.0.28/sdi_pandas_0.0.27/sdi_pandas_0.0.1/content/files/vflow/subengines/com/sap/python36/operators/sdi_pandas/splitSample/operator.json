@@ -1,0 +1,39 @@
+{
+    "description": "Custom Operator Template",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "input",
+            "type": "message",
+            "description": "Input data"
+        }
+    ],
+    "outports": [
+        {
+            "name": "train",
+            "type": "message",
+            "description": "train sample"
+        },
+        {
+            "name": "test",
+            "type": "message",
+            "description": "test sample"
+        },
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_pandas.splitSample.configSchema.json",
+        "script": "file://splitSample.py",
+        "label": "icol",
+        "split": 0.2,
+        "seed": 1,
+        "to_category": true
+    },
+    "tags": {
+        "python36": ""
+    }
+}

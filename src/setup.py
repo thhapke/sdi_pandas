@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="sdi_pandas",
-    version="0.0.29",
+    version="0.0.38",
     author="Thorsten Hapke",
     author_email="thorsten.hapke@sap.com",
     description="List of operators using the pandas module for processing the input",

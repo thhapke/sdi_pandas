@@ -77,7 +77,7 @@ except NameError:
                 {'icol': [1, 2, 3, 4, 5], 'col2': ['Cydia','Cydia', None, 'Dani', 'Liza'],\
                  'col3': ['Frank', 'Stephen', 'Hubert', 'Hubert', 'Sue'],
                  'col4': [5, 6.5, 7.5, 8, 9], 'col5': [6, 6.7, 8.2, None, 10.1]})
-            attributes = {'format': 'csv', 'name': 'DF_name'}
+            attributes = {'format': 'csv', 'name': 'DF_name','process_list':[]}
             default_msg = api.Message(attributes=attributes,body = df)
             callback(default_msg)
 
@@ -87,9 +87,8 @@ except NameError:
 
 
 def process(msg):
-    att_dict = dict()
-    att_dict['config'] = dict()
 
+    att_dict = msg.attributes
     att_dict['operator'] = 'anonymizeData'
     logger, log_stream = slog.set_logging(att_dict['operator'])
     if api.config.debug_mode == True:
@@ -106,16 +105,11 @@ def process(msg):
     df = msg.body
 
     ###### start of doing calculation
-
-    att_dict['config']['to_nan'] = api.config.to_nan
     to_nan = tfp.read_value(api.config.to_nan,test_number=False)
     if to_nan:
         df.replace(to_nan, np.nan, inplace=True)
 
-
-    att_dict['config']['anonymize_to_int_cols'] = api.config.anonymize_to_int_cols
     anonymize_to_int_cols = tfp.read_list(api.config.anonymize_to_int_cols, list(df.columns))
-    att_dict['config']['anonymize_cols'] = api.config.anonymize_cols
     anonymize_cols = tfp.read_list(api.config.anonymize_cols, list(df.columns))
 
     ## Anonymize columns
@@ -168,8 +162,6 @@ def process(msg):
             rep_map = dict(zip(unique_list, rand_list))
             df[c].replace(rep_map, inplace=True)
 
-    att_dict['config']['enumerate_cols'] = api.config.enumerate_cols
-    att_dict['config']['prefix_cols'] = api.config.prefix_cols
     enumerate_cols = tfp.read_list(api.config.enumerate_cols,list(df.columns))
     if enumerate_cols :
         ncols = int(math.log10(len(enumerate_cols)))+1
@@ -179,31 +171,26 @@ def process(msg):
         cols_map ={ oc : prefix_cols + str(i).zfill(ncols) for i,oc in enumerate(enumerate_cols)}
         df.rename(columns=cols_map,inplace=True)
 
-    ###### end of doing calculation
-
-
-    ##############################################
-    #  final infos to attributes and info message
-    ##############################################
-
+    # end custom process definition
     if df.empty :
         raise ValueError('DataFrame is empty')
-
-    att_dict['memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
-    att_dict['columns'] = str(list(df.columns))
-    att_dict['shape'] = df.shape
-    att_dict['id'] = str(id(df))
-
     logger.debug('Columns: {}'.format(str(df.columns)))
     logger.debug('Shape (#rows - #columns): {} - {}'.format(df.shape[0],df.shape[1]))
-    logger.debug('Memory: {} kB'.format(att_dict['memory']))
+    logger.debug('Memory: {} kB'.format(df.memory_usage(deep=True).sum() / 1024 ** 2))
     example_rows = EXAMPLE_ROWS if df.shape[0] > EXAMPLE_ROWS else df.shape[0]
     for i in range(0, example_rows):
-        att_dict['row_' + str(i)] = str([str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])
-        logger.debug('Head data: {}'.format(att_dict['row_' + str(i)]))
+        logger.debug('Row {}: {}'.format(i,str([str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])))
 
-    logger.debug('End of Process Function')
-    logger.debug('End time: ' + time_monitor.elapsed_time())
+    progress_str = '<BATCH ENDED><1>'
+    if 'storage.fileIndex' in att_dict and 'storage.fileCount' in att_dict and 'storage.endOfSequence' in att_dict:
+        if att_dict['storage.fileIndex'] + 1 == att_dict['storage.fileCount']:
+            progress_str = '<BATCH ENDED><{}>'.format(att_dict['storage.fileCount'])
+        else:
+            progress_str = '<BATCH IN-PROCESS><{}/{}>'.format(att_dict['storage.fileIndex'] + 1,
+                                                              att_dict['storage.fileCount'])
+    att_dict['process_list'].append(att_dict['operator'])
+    logger.debug('Process ended: {}  - {}  '.format(progress_str, time_monitor.elapsed_time()))
+    logger.debug('Past process steps: {}'.format(att_dict['process_list']))
 
     return log_stream.getvalue(), api.Message(attributes=att_dict,body=df)
 
@@ -234,10 +221,9 @@ def main() :
         {'icol': [1, 2, 3, 4, 5], 'col2': ['Cydia', 'Cydia', None, 'Dani', 'Liza'], \
          'col3': ['Frank', 'Stephen', 'Hubert', 'Hubert', 'Sue'],
          'col4': [5, 6.5, 7.5, 8, 9], 'col5': [6, 7, 8, 9, 10]})
-    attributes = {'format': 'csv', 'name': 'DF_name'}
-    #df['col5'] = df['col5'].astype('int')
+    attributes = {'format': 'csv', 'name': 'DF_name','process_list':[]}
     print(df.dtypes)
-    test_msg = api.Message(attributes={'name':'test1'},body =df)
+    test_msg = api.Message(attributes=attributes,body =df)
     log, new_msg = api.call(config,test_msg)
     print('Attributes: ', new_msg.attributes)
     print('Body: ', str(new_msg.body))

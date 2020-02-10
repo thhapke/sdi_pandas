@@ -2,358 +2,405 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f6c88374-51a5-4f71-9c91-34efe0730fa7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/anonymizeData/DI_PandasV2.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/categorical2exist/DI_PandasV2.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/categorical2exist/categorical2exist.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_1valuecolumn/DI_PandasV2.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_1valuecolumn/drop_1valuecolumns.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_duplicates/DI_PandasV2.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_highly_unique/DI_PandasV2.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_highly_unique/drop_highly_unique.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/filter_by_population/DI_PandasV2.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/filter_by_population/filter_by_population.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/lgbm_classifier/lgbm_classifier.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/splitSample/DI_PandasV2.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_pandas/splitSample/splitSample.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/Dockerfiles/pandasDockerfile-0.0.13/content/files/vflow/dockerfiles/pandas/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/solution/Dockerfiles/pandasDockerfile-0.0.13/content/files/vflow/dockerfiles/pandas/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/toCSV/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/toCSV/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/toCSV/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/toCSV/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/toCSV/toCSV.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/castColumns/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/castColumns/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/categorical2exist/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/castColumns/castColumns.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/castColumns/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/castColumns/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/cleanseHeuristics/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/cleanseHeuristics/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_1valuecolumn/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/cleanseHeuristics/cleanseHeuristics.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/cleanseHeuristics/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/cleanseHeuristics/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/dropColumns/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/dropColumns/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_highly_unique/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/dropColumns/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/dropColumns/dropColumns.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/dropColumns/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/fromCSV/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/fromCSV/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/filter_by_population/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/fromCSV/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/fromCSV/fromCSV.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/fromCSV/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/fuzzyjoin/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/fuzzyjoin/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/lgbm_classifier/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/fuzzyjoin/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/fuzzyjoin/fuzzyjoin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/fuzzyjoin/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/groupby/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/groupby/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/splitSample/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/groupby/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/groupby/groupby.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/groupby/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/join/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/join/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/join/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/join/join.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/join/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/linRegressionPredict/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/linRegressionPredict/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/linRegressionPredict/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/linRegressionPredict/linRegressionPredict.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/linRegressionPredict/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/linRegressionTrain/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/linRegressionTrain/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/linRegressionTrain/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/linRegressionTrain/linRegressionTrain.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/linRegressionTrain/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/oneHotEncoding/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/oneHotEncoding/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/oneHotEncoding/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/oneHotEncoding/oneHotEncoding.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/oneHotEncoding/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/sample/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/sample/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/sample/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/sample/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/sample/sample.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/selectValues/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/selectValues/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/selectValues/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/selectValues/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/selectValues/selectValues.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/setValue/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/setValue/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/setValue/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/setValue/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/setValue/setValue.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/transposeColumn/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/transposeColumn/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/transposeColumn/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/transposeColumn/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/build_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/build/lib/sdi_pandas/transposeColumn/transposeColumn.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/anonymizeData/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/anonymizeData/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/anonymizeData/anonymizeData.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/anonymizeData/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/anonymizeData/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.1/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.17.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/castColumns/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/castColumns/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/castColumns/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/castColumns/castColumns.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/castColumns/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/castColumns/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanseHeuristics/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanseHeuristics/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanseHeuristics/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanseHeuristics/cleanseHeuristics.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanseHeuristics/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanseHeuristics/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/dropColumns/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/dropColumns/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/dropColumns/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/dropColumns/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/dropColumns/dropColumns.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/dropColumns/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fromCSV/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fromCSV/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fromCSV/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fromCSV/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fromCSV/fromCSV.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fromCSV/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fuzzyjoin/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fuzzyjoin/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fuzzyjoin/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fuzzyjoin/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fuzzyjoin/fuzzyjoin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fuzzyjoin/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/groupby/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/groupby/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/groupby/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/groupby/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/groupby/groupby.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/groupby/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/join/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/join/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/join/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/join/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/join/join.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/join/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionPredict/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionPredict/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionPredict/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionPredict/linRegressionPredict.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionPredict/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionPredict/scikit.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionTrain/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionTrain/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionTrain/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionTrain/linRegressionTrain.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionTrain/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionTrain/scikit.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/oneHotEncoding/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/oneHotEncoding/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/oneHotEncoding/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/oneHotEncoding/oneHotEncoding.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/oneHotEncoding/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/oneHotEncoding/scikit.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/sample/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/sample/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/sample/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/sample/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/sample/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/sample/sample.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/selectValues/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/selectValues/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/selectValues/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/selectValues/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/selectValues/selectValues.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/setValue/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/setValue/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/setValue/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/setValue/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/setValue/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/setValue/setValue.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/toCSV/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/toCSV/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/toCSV/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/toCSV/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/toCSV/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/toCSV/toCSV.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/transposeColumn/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/transposeColumn/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/transposeColumn/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/transposeColumn/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/transposeColumn/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/transposeColumn/transposeColumn.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/castColumns/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/castColumns/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/castColumns/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/castColumns/castColumns.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/castColumns/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/castColumns/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanseHeuristics/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanseHeuristics/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanseHeuristics/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanseHeuristics/cleanseHeuristics.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanseHeuristics/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanseHeuristics/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/dropColumns/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/dropColumns/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/dropColumns/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/dropColumns/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/dropColumns/dropColumns.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/dropColumns/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fromCSV/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fromCSV/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fromCSV/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fromCSV/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fromCSV/fromCSV.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fromCSV/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fuzzyjoin/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fuzzyjoin/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fuzzyjoin/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fuzzyjoin/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fuzzyjoin/fuzzyjoin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fuzzyjoin/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/groupby/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/groupby/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/groupby/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/groupby/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/groupby/groupby.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/groupby/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/join/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/join/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/join/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/join/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/join/join.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/join/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionPredict/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionPredict/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionPredict/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionPredict/linRegressionPredict.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionPredict/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionPredict/scikit.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionTrain/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionTrain/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionTrain/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionTrain/linRegressionTrain.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionTrain/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionTrain/scikit.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/oneHotEncoding/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/oneHotEncoding/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/oneHotEncoding/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/oneHotEncoding/oneHotEncoding.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/oneHotEncoding/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/oneHotEncoding/scikit.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/sample/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/sample/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/sample/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/sample/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/sample/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/sample/sample.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/selectValues/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/selectValues/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/selectValues/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/selectValues/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/selectValues/selectValues.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/setValue/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/setValue/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/setValue/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/setValue/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/setValue/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/setValue/setValue.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/transposeColumn/DI_PandasV2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/transposeColumn/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/transposeColumn/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/transposeColumn/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/transposeColumn/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/transposeColumn/transposeColumn.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.19/sdi_pandas_0.0.17/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.27.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/anonymizeData/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/anonymizeData/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/anonymizeData/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/anonymizeData/anonymizeData.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/anonymizeData/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/anonymizeData/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/castColumns/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/castColumns/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/castColumns/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/castColumns/castColumns.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/castColumns/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/castColumns/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/categorical2exist/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/categorical2exist/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/categorical2exist/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/categorical2exist/categorical2exist.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/categorical2exist/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/categorical2exist/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_1valuecolumn/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_1valuecolumn/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_1valuecolumn/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_1valuecolumn/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_1valuecolumn/drop_1valuecolumns.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_1valuecolumn/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_duplicates/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_duplicates/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_duplicates/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_duplicates/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_duplicates/drop_duplicates.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_duplicates/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_highly_unique/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_highly_unique/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_highly_unique/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_highly_unique/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_highly_unique/drop_highly_unique.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_highly_unique/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/filter_by_population/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/filter_by_population/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/filter_by_population/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/filter_by_population/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/filter_by_population/filter_by_population.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/filter_by_population/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/dropColumns/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/dropColumns/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/dropColumns/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/dropColumns/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/dropColumns/dropColumns.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/dropColumns/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fromCSV/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fromCSV/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fromCSV/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fromCSV/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fromCSV/fromCSV.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fromCSV/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fuzzyjoin/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fuzzyjoin/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fuzzyjoin/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fuzzyjoin/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fuzzyjoin/fuzzyjoin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fuzzyjoin/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/groupby/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/groupby/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/groupby/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/groupby/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/groupby/groupby.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/groupby/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/join/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/join/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/join/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/join/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/join/join.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/join/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/lgbm_classifier/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/lgbm_classifier/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/lgbm_classifier/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/lgbm_classifier/lbgm.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/lgbm_classifier/lgbm_classifier.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/lgbm_classifier/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionPredict/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionPredict/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionPredict/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionPredict/linRegressionPredict.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionPredict/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionPredict/scikit.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionTrain/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionTrain/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionTrain/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionTrain/linRegressionTrain.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionTrain/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionTrain/scikit.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/oneHotEncoding/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/oneHotEncoding/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/oneHotEncoding/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/oneHotEncoding/oneHotEncoding.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/oneHotEncoding/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/oneHotEncoding/scikit.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/sample/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/sample/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/sample/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/sample/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/sample/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/sample/sample.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/selectValues/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/selectValues/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/selectValues/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/selectValues/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/selectValues/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/selectValues/selectValues.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/setValue/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/setValue/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/setValue/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/setValue/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/setValue/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/setValue/setValue.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/splitSample/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/splitSample/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/splitSample/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/splitSample/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/splitSample/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/splitSample/splitSample.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/toCSV/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/toCSV/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/toCSV/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/toCSV/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/toCSV/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/toCSV/toCSV.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/transposeColumn/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/transposeColumn/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/transposeColumn/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/transposeColumn/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/transposeColumn/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/transposeColumn/transposeColumn.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/anonymizeData/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/anonymizeData/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/anonymizeData/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/anonymizeData/anonymizeData.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/anonymizeData/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/anonymizeData/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/categorical2exist/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/categorical2exist/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/categorical2exist/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/categorical2exist/categorical2exist.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/categorical2exist/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/categorical2exist/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_1valuecolumn/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_1valuecolumn/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_1valuecolumn/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_1valuecolumn/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_1valuecolumn/drop_1valuecolumns.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_1valuecolumn/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_duplicates/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_duplicates/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_duplicates/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_duplicates/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_duplicates/drop_duplicates.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_duplicates/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_highly_unique/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_highly_unique/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_highly_unique/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_highly_unique/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_highly_unique/drop_highly_unique.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_highly_unique/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/filter_by_population/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/filter_by_population/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/filter_by_population/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/filter_by_population/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/filter_by_population/filter_by_population.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/filter_by_population/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/splitSample/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/splitSample/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/splitSample/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/splitSample/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/splitSample/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/splitSample/splitSample.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.1/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/anonymizeData/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/anonymizeData/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/anonymizeData/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/anonymizeData/anonymizeData.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/anonymizeData/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/anonymizeData/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/castColumns/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/castColumns/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/castColumns/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/castColumns/castColumns.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/castColumns/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/castColumns/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/categorical2exist/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/categorical2exist/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/categorical2exist/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/categorical2exist/categorical2exist.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/categorical2exist/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/categorical2exist/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_1valuecolumn/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_1valuecolumn/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_1valuecolumn/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_1valuecolumn/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_1valuecolumn/drop_1valuecolumns.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_1valuecolumn/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_duplicates/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_duplicates/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_duplicates/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_duplicates/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_duplicates/drop_duplicates.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_duplicates/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_highly_unique/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_highly_unique/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_highly_unique/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_highly_unique/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_highly_unique/drop_highly_unique.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/drop_highly_unique/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/filter_by_population/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/filter_by_population/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/filter_by_population/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/filter_by_population/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/filter_by_population/filter_by_population.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/cleanse/filter_by_population/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/dropColumns/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/dropColumns/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/dropColumns/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/dropColumns/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/dropColumns/dropColumns.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/dropColumns/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fromCSV/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fromCSV/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fromCSV/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fromCSV/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fromCSV/fromCSV.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fromCSV/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fuzzyjoin/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fuzzyjoin/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fuzzyjoin/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fuzzyjoin/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fuzzyjoin/fuzzyjoin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/fuzzyjoin/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/groupby/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/groupby/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/groupby/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/groupby/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/groupby/groupby.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/groupby/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/join/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/join/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/join/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/join/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/join/join.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/join/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/lgbm_classifier/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/lgbm_classifier/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/lgbm_classifier/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/lgbm_classifier/lbgm.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/lgbm_classifier/lgbm_classifier.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/lgbm_classifier/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionPredict/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionPredict/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionPredict/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionPredict/linRegressionPredict.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionPredict/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionPredict/scikit.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionTrain/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionTrain/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionTrain/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionTrain/linRegressionTrain.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionTrain/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/linRegressionTrain/scikit.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/oneHotEncoding/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/oneHotEncoding/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/oneHotEncoding/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/oneHotEncoding/oneHotEncoding.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/oneHotEncoding/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/oneHotEncoding/scikit.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/sample/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/sample/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/sample/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/sample/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/sample/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/sample/sample.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/selectValues/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/selectValues/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/selectValues/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/selectValues/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/selectValues/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/selectValues/selectValues.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/setValue/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/setValue/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/setValue/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/setValue/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/setValue/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/setValue/setValue.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/splitSample/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/splitSample/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/splitSample/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/splitSample/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/splitSample/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/splitSample/splitSample.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/toCSV/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/toCSV/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/toCSV/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/toCSV/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/toCSV/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/toCSV/toCSV.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/transposeColumn/DI_PandasV2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/transposeColumn/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/transposeColumn/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/transposeColumn/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/transposeColumn/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/content/files/vflow/subengines/com/sap/python36/operators/sdi_pandas/transposeColumn/transposeColumn.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_pandas_0.0.28/sdi_pandas_0.0.27/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/build/lib/sdi_pandas/anonymizeData/anonymizeData.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/lib/sdi_pandas/anonymizeData/anonymizeData.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/build/lib/sdi_pandas/castColumns/castColumns.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/lib/sdi_pandas/castColumns/castColumns.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/build/lib/sdi_pandas/cleanse/categorical2exist/categorical2exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/lib/sdi_pandas/cleanse/categorical2exist/categorical2exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/build/lib/sdi_pandas/cleanse/drop_1valuecolumn/drop_1valuecolumns.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/lib/sdi_pandas/cleanse/drop_1valuecolumn/drop_1valuecolumns.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/build/lib/sdi_pandas/cleanse/drop_duplicates/drop_duplicates.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/lib/sdi_pandas/cleanse/drop_duplicates/drop_duplicates.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/build/lib/sdi_pandas/cleanse/drop_highly_unique/drop_highly_unique.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/lib/sdi_pandas/cleanse/drop_highly_unique/drop_highly_unique.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/build/lib/sdi_pandas/cleanse/filter_by_population/filter_by_population.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/lib/sdi_pandas/cleanse/filter_by_population/filter_by_population.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/build/lib/sdi_pandas/dropColumns/dropColumns.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/lib/sdi_pandas/dropColumns/dropColumns.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/build/lib/sdi_pandas/fromCSV/fromCSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/lib/sdi_pandas/fromCSV/fromCSV.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/build/lib/sdi_pandas/fuzzyjoin/fuzzyjoin.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/lib/sdi_pandas/fuzzyjoin/fuzzyjoin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/build/lib/sdi_pandas/groupby/groupby.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/lib/sdi_pandas/groupby/groupby.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/build/lib/sdi_pandas/join/join.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/lib/sdi_pandas/join/join.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/build/lib/sdi_pandas/linRegressionPredict/linRegressionPredict.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/lib/sdi_pandas/linRegressionPredict/linRegressionPredict.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/build/lib/sdi_pandas/linRegressionTrain/linRegressionTrain.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/lib/sdi_pandas/linRegressionTrain/linRegressionTrain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/build/lib/sdi_pandas/oneHotEncoding/oneHotEncoding.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/lib/sdi_pandas/oneHotEncoding/oneHotEncoding.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/build/lib/sdi_pandas/lgbm_classifier/lgbm_classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/lib/sdi_pandas/lgbm_classifier/lgbm_classifier.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/build/lib/sdi_pandas/sample/sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/lib/sdi_pandas/sample/sample.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/build/lib/sdi_pandas/selectValues/selectValues.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/lib/sdi_pandas/selectValues/selectValues.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/build/lib/sdi_pandas/setValue/setValue.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/lib/sdi_pandas/setValue/setValue.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/build/lib/sdi_pandas/splitSample/splitSample.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/lib/sdi_pandas/splitSample/splitSample.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/build/lib/sdi_pandas/toCSV/toCSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/lib/sdi_pandas/toCSV/toCSV.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/build/lib/sdi_pandas/transposeColumn/transposeColumn.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/lib/sdi_pandas/transposeColumn/transposeColumn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.17-py3-none-any.whl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.17.tar.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.18-py3-none-any.whl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.18.tar.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.19-py3-none-any.whl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.19.tar.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.20-py3-none-any.whl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.20.tar.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.21-py3-none-any.whl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.21.tar.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.22-py3-none-any.whl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.22.tar.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.23-py3-none-any.whl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.23.tar.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.24-py3-none-any.whl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.24.tar.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.25-py3-none-any.whl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.25.tar.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.26-py3-none-any.whl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.26.tar.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.27-py3-none-any.whl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.27.tar.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.28-py3-none-any.whl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.28.tar.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.29-py3-none-any.whl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dist/sdi_pandas-0.0.29.tar.gz" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sdi_pandas.egg-info/PKG-INFO" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas.egg-info/PKG-INFO" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_pandas.egg-info/SOURCES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas.egg-info/SOURCES.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/anonymizeData/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/anonymizeData/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sdi_pandas/anonymizeData/anonymizeData.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/anonymizeData/anonymizeData.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/anonymizeData/configSchema.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/anonymizeData/configSchema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/anonymizeData/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/anonymizeData/operator.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sdi_pandas/castColumns/castColumns.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/castColumns/castColumns.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/castColumns/configSchema.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/castColumns/configSchema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/castColumns/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/castColumns/operator.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/dropColumns/configSchema.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/dropColumns/configSchema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/cleanse/categorical2exist/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/categorical2exist/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/cleanse/categorical2exist/categorical2exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/categorical2exist/categorical2exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/cleanse/categorical2exist/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/categorical2exist/operator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_1valuecolumn/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_1valuecolumn/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_1valuecolumn/drop_1valuecolumns.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_1valuecolumn/drop_1valuecolumns.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_1valuecolumn/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_1valuecolumn/operator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_duplicates/drop_duplicates.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_duplicates/drop_duplicates.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_duplicates/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_duplicates/operator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_highly_unique/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_highly_unique/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_highly_unique/drop_highly_unique.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_highly_unique/drop_highly_unique.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_highly_unique/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_highly_unique/operator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/cleanse/filter_by_population/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/filter_by_population/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/cleanse/filter_by_population/filter_by_population.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/filter_by_population/filter_by_population.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/cleanse/filter_by_population/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/cleanse/filter_by_population/operator.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sdi_pandas/dropColumns/dropColumns.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/dropColumns/dropColumns.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/dropColumns/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/dropColumns/operator.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sdi_pandas/fromCSV/configSchema.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/fromCSV/configSchema.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sdi_pandas/fromCSV/fromCSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/fromCSV/fromCSV.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sdi_pandas/fromCSV/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/fromCSV/operator.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/fuzzyjoin/configSchema.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/fuzzyjoin/configSchema.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sdi_pandas/fuzzyjoin/fuzzyjoin.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/fuzzyjoin/fuzzyjoin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/fuzzyjoin/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/fuzzyjoin/operator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/groupby/configSchema.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/groupby/configSchema.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sdi_pandas/groupby/groupby.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/groupby/groupby.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sdi_pandas/groupby/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/groupby/operator.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/join/configSchema.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/join/configSchema.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sdi_pandas/join/join.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/join/join.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/join/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/join/operator.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/linRegressionPredict/linRegressionPredict.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/linRegressionPredict/linRegressionPredict.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/linRegressionTrain/linRegressionTrain.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/linRegressionTrain/linRegressionTrain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/oneHotEncoding/oneHotEncoding.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/oneHotEncoding/oneHotEncoding.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/sample/configSchema.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/sample/configSchema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/sample/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/sample/operator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/lgbm_classifier/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/lgbm_classifier/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/lgbm_classifier/configSchema.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/lgbm_classifier/configSchema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/lgbm_classifier/lgbm_classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/lgbm_classifier/lgbm_classifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/lgbm_classifier/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/lgbm_classifier/operator.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sdi_pandas/sample/sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/sample/sample.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/selectValues/configSchema.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/selectValues/configSchema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/selectValues/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/selectValues/operator.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sdi_pandas/selectValues/selectValues.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/selectValues/selectValues.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/setValue/configSchema.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/setValue/configSchema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/setValue/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/setValue/operator.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sdi_pandas/setValue/setValue.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/setValue/setValue.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/splitSample/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/splitSample/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/splitSample/configSchema.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/splitSample/configSchema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/splitSample/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/splitSample/operator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/splitSample/splitSample.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/splitSample/splitSample.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sdi_pandas/toCSV/configSchema.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/toCSV/configSchema.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sdi_pandas/toCSV/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/toCSV/operator.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sdi_pandas/toCSV/toCSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/toCSV/toCSV.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/transposeColumn/configSchema.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/transposeColumn/configSchema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_pandas/transposeColumn/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/transposeColumn/operator.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sdi_pandas/transposeColumn/transposeColumn.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_pandas/transposeColumn/transposeColumn.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/bin/easy_install" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/easy_install" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/bin/easy_install-3.7" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/easy_install-3.7" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/bin/gensolution" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/gensolution" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/pkg_resources/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/pkg_resources/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/pkg_resources/_vendor/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/pkg_resources/_vendor/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/sdi_utils/gensolution.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/sdi_utils/gensolution.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools-42.0.2.dist-info/INSTALLER" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools-42.0.2.dist-info/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools-42.0.2.dist-info/METADATA" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools-42.0.2.dist-info/RECORD" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools-42.0.2.dist-info/WHEEL" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools-42.0.2.dist-info/dependency_links.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools-42.0.2.dist-info/entry_points.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools-42.0.2.dist-info/top_level.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools-42.0.2.dist-info/zip-safe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools/_vendor/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools/_vendor/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools/command/build_ext.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools/command/build_ext.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools/command/develop.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools/command/develop.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools/command/easy_install.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools/command/easy_install.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools/command/egg_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools/command/egg_info.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools/command/sdist.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools/command/sdist.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools/command/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools/command/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools/command/upload_docs.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools/command/upload_docs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools/dist.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/setuptools/dist.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -393,7 +440,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/sdi_pandas/splitSample" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -427,8 +474,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.anonymizeData">
-    <configuration name="anonymizeData" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.splitSample">
+    <configuration name="lgbm_classifier" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sdi_pandas" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -436,12 +483,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/sdi_pandas/anonymizeData" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/sdi_pandas/lgbm_classifier" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/sdi_pandas/anonymizeData/anonymizeData.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/sdi_pandas/lgbm_classifier/lgbm_classifier.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -450,7 +497,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="dropColumns" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="sample" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sdi_pandas" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -458,12 +505,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/sdi_pandas/dropColumns" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/sdi_pandas/sample" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/sdi_pandas/dropColumns/dropColumns.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/sdi_pandas/sample/sample.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -472,7 +519,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="drop_duplicates" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="selectValues" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sdi_pandas" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -480,12 +527,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_duplicates" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/sdi_pandas/selectValues" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_duplicates/drop_duplicates.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/sdi_pandas/selectValues/selectValues.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -494,7 +541,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="drop_highly_unique" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="setValue" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sdi_pandas" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -502,12 +549,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_highly_unique" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/sdi_pandas/setValue" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_highly_unique/drop_highly_unique.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/sdi_pandas/setValue/setValue.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -516,7 +563,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="fuzzyjoin" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="splitSample" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sdi_pandas" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -524,12 +571,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/sdi_pandas/fuzzyjoin" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/sdi_pandas/splitSample" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/sdi_pandas/fuzzyjoin/fuzzyjoin.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/sdi_pandas/splitSample/splitSample.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -539,19 +586,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.fuzzyjoin" />
-      <item itemvalue="Python.dropColumns" />
-      <item itemvalue="Python.drop_duplicates" />
-      <item itemvalue="Python.drop_highly_unique" />
-      <item itemvalue="Python.anonymizeData" />
+      <item itemvalue="Python.lgbm_classifier" />
+      <item itemvalue="Python.sample" />
+      <item itemvalue="Python.selectValues" />
+      <item itemvalue="Python.setValue" />
+      <item itemvalue="Python.splitSample" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.anonymizeData" />
-        <item itemvalue="Python.drop_highly_unique" />
-        <item itemvalue="Python.drop_duplicates" />
-        <item itemvalue="Python.dropColumns" />
-        <item itemvalue="Python.fuzzyjoin" />
+        <item itemvalue="Python.splitSample" />
+        <item itemvalue="Python.setValue" />
+        <item itemvalue="Python.selectValues" />
+        <item itemvalue="Python.sample" />
+        <item itemvalue="Python.lgbm_classifier" />
       </list>
     </recent_temporary>
   </component>
@@ -577,7 +624,11 @@
       <workItem from="1576408527928" duration="38354000" />
       <workItem from="1579002183903" duration="10838000" />
       <workItem from="1579083283628" duration="3780000" />
-      <workItem from="1579706800543" duration="35593000" />
+      <workItem from="1579706800543" duration="91831000" />
+      <workItem from="1580809466897" duration="451000" />
+      <workItem from="1580819260170" duration="607000" />
+      <workItem from="1580882033830" duration="5524000" />
+      <workItem from="1581235389392" duration="2745000" />
     </task>
     <servers />
   </component>
@@ -677,7 +728,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/sdi_pandas/dropColumns/dropColumns.py</url>
-          <line>129</line>
+          <line>127</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -687,12 +738,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/sdi_pandas/sample/sample.py</url>
-          <line>78</line>
+          <line>81</line>
           <option name="timeStamp" value="49" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/sdi_pandas/transposeColumn/transposeColumn.py</url>
-          <line>48</line>
+          <line>49</line>
           <option name="timeStamp" value="50" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -702,59 +753,85 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_duplicates/drop_duplicates.py</url>
-          <line>77</line>
+          <line>76</line>
           <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/sdi_pandas/cleanse/categorical2exist/categorical2exist.py</url>
-          <line>105</line>
+          <line>107</line>
           <option name="timeStamp" value="55" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/sdi_pandas/fromCSV/fromCSV.py</url>
-          <line>129</line>
-          <option name="timeStamp" value="56" />
+          <line>319</line>
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/sdi_pandas/fromCSV/fromCSV.py</url>
+          <line>215</line>
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/sdi_pandas/toCSV/toCSV.py</url>
+          <line>104</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/sdi_pandas/fuzzyjoin/fuzzyjoin.py</url>
+          <line>51</line>
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/sdi_pandas/sample/sample.py</url>
+          <line>127</line>
+          <option name="timeStamp" value="67" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="result_df" language="Python" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SDI_Pandas$transposeColumn.coverage" NAME="transposeColumn Coverage Results" MODIFIED="1575366756831" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/transposeColumn" />
     <SUITE FILE_PATH="coverage/SDI_Pandas$selectValues.coverage" NAME="selectValues Coverage Results" MODIFIED="1575365655048" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/selectValues" />
-    <SUITE FILE_PATH="coverage/sdi_pandas$splitSample.coverage" NAME="splitSample Coverage Results" MODIFIED="1580048307179" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/splitSample" />
+    <SUITE FILE_PATH="coverage/sdi_pandas$splitSample.coverage" NAME="splitSample Coverage Results" MODIFIED="1580669992521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/splitSample" />
     <SUITE FILE_PATH="coverage/SDI_Pandas$sample.coverage" NAME="sample Coverage Results" MODIFIED="1575363329368" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/sample" />
-    <SUITE FILE_PATH="coverage/sdi_pandas$join.coverage" NAME="join Coverage Results" MODIFIED="1580055842651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/join" />
+    <SUITE FILE_PATH="coverage/sdi_pandas$join.coverage" NAME="join Coverage Results" MODIFIED="1580669437058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/join" />
     <SUITE FILE_PATH="coverage/SDI_Pandas$linRegressionTrain.coverage" NAME="linRegressionTrain Coverage Results" MODIFIED="1575451741825" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/linRegressionTrain" />
     <SUITE FILE_PATH="coverage/sdi_pandas$drop_1valuecolumns__1_.coverage" NAME="drop_1valuecolumns (1) Coverage Results" MODIFIED="1579850626366" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_1valuecolumn" />
-    <SUITE FILE_PATH="coverage/sdi_pandas$toCSV.coverage" NAME="toCSV Coverage Results" MODIFIED="1580048447593" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/toCSV" />
+    <SUITE FILE_PATH="coverage/sdi_pandas$toCSV.coverage" NAME="toCSV Coverage Results" MODIFIED="1580641217944" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/toCSV" />
     <SUITE FILE_PATH="coverage/SDI_Pandas$setValue.coverage" NAME="setValue Coverage Results" MODIFIED="1575366380839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/setValue" />
-    <SUITE FILE_PATH="coverage/sdi_pandas$filter_by_population.coverage" NAME="filter_by_population Coverage Results" MODIFIED="1580042351696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/cleanse/filter_by_population" />
-    <SUITE FILE_PATH="coverage/sdi_pandas$fromCSV.coverage" NAME="fromCSV Coverage Results" MODIFIED="1580039632398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/fromCSV" />
+    <SUITE FILE_PATH="coverage/sdi_pandas$filter_by_population.coverage" NAME="filter_by_population Coverage Results" MODIFIED="1580669232702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/cleanse/filter_by_population" />
+    <SUITE FILE_PATH="coverage/sdi_pandas$fromCSV.coverage" NAME="fromCSV Coverage Results" MODIFIED="1580640944597" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/fromCSV" />
     <SUITE FILE_PATH="coverage/sdi_pandas$fromCSV2.coverage" NAME="fromCSV2 Coverage Results" MODIFIED="1576846569125" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/fromCSV2" />
     <SUITE FILE_PATH="coverage/SDI_Pandas$fromCSV.coverage" NAME="fromCSV Coverage Results" MODIFIED="1574674146297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas_operators" />
     <SUITE FILE_PATH="coverage/DI_Pandas$gensolution.coverage" NAME="gensolution Coverage Results" MODIFIED="1574584528024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/lib/python3.7/site-packages/sdi_utils" />
-    <SUITE FILE_PATH="coverage/sdi_pandas$sample.coverage" NAME="sample Coverage Results" MODIFIED="1580055856387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/sample" />
-    <SUITE FILE_PATH="coverage/sdi_pandas$anonymizeData.coverage" NAME="anonymizeData Coverage Results" MODIFIED="1580056998151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/anonymizeData" />
-    <SUITE FILE_PATH="coverage/sdi_pandas$categorical2exist.coverage" NAME="categorical2exist Coverage Results" MODIFIED="1580041122704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/cleanse/categorical2exist" />
+    <SUITE FILE_PATH="coverage/sdi_pandas$sample.coverage" NAME="sample Coverage Results" MODIFIED="1580669721422" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/sample" />
+    <SUITE FILE_PATH="coverage/sdi_pandas$anonymizeData.coverage" NAME="anonymizeData Coverage Results" MODIFIED="1580584147060" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/anonymizeData" />
+    <SUITE FILE_PATH="coverage/sdi_pandas$categorical2exist.coverage" NAME="categorical2exist Coverage Results" MODIFIED="1580669005867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/cleanse/categorical2exist" />
     <SUITE FILE_PATH="coverage/SDI_Pandas$groupby.coverage" NAME="groupby Coverage Results" MODIFIED="1575300248027" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/groupby" />
     <SUITE FILE_PATH="coverage/SDI_Pandas$cleanseHeuristics.coverage" NAME="cleanseHeuristics Coverage Results" MODIFIED="1574929649853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/cleanseHeuristics" />
     <SUITE FILE_PATH="coverage/SDI_Pandas$linRegressionPredict.coverage" NAME="linRegressionPredict Coverage Results" MODIFIED="1575451079787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/linRegressionPredict" />
     <SUITE FILE_PATH="coverage/SDI_Pandas$join.coverage" NAME="join Coverage Results" MODIFIED="1575361508875" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/join" />
-    <SUITE FILE_PATH="coverage/sdi_pandas$transposeColumn.coverage" NAME="transposeColumn Coverage Results" MODIFIED="1580048695115" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/transposeColumn" />
-    <SUITE FILE_PATH="coverage/sdi_pandas$setValue.coverage" NAME="setValue Coverage Results" MODIFIED="1580055916522" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/setValue" />
-    <SUITE FILE_PATH="coverage/sdi_pandas$lgbm_classifier.coverage" NAME="lgbm_classifier Coverage Results" MODIFIED="1580047412953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/lgbm_classifier" />
+    <SUITE FILE_PATH="coverage/sdi_pandas$transposeColumn.coverage" NAME="transposeColumn Coverage Results" MODIFIED="1580624403778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/transposeColumn" />
+    <SUITE FILE_PATH="coverage/sdi_pandas$setValue.coverage" NAME="setValue Coverage Results" MODIFIED="1580669965674" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/setValue" />
+    <SUITE FILE_PATH="coverage/sdi_pandas$groupby.coverage" NAME="groupby Coverage Results" MODIFIED="1580669445783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/groupby" />
+    <SUITE FILE_PATH="coverage/sdi_pandas$lgbm_classifier.coverage" NAME="lgbm_classifier Coverage Results" MODIFIED="1580669466317" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/lgbm_classifier" />
     <SUITE FILE_PATH="coverage/SDI_Pandas$fromCSV__1_.coverage" NAME="fromCSV (1) Coverage Results" MODIFIED="1574850925133" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/fromCSV" />
-    <SUITE FILE_PATH="coverage/sdi_pandas$drop_1valuecolumns.coverage" NAME="drop_1valuecolumns Coverage Results" MODIFIED="1580041348988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_1valuecolumn" />
+    <SUITE FILE_PATH="coverage/sdi_pandas$drop_1valuecolumns.coverage" NAME="drop_1valuecolumns Coverage Results" MODIFIED="1580669108305" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_1valuecolumn" />
     <SUITE FILE_PATH="coverage/SDI_Pandas$fuzzyjoin.coverage" NAME="fuzzyjoin Coverage Results" MODIFIED="1575299760489" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/fuzzyjoin" />
-    <SUITE FILE_PATH="coverage/sdi_pandas$castColumns.coverage" NAME="castColumns Coverage Results" MODIFIED="1580040402076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/castColumns" />
+    <SUITE FILE_PATH="coverage/sdi_pandas$castColumns.coverage" NAME="castColumns Coverage Results" MODIFIED="1580584251043" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/castColumns" />
     <SUITE FILE_PATH="coverage/SDI_Pandas$dropColumns.coverage" NAME="dropColumns Coverage Results" MODIFIED="1575291315265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/dropColumns" />
-    <SUITE FILE_PATH="coverage/sdi_pandas$fuzzyjoin.coverage" NAME="fuzzyjoin Coverage Results" MODIFIED="1580056062564" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/fuzzyjoin" />
+    <SUITE FILE_PATH="coverage/sdi_pandas$fuzzyjoin.coverage" NAME="fuzzyjoin Coverage Results" MODIFIED="1580621713535" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/fuzzyjoin" />
     <SUITE FILE_PATH="coverage/DI_Pandas$fromCSV.coverage" NAME="fromCSV Coverage Results" MODIFIED="1574666826177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandasoperators" />
-    <SUITE FILE_PATH="coverage/sdi_pandas$drop_highly_unique.coverage" NAME="drop_highly_unique Coverage Results" MODIFIED="1580056832608" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_highly_unique" />
+    <SUITE FILE_PATH="coverage/sdi_pandas$drop_highly_unique.coverage" NAME="drop_highly_unique Coverage Results" MODIFIED="1580669163255" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_highly_unique" />
     <SUITE FILE_PATH="coverage/SDI_Pandas$castColumns.coverage" NAME="castColumns Coverage Results" MODIFIED="1574847290391" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/castColumns" />
     <SUITE FILE_PATH="coverage/SDI_Pandas$toCSV.coverage" NAME="toCSV Coverage Results" MODIFIED="1574846316594" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/pandas/toCSV" />
-    <SUITE FILE_PATH="coverage/sdi_pandas$selectValues.coverage" NAME="selectValues Coverage Results" MODIFIED="1580055865572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/selectValues" />
-    <SUITE FILE_PATH="coverage/sdi_pandas$drop_duplicates.coverage" NAME="drop_duplicates Coverage Results" MODIFIED="1580056800357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_duplicates" />
-    <SUITE FILE_PATH="coverage/sdi_pandas$dropColumns.coverage" NAME="dropColumns Coverage Results" MODIFIED="1580056608185" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/dropColumns" />
+    <SUITE FILE_PATH="coverage/sdi_pandas$selectValues.coverage" NAME="selectValues Coverage Results" MODIFIED="1580669921251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/selectValues" />
+    <SUITE FILE_PATH="coverage/sdi_pandas$drop_duplicates.coverage" NAME="drop_duplicates Coverage Results" MODIFIED="1580669134653" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/cleanse/drop_duplicates" />
+    <SUITE FILE_PATH="coverage/sdi_pandas$dropColumns.coverage" NAME="dropColumns Coverage Results" MODIFIED="1580586215174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_pandas/dropColumns" />
   </component>
 </project>

@@ -1,6 +1,8 @@
 import sdi_utils.gensolution as gs
 import sdi_utils.set_logging as slog
 import sdi_utils.textfield_parser as tfp
+import sdi_utils.tprogress as tp
+
 import pandas as pd
 
 EXAMPLE_ROWS = 5
@@ -31,7 +33,7 @@ except NameError:
             df = pd.DataFrame(
                 {'icol': [1, 1, 3, 3, 3], 'col2': [1, 2, None, 4, 5], 'col3': [2, 3, 4, 5, 6],
                  'col4': [5, 6.5, 7.5, 8, 9], 'col5': [6, 6.7, 8.2, None, 10.1]})
-            default_msg = api.Message(attributes = {'format': 'csv', 'name': 'DF_name'},body=df)
+            default_msg = api.Message(attributes = {'format': 'csv', 'name': 'DF_name','process_list':[]},body=df)
             api.config.map_values = "icol:1:2; col2:5:55"
             api.config.fill_nan_values = "col2:0,col5:0"
             callback(default_msg)
@@ -59,17 +61,16 @@ except NameError:
 
 
 def process(msg) :
-
-    att_dict = dict()
-    att_dict['config'] = dict()
-
+    att_dict = msg.attributes
     att_dict['operator'] = 'setValue'
-    logger, log_stream = slog.set_logging(att_dict['operator'])
     if api.config.debug_mode == True:
-        logger.setLevel('DEBUG')
+        logger, log_stream = slog.set_logging(att_dict['operator'],loglevel='DEBUG')
+    else :
+        logger, log_stream = slog.set_logging(att_dict['operator'],loglevel='INFO')
+    logger.info("Process started")
+    time_monitor = tp.progress()
 
     # start custom process definition
-    prev_att = msg.attributes
     df = msg.body
     if not isinstance(df,pd.DataFrame) :
         raise TypeError('Message body does not contain a pandas DataFrame')
@@ -78,41 +79,38 @@ def process(msg) :
     ###### start of doing calculation
 
     # map_values : column1: {from_value: to_value}, column2: {from_value: to_value}
-    att_dict['config']['set_value'] = api.config.map_values
     maps_map = tfp.read_dict_of_dict(api.config.map_values)
     df.replace(maps_map,inplace=True)
+    logger.info('Replace values: {}'.format(maps_map))
 
     # Fill NaN value : column1: value, column2: value,
-    att_dict['config']['fill_nan_values'] = api.config.fill_nan_values
     map_dict = tfp.read_dict(api.config.fill_nan_values)
     if map_dict :
         df.fillna(map_dict,inplace=True)
-
-    ##############################################
-    #  final infos to attributes and info message
-    ##############################################
-
-    if df.empty :
-        raise ValueError('DataFrame is empty')
-
-    att_dict['memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
-    att_dict['columns'] = str(list(df.columns))
-    att_dict['shape'] = df.shape
-    att_dict['id'] = str(id(df))
-
-    logger.debug('Columns: {}'.format(str(df.columns)))
-    logger.debug('Shape (#rows - #columns): {} - {}'.format(df.shape[0], df.shape[1]))
-    logger.debug('Memory: {} kB'.format(att_dict['memory']))
-    example_rows = EXAMPLE_ROWS if df.shape[0] > EXAMPLE_ROWS else df.shape[0]
-    for i in range(0, example_rows):
-        att_dict['row_' + str(i)] = str([str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])
-        logger.debug('Head data: {}'.format(att_dict['row_' + str(i)]))
+        logger.info('Fill nan values: {}'.format(map_dict))
 
     # end custom process definition
+    if df.empty :
+        raise ValueError('DataFrame is empty')
+    logger.debug('Columns: {}'.format(str(df.columns)))
+    logger.debug('Shape (#rows - #columns): {} - {}'.format(df.shape[0],df.shape[1]))
+    logger.debug('Memory: {} kB'.format(df.memory_usage(deep=True).sum() / 1024 ** 2))
+    example_rows = EXAMPLE_ROWS if df.shape[0] > EXAMPLE_ROWS else df.shape[0]
+    for i in range(0, example_rows):
+        logger.debug('Row {}: {}'.format(i,str([str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])))
 
-    log = log_stream.getvalue()
-    msg = api.Message(attributes=att_dict,body=df)
-    return log, msg
+    progress_str = '<BATCH ENDED><1>'
+    if 'storage.fileIndex' in att_dict and 'storage.fileCount' in att_dict and 'storage.endOfSequence' in att_dict:
+        if att_dict['storage.fileIndex'] + 1 == att_dict['storage.fileCount']:
+            progress_str = '<BATCH ENDED><{}>'.format(att_dict['storage.fileCount'])
+        else:
+            progress_str = '<BATCH IN-PROCESS><{}/{}>'.format(att_dict['storage.fileIndex'] + 1,
+                                                              att_dict['storage.fileCount'])
+    att_dict['process_list'].append(att_dict['operator'])
+    logger.debug('Process ended: {}  - {}  '.format(progress_str, time_monitor.elapsed_time()))
+    logger.debug('Past process steps: {}'.format(att_dict['process_list']))
+
+    return log_stream.getvalue(), api.Message(attributes=att_dict,body=df)
 
 
 inports = [{'name': 'data', 'type': 'message.DataFrame',"description":"Input data"}]

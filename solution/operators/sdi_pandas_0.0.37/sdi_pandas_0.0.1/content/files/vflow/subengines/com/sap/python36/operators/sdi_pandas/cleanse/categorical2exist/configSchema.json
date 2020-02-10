@@ -1,0 +1,48 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/sdi_pandas.cleanse.categorical2exist.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "script": {
+            "type": "string"
+        },
+        "debug_mode": {
+            "title": "Debug mode",
+            "description": "Sending debug level information to log port",
+            "type": "boolean"
+        },
+        "columns": {
+            "title": "Columns",
+            "description": "Columns to check for 1 unique value",
+            "type": "string"
+        },
+        "info_only": {
+            "title": "Info only",
+            "description": "Only check without data modification.",
+            "type": "boolean"
+        },
+        "threshold": {
+            "title": "Threshold",
+            "description": "Threshold by with column is droped.",
+            "type": "number"
+        },
+        "upper_threshold": {
+            "title": "Upper Threshold",
+            "description": "Columns with 2 values anda population more than upper_threshold are transformed to [0,1]",
+            "type": "number"
+        },
+        "num_values": {
+            "title": "Number of Values",
+            "description": "Number of values that should be tested to set to '1' excluding 'None/nan' values",
+            "type": "integer"
+        },
+        "equal_only": {
+            "title": "Only equal",
+            "description": "Only number of unique values that match that match 'Number of Values' should be transformed.",
+            "type": "boolean"
+        }
+    }
+}

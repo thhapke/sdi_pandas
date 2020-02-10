@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/sdi_pandas.selectValues.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "script": {
+            "type": "string"
+        },
+        "debug_mode": {
+            "title": "Debug mode",
+            "description": "Sending debug level information to log port",
+            "type": "boolean"
+        },
+        "selection_num": {
+            "title": "Selection in columns of numeric type",
+            "type": "string",
+            "description": "Selection criteria for numerical columns. Comparison operators: ['=', '>', '<', '!' or '!=' ]. Example: order_id < 100000"
+        },
+        "selection_list": {
+            "title": "Selection list",
+            "type": "string",
+            "description": "Inclusion or exclusion list of values for numerical and string column.  Comparison operators: ['=', '!' or '!=' ]. Example: trans_date = 2016-03-03, 2016-02-04"
+        }
+    }
+}

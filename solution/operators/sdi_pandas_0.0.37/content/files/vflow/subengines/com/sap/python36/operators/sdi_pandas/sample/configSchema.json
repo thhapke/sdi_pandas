@@ -1,0 +1,33 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/sdi_pandas.sample.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "script": {
+            "type": "string"
+        },
+        "debug_mode": {
+            "title": "Debug mode",
+            "description": "Sending debug level information to log port",
+            "type": "boolean"
+        },
+        "sample_size": {
+            "title": "Sample size",
+            "description": "Sample size",
+            "type": "number"
+        },
+        "random_state": {
+            "title": "Random state",
+            "description": "Random state",
+            "type": "integer"
+        },
+        "invariant_column": {
+            "title": "Invariant column",
+            "description": "Column where all the same value records should be kept as a whole in a sample",
+            "type": "string"
+        }
+    }
+}

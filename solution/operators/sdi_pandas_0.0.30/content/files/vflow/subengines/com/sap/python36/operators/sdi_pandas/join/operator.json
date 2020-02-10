@@ -1,0 +1,44 @@
+{
+    "description": "Join Dataframes",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "left_input",
+            "type": "message.DataFrame",
+            "description": "Left input data"
+        },
+        {
+            "name": "right_input",
+            "type": "message.DataFrame",
+            "description": "Right input data"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging"
+        },
+        {
+            "name": "output",
+            "type": "message.DataFrame",
+            "description": "Output data"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_pandas.join.configSchema.json",
+        "script": "file://join.py",
+        "debug_mode": true,
+        "how": "inner",
+        "on_index": false,
+        "left_on": "None",
+        "right_on": "None",
+        "drop_columns": "None",
+        "new_indices": ""
+    },
+    "tags": {
+        "pandas": "",
+        "sdi_utils": ""
+    },
+    "iconsrc": "DI_PandasV2.svg"
+}

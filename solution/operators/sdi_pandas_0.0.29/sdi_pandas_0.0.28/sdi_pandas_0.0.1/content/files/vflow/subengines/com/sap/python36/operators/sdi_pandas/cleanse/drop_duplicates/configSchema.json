@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/sdi_pandas.cleanse.drop_duplicates.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "script": {
+            "type": "string"
+        },
+        "debug_mode": {
+            "title": "Debug mode",
+            "description": "Sending debug level information to log port",
+            "type": "boolean"
+        },
+        "columns": {
+            "title": "Columns",
+            "description": "Columns to check for duplicates",
+            "type": "string"
+        },
+        "keep": {
+            "title": "Keep rule",
+            "description": "Rule which values to keep",
+            "type": "string"
+        }
+    }
+}

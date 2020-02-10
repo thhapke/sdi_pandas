@@ -1,6 +1,7 @@
 import sdi_utils.gensolution as gs
 import sdi_utils.set_logging as slog
 import sdi_utils.textfield_parser as tfp
+import sdi_utils.tprogress as tp
 
 import pandas as pd
 
@@ -32,7 +33,7 @@ except NameError:
             df = pd.DataFrame(
                 {'icol': [1, 2, 2, 5, 5], 'xcol2': [1, 2, 2, 2, 3], 'xcol3': ['A', 'B', 'B', 'B', 'C'], \
                  'xcol4': ['L', 'L', 'K', 'N', 'C']})
-            default_msg = api.Message(attributes={'format': 'pandas', 'name': 'test'},body = df)
+            default_msg = api.Message(attributes={'format': 'pandas', 'name': 'test','process_list':[]},body = df)
             api.config.transpose_column = 'xcol3'
             api.config.value_column = 'xcol2'
             api.config.aggr_default = 'first'
@@ -73,32 +74,31 @@ except NameError:
             config_params['prefix'] = {'title': 'Prefix of transposed values', 'description': 'Prefix of transposed values', 'type': 'string'}
 
 def process(msg) :
-    att_dict = dict()
-    att_dict['config'] = dict()
-
+    att_dict = msg.attributes
     att_dict['operator'] = 'transposeColumn'
-    logger, log_stream = slog.set_logging(att_dict['operator'])
     if api.config.debug_mode == True:
-        logger.setLevel('DEBUG')
+        logger, log_stream = slog.set_logging(att_dict['operator'],loglevel='DEBUG')
+    else :
+        logger, log_stream = slog.set_logging(att_dict['operator'],loglevel='INFO')
+    logger.info("Process started")
+    time_monitor = tp.progress()
 
     # start custom process definition
-    prev_att = msg.attributes
     df = msg.body
     if not isinstance(df, pd.DataFrame):
         raise TypeError('Message body does not contain a pandas DataFrame')
 
     ###### start of doing calculation
-
-    att_dict['config']['reset_index'] = api.config.reset_index
     if api.config.reset_index:
         df.reset_index(inplace=True)
+        logger.info('Reset index')
 
     # create DataFrame with numbered columns add concat it to df
-    att_dict['config']['transpose_column'] = api.config.transpose_column
     trans_col = tfp.read_value(api.config.transpose_column)
+    logger.info('Transpose column: {}'.format(trans_col))
 
-    att_dict['config']['value_column'] = api.config.value_column
     val_col = tfp.read_value(api.config.value_column)
+    logger.info('Value column: {}'.format(val_col))
 
     # new columns
     tvals = list(df[trans_col].unique())
@@ -114,7 +114,6 @@ def process(msg) :
         df.loc[df[trans_col] == val, col] = df.loc[df[trans_col] == val, val_col]
     df.drop(columns=[trans_col, val_col], inplace=True)
 
-    att_dict['config']['groupby'] = api.config.groupby
     gbcols = tfp.read_list(api.config.groupby, df.columns)
     # group df
     if gbcols:
@@ -127,30 +126,31 @@ def process(msg) :
         aggregation = {c: a for c, a in aggregation.items() if c not in gbcols}
 
         df = df.groupby(gbcols, as_index=api.config.as_index).agg(aggregation)
+        logger.info('Groupby: {}'.format(gbcols))
 
-    #####################
-    #  final infos to attributes and info message
-    #####################
-
-    att_dict['memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
-    att_dict['columns'] = str(list(df.columns))
-    att_dict['shape'] = df.shape
-    att_dict['id'] = str(id(df))
-
-    logger.debug('Columns: {}'.format(str(df.columns)))
-    logger.debug('Shape (#rows - #columns): {} - {}'.format(df.shape[0], df.shape[1]))
-    logger.debug('Memory: {} kB'.format(att_dict['memory']))
-    example_rows = EXAMPLE_ROWS if df.shape[0] > EXAMPLE_ROWS else df.shape[0]
-    for i in range(0, example_rows):
-        att_dict['row_' + str(i)] = str([str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])
-        logger.debug('Head data: {}'.format(att_dict['row_' + str(i)]))
 
     # end custom process definition
+    if df.empty :
+        raise ValueError('DataFrame is empty')
+    logger.debug('Columns: {}'.format(str(df.columns)))
+    logger.debug('Shape (#rows - #columns): {} - {}'.format(df.shape[0],df.shape[1]))
+    logger.debug('Memory: {} kB'.format(df.memory_usage(deep=True).sum() / 1024 ** 2))
+    example_rows = EXAMPLE_ROWS if df.shape[0] > EXAMPLE_ROWS else df.shape[0]
+    for i in range(0, example_rows):
+        logger.debug('Row {}: {}'.format(i,str([str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])))
 
-    log = log_stream.getvalue()
-    msg = api.Message(attributes=att_dict,body=df)
-    return log, msg
+    progress_str = '<BATCH ENDED><1>'
+    if 'storage.fileIndex' in att_dict and 'storage.fileCount' in att_dict and 'storage.endOfSequence' in att_dict:
+        if att_dict['storage.fileIndex'] + 1 == att_dict['storage.fileCount']:
+            progress_str = '<BATCH ENDED><{}>'.format(att_dict['storage.fileCount'])
+        else:
+            progress_str = '<BATCH IN-PROCESS><{}/{}>'.format(att_dict['storage.fileIndex'] + 1,
+                                                              att_dict['storage.fileCount'])
+    att_dict['process_list'].append(att_dict['operator'])
+    logger.debug('Process ended: {}  - {}  '.format(progress_str, time_monitor.elapsed_time()))
+    logger.debug('Past process steps: {}'.format(att_dict['process_list']))
 
+    return log_stream.getvalue(), api.Message(attributes=att_dict,body=df)
 
 inports = [{'name': 'data', 'type': 'message.DataFrame',"description":"Input data"}]
 outports = [{'name': 'log', 'type': 'string',"description":"Logging data"}, \

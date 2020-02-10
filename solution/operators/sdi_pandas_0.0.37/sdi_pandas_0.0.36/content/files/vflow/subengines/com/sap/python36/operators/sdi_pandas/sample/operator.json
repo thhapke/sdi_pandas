@@ -1,0 +1,36 @@
+{
+    "description": "Sample from Dataframe",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "data",
+            "type": "message.DataFrame",
+            "description": "Input data"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging data"
+        },
+        {
+            "name": "data",
+            "type": "message.DataFrame",
+            "description": "Output data"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_pandas.sample.configSchema.json",
+        "script": "file://sample.py",
+        "debug_mode": true,
+        "sample_size": 0.1,
+        "random_state": 1,
+        "invariant_column": ""
+    },
+    "tags": {
+        "pandas": "",
+        "sdi_utils": ""
+    },
+    "iconsrc": "DI_PandasV2.svg"
+}

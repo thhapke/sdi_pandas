@@ -1,0 +1,71 @@
+05:53:16 - fromCSV - DEBUG - Process started
+05:53:16 - fromCSV - INFO - Filename: s_Strom_Privattarife_Empfehlungen_2000kWh_2019_06_20 index: 0  count: 42  endofSeq: False
+05:53:16 - fromCSV - DEBUG - Input format: <bytes>
+05:53:16 - fromCSV - DEBUG - Read from input
+05:53:16 - fromCSV - DEBUG - Added to DataFrame: s_Strom_Privattarife_Empfehlungen_2000kWh_2019_06_20
+05:53:16 - fromCSV - DEBUG - Columns: Index(['Postleitzahl', 'Verbrauchsstufe', 'Ort', 'Ortsteil', 'Rang',
+       'Anbietername', 'Gesamtpreis', 'Exportdatum'],
+      dtype='object')
+05:53:16 - fromCSV - DEBUG - Shape (#rows - #columns): 2745 - 8
+05:53:16 - fromCSV - DEBUG - Memory: 0.8502044677734375 kB
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '1         ', 'immergrün!', '582.33    ', '2019-06-20']
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '2         ', 'ENSTROGA A', '583.45    ', '2019-06-20']
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '3         ', 'Fuxx-Die S', '583.67    ', '2019-06-20']
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '4         ', 'Shell Priv', '584.1     ', '2019-06-20']
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '5         ', 'Wunderwerk', '584.17    ', '2019-06-20']
+05:53:16 - fromCSV - DEBUG - Process started
+05:53:16 - fromCSV - INFO - Filename: s_Strom_Privattarife_Empfehlungen_3000kWh_2019_07_02 index: 1  count: 42  endofSeq: False
+05:53:16 - fromCSV - DEBUG - Input format: <bytes>
+05:53:16 - fromCSV - DEBUG - Read from input
+05:53:16 - fromCSV - DEBUG - Columns: Index(['Postleitzahl', 'Verbrauchsstufe', 'Ort', 'Ortsteil', 'Rang',
+       'Anbietername', 'Gesamtpreis', 'Exportdatum'],
+      dtype='object')
+05:53:16 - fromCSV - DEBUG - Shape (#rows - #columns): 5490 - 8
+05:53:16 - fromCSV - DEBUG - Memory: 1.7391738891601562 kB
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '1         ', 'immergrün!', '582.33    ', '2019-06-20']
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '2         ', 'ENSTROGA A', '583.45    ', '2019-06-20']
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '3         ', 'Fuxx-Die S', '583.67    ', '2019-06-20']
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '4         ', 'Shell Priv', '584.1     ', '2019-06-20']
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '5         ', 'Wunderwerk', '584.17    ', '2019-06-20']
+05:53:16 - fromCSV - DEBUG - Process started
+05:53:16 - fromCSV - INFO - Filename: s_Strom_Privattarife_Empfehlungen_5000kWh_2019_05_27 index: 2  count: 42  endofSeq: False
+05:53:16 - fromCSV - DEBUG - Input format: <bytes>
+05:53:16 - fromCSV - DEBUG - Read from input
+05:53:16 - fromCSV - DEBUG - Columns: Index(['Postleitzahl', 'Verbrauchsstufe', 'Ort', 'Ortsteil', 'Rang',
+       'Anbietername', 'Gesamtpreis', 'Exportdatum'],
+      dtype='object')
+05:53:16 - fromCSV - DEBUG - Shape (#rows - #columns): 8190 - 8
+05:53:16 - fromCSV - DEBUG - Memory: 2.597079277038574 kB
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '1         ', 'immergrün!', '582.33    ', '2019-06-20']
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '2         ', 'ENSTROGA A', '583.45    ', '2019-06-20']
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '3         ', 'Fuxx-Die S', '583.67    ', '2019-06-20']
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '4         ', 'Shell Priv', '584.1     ', '2019-06-20']
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '5         ', 'Wunderwerk', '584.17    ', '2019-06-20']
+05:53:16 - fromCSV - DEBUG - Process started
+05:53:16 - fromCSV - INFO - Filename: s_Strom_Privattarife_Empfehlungen_2000kWh_2019_06_27 index: 3  count: 42  endofSeq: False
+05:53:16 - fromCSV - DEBUG - Input format: <bytes>
+05:53:16 - fromCSV - DEBUG - Read from input
+05:53:16 - fromCSV - DEBUG - Columns: Index(['Postleitzahl', 'Verbrauchsstufe', 'Ort', 'Ortsteil', 'Rang',
+       'Anbietername', 'Gesamtpreis', 'Exportdatum'],
+      dtype='object')
+05:53:16 - fromCSV - DEBUG - Shape (#rows - #columns): 10882 - 8
+05:53:16 - fromCSV - DEBUG - Memory: 3.4521875381469727 kB
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '1         ', 'immergrün!', '582.33    ', '2019-06-20']
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '2         ', 'ENSTROGA A', '583.45    ', '2019-06-20']
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '3         ', 'Fuxx-Die S', '583.67    ', '2019-06-20']
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '4         ', 'Shell Priv', '584.1     ', '2019-06-20']
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '5         ', 'Wunderwerk', '584.17    ', '2019-06-20']
+05:53:16 - fromCSV - DEBUG - Process started
+05:53:16 - fromCSV - INFO - Filename: s_Strom_Privattarife_Empfehlungen_2000kWh_2019_06_25 index: 4  count: 42  endofSeq: False
+05:53:16 - fromCSV - DEBUG - Input format: <bytes>
+05:53:16 - fromCSV - DEBUG - Read from input
+05:53:16 - fromCSV - DEBUG - Columns: Index(['Postleitzahl', 'Verbrauchsstufe', 'Ort', 'Ortsteil', 'Rang',
+       'Anbietername', 'Gesamtpreis', 'Exportdatum'],
+      dtype='object')
+05:53:16 - fromCSV - DEBUG - Shape (#rows - #columns): 13574 - 8
+05:53:16 - fromCSV - DEBUG - Memory: 4.307248115539551 kB
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '1         ', 'immergrün!', '582.33    ', '2019-06-20']
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '2         ', 'ENSTROGA A', '583.45    ', '2019-06-20']
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '3         ', 'Fuxx-Die S', '583.67    ', '2019-06-20']
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '4         ', 'Shell Priv', '584.1     ', '2019-06-20']
+05:53:16 - fromCSV - DEBUG - Head data: ['85411     ', '2000      ', 'Hohenkamme', 'Deutldorf,', '5         ', 'Wunderwerk', '584.17    ', '2019-06-20']

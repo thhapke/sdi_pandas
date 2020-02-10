@@ -7,6 +7,8 @@ import sdi_utils.set_logging as slog
 import sdi_utils.tprogress as tp
 import sdi_utils.textfield_parser as tfp
 
+EXAMPLE_ROWS = 5
+
 try:
     api
 except NameError:
@@ -29,7 +31,7 @@ except NameError:
                                            'type': 'boolean'}
             columns = 'All'
             config_params['columns'] = {'title': 'Columns', 'description': 'Columns to check for 1 unique value', 'type': 'string'}
-            info_only = 'True'
+            info_only = True
             config_params['info_only'] = {'title': 'Info only', 'description': 'Only check without data modification.', 'type': 'boolean'}
 
         class Message:
@@ -50,7 +52,7 @@ except NameError:
             df = pd.DataFrame(
                 {'icol': [1, 1, 1, 1, 2], 'xcol2': ['A', 'A', 'B', 'B', 'C'], 'xcol3': ['A', 'A', 'C', 'D', 'E'],
                  'xcol4': ['a', 'A', 'b', 'a', 'c'],'xcol5': ['X', 'A', 'B', 'B', 'C']})
-            default_msg = api.Message(attributes={'format': 'csv', 'name': 'DF_name'}, body=df)
+            default_msg = api.Message(attributes={'format': 'csv', 'name': 'DF_name','process_list':[]}, body=df)
             callback(default_msg)
 
         def call(config,msg):
@@ -59,58 +61,64 @@ except NameError:
 
 
 def process(msg):
-    att_dict = dict()
-    att_dict['config'] = dict()
-
+    att_dict = msg.attributes
     att_dict['operator'] = 'drop_1valuecolumns'
-    logger, log_stream = slog.set_logging(att_dict['operator'])
     if api.config.debug_mode == True:
-        logger.setLevel('DEBUG')
-
+        logger, log_stream = slog.set_logging(att_dict['operator'],loglevel='DEBUG')
+    else :
+        logger, log_stream = slog.set_logging(att_dict['operator'],loglevel='INFO')
+    logger.info("Process started")
     time_monitor = tp.progress()
 
-    logger.debug('Start Process Function')
-    logger.debug('Start time: ' + time_monitor.get_start_time())
-
     df = msg.body
+    prev_shape = df.shape
     # Columns with 1 unique value
     columns = tfp.read_list(api.config.columns,df.columns)
-    col1val_data = {'column': [], 'type': [], 'unique_vals': [], 'action': []}
+    transform_data = {'column': [], 'type': [], 'unique_vals': [], 'action': []}
     for col in columns:
         vals = df[col].unique()
         if len(vals) == 1:
-            col1val_data['column'].append(col)
-            col1val_data['type'].append(str(df[col].dtype))
-            col1val_data['unique_vals'].append(vals)
-            col1val_data['action'].append('drop')
+            transform_data['column'].append(col)
+            transform_data['type'].append(str(df[col].dtype))
+            transform_data['unique_vals'].append(vals)
+            transform_data['action'].append('drop')
             if not api.config.info_only:
                 df.drop(columns=[col], inplace=True)
 
-    logger.debug('End of Process Function')
-    logger.debug('End time: ' + time_monitor.elapsed_time())
-
-    att_dict['memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
-    att_dict['columns'] = str(list(df.columns))
-    att_dict['shape'] = df.shape
-    att_dict['id'] = str(id(df))
-
+    # end custom process definition
+    if df.empty :
+        raise ValueError('DataFrame is empty')
     logger.debug('Columns: {}'.format(str(df.columns)))
-    logger.debug('Shape (#rows - #columns): {} - {}'.format(df.shape[0], df.shape[1]))
-    logger.debug('Memory: {} kB'.format(att_dict['memory']))
+    logger.debug('Shape (#rows - #columns): {} - {}'.format(df.shape[0],df.shape[1]))
+    logger.debug('Memory: {} kB'.format(df.memory_usage(deep=True).sum() / 1024 ** 2))
+    example_rows = EXAMPLE_ROWS if df.shape[0] > EXAMPLE_ROWS else df.shape[0]
+    for i in range(0, example_rows):
+        logger.debug('Row {}: {}'.format(i,str([str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])))
 
-    return log_stream.getvalue(), api.Message(attributes={'name':'drop_duplicates','type':'DataFrame'},body=df),\
-            api.Message(attributes={'name':'transformation','type':'DataFrame'},body=pd.DataFrame(col1val_data))
+    progress_str = '<BATCH ENDED><1>'
+    if 'storage.fileIndex' in att_dict and 'storage.fileCount' in att_dict and 'storage.endOfSequence' in att_dict:
+        if att_dict['storage.fileIndex'] + 1 == att_dict['storage.fileCount']:
+            progress_str = '<BATCH ENDED><{}>'.format(att_dict['storage.fileCount'])
+        else:
+            progress_str = '<BATCH IN-PROCESS><{}/{}>'.format(att_dict['storage.fileIndex'] + 1,
+                                                              att_dict['storage.fileCount'])
+    att_dict['process_list'].append(att_dict['operator'])
+    logger.debug('Process ended: {}  - {}  '.format(progress_str, time_monitor.elapsed_time()))
+    logger.debug('Past process steps: {}'.format(att_dict['process_list']))
+
+    return log_stream.getvalue(), api.Message(attributes=att_dict,body=df),\
+            api.Message(attributes={'name':'transformation','type':'DataFrame'},body=pd.DataFrame(transform_data))
 
 inports = [{"name":"data","type":"message.DataFrame","description":"Input data"}]
 outports = [{"name":"log","type":"string","description":"Logging"},\
-            {"name":"data","type":"message.DataFrame","description":"Output data"},\
-            {"name":"transformation","type":"message.DataFrame","description":"Transformation data"}]
+            {"name":"transformation","type":"message.DataFrame","description":"Transformation data"},\
+            {"name":"data","type":"message.DataFrame","description":"Output data"}]
 
 def call_on_input(msg) :
     log, data, transformation_data = process(msg)
     api.send(outports[0]['name'], log)
-    api.send(outports[1]['name'], data)
-    api.send(outports[2]['name'], transformation_data)
+    api.send(outports[1]['name'], transformation_data)
+    api.send(outports[2]['name'], data)
 
 #api.set_port_callback(inports[0]['name'], call_on_input)
 
@@ -121,11 +129,11 @@ def main() :
     print('Test: config')
     config = api.config
     config.columns = 'All'
-    config.info_only = True
+    config.info_only = False
     df = pd.DataFrame(
         {'icol': [1, 1, 1, 1, 1], 'xcol2': ['A', 'A', 'B', 'B', 'C'], 'xcol3': ['A', 'A', 'C', 'D', 'E'],
          'xcol4': ['A', 'A', 'b', 'a', 'c'], 'xcol5': ['A', 'A', 'A', 'A', 'A']})
-    test_msg = api.Message(attributes={'name':'test1'},body =df)
+    test_msg = api.Message(attributes={'name':'test1','process_list':[]},body =df)
     log, data, trans = api.call(config,test_msg)
     print('Attributes: ', data.attributes)
     print('Body: ', str(data.body))

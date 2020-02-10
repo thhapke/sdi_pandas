@@ -1,0 +1,41 @@
+{
+    "description": "Transpose Column",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "data",
+            "type": "message.DataFrame",
+            "description": "Input data"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging data"
+        },
+        {
+            "name": "data",
+            "type": "message.DataFrame",
+            "description": "Output data"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_pandas.transposeColumn.configSchema.json",
+        "script": "file://transposeColumn.py",
+        "debug_mode": true,
+        "transpose_column": "None",
+        "value_column": "None",
+        "aggr_trans": "None",
+        "aggr_default": "None",
+        "groupby": "None",
+        "as_index": false,
+        "reset_index": false,
+        "prefix": "t_"
+    },
+    "tags": {
+        "pandas": "",
+        "sdi_utils": ""
+    },
+    "iconsrc": "DI_PandasV2.svg"
+}

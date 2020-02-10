@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/sdi_pandas.linRegressionPredict.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "script": {
+            "type": "string"
+        },
+        "prediction_col_only": {
+            "title": "Prediction Columns only",
+            "description": "The output only contains the prediction columns",
+            "type": "boolean"
+        },
+        "regresssion_cols_value": {
+            "title": "Set value for some regression columns",
+            "type": "string",
+            "description": "list of comma-separated maps with columns and values that overrides the prediction data of the *inData* message. Only applicable for fixe values. Otherwise the *inData* message needs to be used. "
+        },
+        "prediction_prefix": {
+            "title": "Prefix for prediction columns",
+            "description": "Prefix for prediction columns",
+            "type": "string"
+        }
+    }
+}

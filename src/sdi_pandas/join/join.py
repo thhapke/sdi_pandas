@@ -1,6 +1,8 @@
 import sdi_utils.gensolution as gs
 import sdi_utils.set_logging as slog
 import sdi_utils.textfield_parser as tfp
+import sdi_utils.tprogress as tp
+
 import pandas as pd
 
 EXAMPLE_ROWS = 5
@@ -31,12 +33,13 @@ except NameError:
             l_df = pd.DataFrame(
                 {'icol': [1, 2, 3, 4, 5], 'xcol2': ['A', 'B', 'C', 'D', 'E'], 'xcol3': ['K', 'L', 'M', 'N', 'O']})
             l_df.set_index(keys='icol', inplace=True)
-            l_msg = api.Message(attributes={'format': 'pandas','name':'leftDF'},body = l_df)
+            l_msg = api.Message(attributes={'format': 'pandas','name':'leftDF','process_list':[]},body = l_df)
             r_df = pd.DataFrame(
                 {'icol': [3, 4, 5, 6, 7], 'ycol2': ['C', 'D', 'E', 'F', 'G'], 'ycol3': ['M', 'N', 'O', 'P', 'Q']})
             r_df.set_index(keys='icol', inplace=True)
-            r_msg = api.Message(attributes={'format': 'pandas', 'name': 'rightDF'}, body=r_df)
-
+            r_msg = api.Message(attributes={'format': 'pandas', 'name': 'rightDF','process_list':[]}, body=r_df)
+            api.config.left_on='icol'
+            api.config.right_on='icol'
             callback(l_msg,r_msg)
     
         class config:
@@ -69,24 +72,19 @@ except NameError:
 
 def process(left_msg, right_msg) :
 
-    att_dict = dict()
-    att_dict['config'] = dict()
-
+    att_dict = left_msg.attributes
     att_dict['operator'] = 'join'
-    logger, log_stream = slog.set_logging(att_dict['operator'])
     if api.config.debug_mode == True:
-        logger.setLevel('DEBUG')
+        logger, log_stream = slog.set_logging(att_dict['operator'],loglevel='DEBUG')
+    else :
+        logger, log_stream = slog.set_logging(att_dict['operator'],loglevel='INFO')
+    logger.info("Process started")
+    time_monitor = tp.progress()
 
     # start custom process definition
 
     l_att = left_msg.attributes
     r_att = right_msg.attributes
-
-    if l_att['name'] == r_att['name']:
-        att_dict['name'] = l_att['name']
-    else:
-        att_dict['name'] = l_att['name'] + '-' + r_att['name']
-    att_dict['config'] = dict()
 
     # read stream from memory
     left_df = left_msg.body
@@ -96,15 +94,12 @@ def process(left_msg, right_msg) :
     how = tfp.read_value(api.config.how)
 
     # merge according to config
-    att_dict['config']['on_index'] = api.config.on_index
     if api.config.on_index:
         df = pd.merge(left_df, right_df, how=how, left_index=True, right_index=True)
     elif api.config.left_on and api.config.right_on:
-        att_dict['config']['left_on'] = api.config.left_on
-        att_dict['config']['right_on'] = api.config.right_on
-
         left_on_list = tfp.read_list(api.config.left_on)
         right_on_list = tfp.read_list(api.config.right_on)
+        logger.info('Join DataFrames on {} - {}'.format(left_on_list,right_on_list))
         left_df.reset_index(inplace=True)
         right_df.reset_index(inplace=True)
 
@@ -117,41 +112,38 @@ def process(left_msg, right_msg) :
         raise ValueError(
             "Config setting: Either <on> or both <left_on> and <right_on> has to be set in order to join the dataframes")
 
-    att_dict['config']['new_indices'] = api.config.new_indices
     index_list = tfp.read_list(api.config.new_indices)
     if index_list:
         df.set_index(keys=index_list, inplace=True)
+        logger.info('Set index: {}'.format(index_list))
 
-    att_dict['config']['drop_columns'] = api.config.drop_columns
     col_list = tfp.read_list(api.config.drop_columns)
     if col_list:
         df.drop(labels=col_list, axis=1, inplace=True)
-
-    ##############################################
-    #  final infos to attributes and info message
-    ##############################################
-    if df.empty == True:
-        raise ValueError('Merged Dataframe is empty')
-
-    att_dict['memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
-    att_dict['columns'] = str(list(df.columns))
-    att_dict['shape'] = df.shape
-    att_dict['id'] = str(id(df))
-
-    logger.debug('Columns: {}'.format(str(df.columns)))
-    logger.debug('Shape (#rows - #columns): {} - {}'.format(df.shape[0],df.shape[1]))
-    logger.debug('Memory: {} kB'.format(att_dict['memory']))
-    example_rows = EXAMPLE_ROWS if df.shape[0] > EXAMPLE_ROWS else df.shape[0]
-    for i in range(0, example_rows):
-        att_dict['row_' + str(i)] = str([str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])
-        logger.debug('Head data: {}'.format(att_dict['row_' + str(i)]))
+        logger.info('Drop columns: {}'.format(col_list))
 
     # end custom process definition
+    if df.empty :
+        raise ValueError('DataFrame is empty')
+    logger.debug('Columns: {}'.format(str(df.columns)))
+    logger.debug('Shape (#rows - #columns): {} - {}'.format(df.shape[0],df.shape[1]))
+    logger.debug('Memory: {} kB'.format(df.memory_usage(deep=True).sum() / 1024 ** 2))
+    example_rows = EXAMPLE_ROWS if df.shape[0] > EXAMPLE_ROWS else df.shape[0]
+    for i in range(0, example_rows):
+        logger.debug('Row {}: {}'.format(i,str([str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])))
 
-    log = log_stream.getvalue()
+    progress_str = '<BATCH ENDED><1>'
+    if 'storage.fileIndex' in att_dict and 'storage.fileCount' in att_dict and 'storage.endOfSequence' in att_dict:
+        if att_dict['storage.fileIndex'] + 1 == att_dict['storage.fileCount']:
+            progress_str = '<BATCH ENDED><{}>'.format(att_dict['storage.fileCount'])
+        else:
+            progress_str = '<BATCH IN-PROCESS><{}/{}>'.format(att_dict['storage.fileIndex'] + 1,
+                                                              att_dict['storage.fileCount'])
+    att_dict['process_list'].append(att_dict['operator'])
+    logger.debug('Process ended: {}  - {}  '.format(progress_str, time_monitor.elapsed_time()))
+    logger.debug('Past process steps: {}'.format(att_dict['process_list']))
 
-    msg = api.Message(attributes=att_dict,body=df)
-    return log, msg
+    return log_stream.getvalue(), api.Message(attributes=att_dict,body=df)
 
 
 inports = [{'name': 'left_input', 'type': 'message.DataFrame',"description":"Left input data"}, \

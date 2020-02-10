@@ -1,6 +1,7 @@
 import sdi_utils.gensolution as gs
 import sdi_utils.set_logging as slog
 import sdi_utils.textfield_parser as tfp
+import sdi_utils.tprogress as tp
 
 import pandas as pd
 import io
@@ -56,6 +57,9 @@ except NameError:
             debug_mode = True
             config_params['debug_mode'] = {'title': 'Debug mode', 'description': 'Sending debug level information to log port',
                                            'type': 'boolean'}
+            collect = True
+            config_params['collect'] = {'title': 'Collect data', 'description': 'Collect data before sending it to the output port',
+                                           'type': 'boolean'}
             index_cols = 'None'
             config_params['index_cols'] = {'title': 'Index Columns', 'description': 'Index columns of dataframe',
                                            'type': 'string'}
@@ -91,6 +95,9 @@ except NameError:
                                                    'type': 'string'}
             todatetime = 'None'
             config_params['todatetime'] = {'title': 'To Datetime', 'description': 'To Datetime', 'type': 'string'}
+            utc = True
+            config_params['utc'] = {'title': 'Use UTC', 'description': 'If true utc is used for time conversion', 'type': 'boolean'}
+
             keyword_args = "'error_bad_lines'= True, 'low_memory' = False, compression = None, thousands = None "
             config_params['keyword_args'] = {'title': 'Keyword Arguments',
                                              'description': 'Mapping of key-values passed as arguments \"to read_csv\"',
@@ -119,31 +126,29 @@ def downcast(df, data_type, to_type):
 
 def process(msg):
 
-    att_dict = dict()
-    att_dict['config'] = dict()
-
-    att_dict['operator'] = 'fromCSV'
-    logger, log_stream = slog.set_logging(att_dict['operator'])
-    if api.config.debug_mode == True :
-        logger.setLevel('DEBUG')
-
-    logger.debug("Process started")
+    att_dict = msg.attributes
 
     global result_df
 
-    att_dict['filename'] = msg.attributes["storage.filename"]
+    att_dict['operator'] = 'fromCSV'
+    if api.config.debug_mode == True:
+        logger, log_stream = slog.set_logging(att_dict['operator'],loglevel='DEBUG')
+    else :
+        logger, log_stream = slog.set_logging(att_dict['operator'],loglevel='INFO')
+    logger.info("Process started")
+    time_monitor = tp.progress()
 
     logger.info('Filename: {} index: {}  count: {}  endofSeq: {}'.format(msg.attributes["storage.filename"], \
                                                                          msg.attributes["storage.fileIndex"], \
                                                                          msg.attributes["storage.fileCount"], \
                                                                          msg.attributes["storage.endOfSequence"]))
 
-
-    # using file name from attributes of ReadFile
-    if not api.config.df_name or api.config.df_name == "DataFrame":
-        att_dict['name'] = att_dict['filename'].split(".")[0]
-
-    if isinstance(msg.body, str):
+    if msg.body == None:
+        logger.info('Process ended.')
+        msg = api.Message(attributes=att_dict, body=result_df)
+        log = log_stream.getvalue()
+        return log, msg
+    elif isinstance(msg.body, str):
         csv_io = io.StringIO(msg.body)
         logger.debug("Input format: <string>")
     elif isinstance(msg.body, bytes):
@@ -161,12 +166,12 @@ def process(msg):
         nrows = api.config.limit_rows
 
     # usecols
-    att_dict['config']['use_columns'] = api.config.use_columns
     use_cols = tfp.read_list(api.config.use_columns)
+    logger.debug('Columns used: {}'.format(use_cols))
 
     # dtypes mapping
-    att_dict['config']['dtypes'] = api.config.dtypes
     typemap = tfp.read_dict(api.config.dtypes)
+    logger.debug('Type cast: {}'.format(str(typemap)))
 
     kwargs = tfp.read_dict(text=api.config.keyword_args, map_sep='=')
 
@@ -188,13 +193,14 @@ def process(msg):
 
     # To Datetime
     if api.config.todatetime and not api.config.todatetime == 'None':
-        coldate = api.config.todatetime.split(':')[0].strip().strip("'").strip('"')
-        dformat = api.config.todatetime.split(':')[1].strip().strip("'").strip('"')
-        df[coldate] = pd.to_datetime(df[coldate], format=dformat)
+        dt_fmt = tfp.read_dict(api.config.todatetime)
+        logger.debug('Time conversion {} by using UTC {}'.format(api.config.todatetime,api.config.utc))
+        for col, fmt in dt_fmt.items() :
+            df[col] = pd.to_datetime(df[col], format=fmt, utc= api.config.utc)
 
     ###### Downcasting
     # save memory footprint for calculating the savings of the downcast
-    att_dict['previous_memory'] = df.memory_usage(deep=True).sum() / 1024 ** 2
+    logger.debug('Memory used before downcast: {}'.format(df.memory_usage(deep=True).sum() / 1024 ** 2))
     if api.config.downcast_int:
         df, dci = downcast(df, 'int', 'unsigned')
     if api.config.downcast_float:
@@ -202,67 +208,65 @@ def process(msg):
 
     # check if index is provided and set
     index_list = tfp.read_list(api.config.index_cols)
-    att_dict['config']['index_cols'] = str(index_list)
-    att_dict['index_cols'] = str(index_list)
     if index_list:
         df.set_index(index_list, inplace=True)
 
-    # stores the result in global variable result_df
-    if msg.attributes['storage.fileIndex'] == 0:
-        logger.debug('Added to DataFrame: {}'.format(att_dict['filename']))
+    if api.config.collect :
+        # stores the result in global variable result_df
+        if msg.attributes['storage.fileIndex'] == 0:
+            logger.debug('Added to DataFrame: {}'.format(att_dict['storage.filename']))
+            result_df = df
+        else:
+            try :
+                result_df = pd.concat([result_df, df], axis=0, sort=False)
+            except Exception  as e:
+                logger.error(str(e))
+                result_df = df
+    else :
         result_df = df
-    else:
-        result_df = pd.concat([result_df, df], axis=0, sort=False)
-
-    ##############################################
-    #  final infos to attributes and info message
-    ##############################################
-
-    att_dict['memory'] = result_df.memory_usage(deep=True).sum() / 1024 ** 2
-    att_dict['columns'] = list(result_df.columns)
-    att_dict['dtypes'] = {col: str(ty) for col, ty in df.dtypes.to_dict().items()}
-    att_dict['shape'] = result_df.shape
-    att_dict['id'] = str(id(result_df))
-
-    logger.debug('Columns: {}'.format(str(result_df.columns)))
-    logger.debug('Shape (#rows - #columns): {} - {}'.format(result_df.shape[0],result_df.shape[1]))
-    logger.debug('Memory: {} kB'.format(att_dict['memory']))
-    example_rows = EXAMPLE_ROWS if result_df.shape[0] > EXAMPLE_ROWS else result_df.shape[0]
-    for i in range(0, example_rows):
-        att_dict['row_' + str(i)] = str([str(i)[:10].ljust(10) for i in result_df.iloc[i, :].tolist()])
-        logger.debug('Head data: {}'.format(att_dict['row_' + str(i)]))
 
     # end custom process definition
-    msg = api.Message(attributes=att_dict, body=result_df)
-    log = log_stream.getvalue()
-    return log, msg
+    if df.empty :
+        raise ValueError('DataFrame is empty')
+    logger.debug('Columns: {}'.format(str(df.columns)))
+    logger.debug('Shape (#rows - #columns): {} - {}'.format(df.shape[0],df.shape[1]))
+    logger.debug('Memory: {} kB'.format(df.memory_usage(deep=True).sum() / 1024 ** 2))
+    example_rows = EXAMPLE_ROWS if df.shape[0] > EXAMPLE_ROWS else df.shape[0]
+    for i in range(0, example_rows):
+        logger.debug('Row {}: {}'.format(i,str([str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])))
+
+    progress_str = '>BATCH ENDED<'
+    if 'storage.fileIndex' in att_dict and 'storage.fileCount' in att_dict and 'storage.endOfSequence' in att_dict :
+        if not att_dict['storage.fileIndex'] + 1 == att_dict['storage.fileCount'] :
+            progress_str = '{}/{}'.format(att_dict['storage.fileIndex'],att_dict['storage.fileCount'])
+    logger.debug('Process ended: {}  - {}  '.format(progress_str,time_monitor.elapsed_time()))
+
+    return log_stream.getvalue(), api.Message(attributes=att_dict,body=df)
 
 
 inports = [{'name': 'csv', 'type': 'message',"description":"Input byte or string csv"}]
 outports = [{'name': 'log', 'type': 'string',"description":"Logging data"}, \
             {'name': 'data', 'type': 'message.DataFrame',"description":"Output data"}]
 
+
 def call_on_input(msg):
+    commit_token = "0"
+
+    # if  collect==True each file is send to process
+    if msg.attributes["storage.endOfSequence"] or api.config.collect == False:
+        commit_token = "1"
+
     log, msg = process(msg)
+    msg.attributes['commit.token'] = commit_token
+
+    # body == None then no msg is send
+    if commit_token == "1" and isinstance(msg.body, pd.DataFrame) :
+        api.send(outports[1]['name'], msg)
+
     api.send(outports[0]['name'], log)
-    api.send(outports[1]['name'], msg)
-
-    def call_on_input(msg):
-
-        commit_token = "0"
-        if msg.attributes["storage.endOfSequence"]:
-            commit_token = "1"
-
-        log, msg = process(msg)
-        msg.attributes['commit.token'] = commit_token
-
-        if commit_token == "1":
-            api.send(outports[0]['name'], msg)
-
-        api.send(outports[1]['name'], log)
 
 
-# api.set_port_callback(inports[0]['name'], call_on_input)
+#api.set_port_callback(inports[0]['name'], call_on_input)
 
 def main():
     import os
@@ -282,8 +286,8 @@ def main():
 
     for i, fname in enumerate(files_in_dir):
 
-        if i == 5 :
-            break
+        #if i == 5 :
+        #    break
 
         fbase = fname.split('.')[0]
         eos = True if len(files_in_dir) == i + 1 else False
@@ -304,10 +308,15 @@ def main():
         config.limit_rows = 0
         config.df_name = 'DataFrame'
         config.decimal = '.'
+        config.utc = False
+        config.collect = False
+        config.todatetime = 'Exportdatum : %Y-%m-%d'
         config.keyword_args = "'error_bad_lines'= True, 'low_memory' = False, compression = None, comment = '#'"
         log, msg = api.call(config, msg)
 
         logfile.write(log)
+
+    msg = api.Message(attributes=attributes, body=None)
 
     logfile.close()
 

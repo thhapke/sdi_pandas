@@ -1,0 +1,41 @@
+{
+    "description": "categorical2exist",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "input",
+            "type": "message",
+            "description": "Input data"
+        }
+    ],
+    "outports": [
+        {
+            "name": "output",
+            "type": "message",
+            "description": "Output data"
+        },
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging"
+        },
+        {
+            "name": "transformation",
+            "type": "string",
+            "description": "transformation"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_pandas.cleanse.categorical2exist.configSchema.json",
+        "script": "file://categorical2exist.py",
+        "columns": "All",
+        "info_only": false,
+        "threshold": 0.5,
+        "upper_threshold": 0.99,
+        "num_values": 2,
+        "equal_only": false
+    },
+    "tags": {
+        "python36": ""
+    }
+}
